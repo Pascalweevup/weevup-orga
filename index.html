@@ -111,8 +111,8 @@
     <script>
         const rawData = [
           { phase: "PHASE 1 : ENTRÉE COMMERCIALE", color: "bg-[#005461]", light: "bg-[#005461]/10", border: "border-[#005461]", items: [
-            { mission: "Demande entrante", referent: ["Julien"], actions: "Réseau, sortlist, formulaire, téléphone, prospection" },
-            { mission: "Prise de brief", referent: ["Julien"] },
+            { mission: "Demande entrante", referent: ["Julien", "Cheffe d'équipe"], actions: "Réseau, sortlist, formulaire, téléphone, prospection" },
+            { mission: "Prise de brief", referent: ["Julien", "Cheffe d'équipe"] },
             { mission: "Qualification budget/timing", referent: ["Julien"], actions: "Confirmer faisabilité interne (charge / calendrier)" },
             { mission: "Création/ mise à jour CRM", referent: ["Julien"] },
             { mission: "Brief complet ?", referent: ["Julien"], ifNot: "↩️ Prise de brief" },
@@ -122,42 +122,39 @@
           { phase: "PHASE 2 : PRÉ-KICK OFF", color: "bg-sky-600", light: "bg-sky-50", border: "border-sky-600", items: [
             { mission: "Création du projet dans les outils", referent: ["Cheffe d'équipe"], actions: "Drive, canva, pipedrive, plateforme" },
             { mission: "Analyse contraintes & charge", referent: ["Cheffe d'équipe"], actions: "Identifier risques (budget, timing, lieu)" },
+            { mission: "Prise de connaissance des éléments", referent: ["Équipe", "Pascal", "Simon", "Lead", "Cheffe d'équipe"] },
             { mission: "Définition directions d’expérience", referent: ["Simon"], actions: "2–3 caps clairs + Intégrer angle RSE dès la conception (mobilité, partenaires responsables, impact positif)" },
             { mission: "Repérage macro lieux / expériences", referent: ["Simon"], actions: "Vérifier critères RSE (local, accessibilité, prestas responsables)" },
-            { mission: "Premières pistes créatives", referent: ["Pascal"] },
+            { mission: "Premières réflexions créatives", referent: ["Pascal"] },
             { mission: "Pistes stratégiques pour Kick off", referent: ["Simon"] }
           ]},
           { phase: "PHASE 3 : KICK OFF INTERNE", color: "bg-violet-600", light: "bg-violet-50", border: "border-violet-600", items: [
             { mission: "Fixation deadlines", referent: ["Cheffe d'équipe"], actions: "Créer rétroplanning, définir date de rendu" },
             { mission: "Répartition rôles & désignation Lead client", referent: ["Cheffe d'équipe"] },
             { mission: "Validation direction d’expérience", referent: ["Simon"] },
+            { mission: "Partage des premières pistes de sourcing", referent: ["Simon"] },
             { mission: "Cadrage DA", referent: ["Pascal"] },
-            { mission: "1er contact client pour le lead", referent: ["Julien", "Lead"], actions: "Caler une date de rendu" },
-            { mission: "Validation marge cible", referent: ["Julien"], actions: "Définir marge minimale acceptable" },
-            { mission: "Etablir le budget prévisionnel", referent: ["Lead", "Cheffe d'équipe", "Simon"] }
+            { mission: "1er contact client pour le lead", referent: ["Julien", "Lead"], actions: "Caler une date de rendu et envoyer les questions" },
+            { mission: "Post Kick off : établir le budget prévisionnel", referent: ["Lead", "Cheffe d'équipe", "Simon"] }
           ]},
           { phase: "PHASE 4 : SOURCING & NÉGOCIATION", color: "bg-pink-600", light: "bg-pink-50", border: "border-pink-600", items: [
-            { mission: "Recherche partenaires", referent: ["Équipe", "Simon"], actions: "Prioriser partenaires engagés / locaux / responsables. Veille individuelle + base interne" },
+            { mission: "Recherche partenaires", referent: ["Équipe", "Simon"], actions: "Prioriser partenaires engagés / locaux / responsables<br/>Veille individuelle + base interne" },
             { mission: "Déroulé prévisionnel", referent: ["Lead", "Simon"] },
-            { mission: "Contacts prestataires", referent: ["Équipe"], actions: "Mail type + personnalisation, MAJ Sourcing continu" },
-            { mission: "Demandes devis", referent: ["Équipe"], actions: "Demander infos RSE (provenance, déchets, énergie, inclusion). Centraliser dans Drive" },
+            { mission: "Contacts prestataires + Demandes devis", referent: ["Équipe"], actions: "Mail type + personnalisation, <br/>MAJ Sourcing continu + centraliser dans le drive.<br/>Demander infos RSE (provenance, déchets, énergie, inclusion)" },
             { mission: "Relances & négociation tarifaire", referent: ["Équipe"] },
             { mission: "Échanges avec le client", referent: ["Lead", "Julien"] },
             { mission: "Supervision & arbitrage qualité/budget", referent: ["Cheffe d'équipe"], actions: "Intégrer critère RSE dans arbitrage, pas uniquement prix" },
-            { mission: "Supervision stratégique", referent: ["Simon"], actions: "Choix des 2 propositions à présenter" },
-            { mission: "Sourcing conforme & faisable ?", referent: ["Simon"], ifNot: "↩️ Recherche partenaires" }
+            { mission: "Supervision stratégique + Sourcing conforme & faisable ?", referent: ["Simon"], ifNot: "↩️ Recherche partenaires", actions: "Choix des 2 propositions à présenter" }
           ]},
           { phase: "PHASE 5 : BUDGET & ARBITRAGES", color: "bg-orange-600", light: "bg-orange-50", border: "border-orange-600", items: [
-            { mission: "Construction budget", referent: ["Équipe"] },
-            { mission: "Intégration honoraires & options", referent: ["Équipe"] },
+            { mission: "Construction budget", referent: ["Équipe", "Lead"], actions: "Intégration honoraires & options<br/>Double relecture nécessaire équipe/lead" },
             { mission: "Co-construction budget", referent: ["Lead"] },
             { mission: "Validation interne qualité/cohérence/ budget", referent: ["Cheffe d'équipe"], actions: "Double contrôle erreurs" },
             { mission: "Validation marge", referent: ["Julien"] },
-            { mission: "Arbitrage expérience vs budget", referent: ["Simon"] },
-            { mission: "Go interne ?", referent: ["Simon"], ifNot: "↩️ Arbitrage expérience vs budget" }
+            { mission: "Arbitrage expérience vs budget", referent: ["Simon"], ifNot: "↩️ Construction budget" }
           ]},
           { phase: "PHASE 6 : PRODUCTION CANVA", color: "bg-emerald-600", light: "bg-emerald-50", border: "border-emerald-600", items: [
-            { mission: "Production slides via modèles", referent: ["Équipe"], actions: "Squelette complet avant mise en forme" },
+            { mission: "Production slides via modèles", referent: ["Équipe", "Lead"], actions: "Squelette complet avant mise en forme et remplissage" },
             { mission: "Intégration contenus complets", referent: ["Équipe"], actions: "Ajouter slide “Notes positives” systématique" },
             { mission: "Structuration storytelling & messages clés", referent: ["Lead", "Simon", "Pascal"], actions: "Mettre en avant expérience vécue + impact" },
             { mission: "Conception graphique & identité event", referent: ["Pascal"], actions: "Valoriser dimension émotionnelle et responsable" },
@@ -166,22 +163,19 @@
             { mission: "Validation Pascal & Simon", referent: ["Simon", "Pascal"], ifNot: "↪️ Relecture fond & validation finale" }
           ]},
           { phase: "PHASE 7 : PRÉSENTATION & A/R", color: "bg-indigo-600", light: "bg-indigo-50", border: "border-indigo-600", items: [
-            { mission: "Envoi proposition", referent: ["Lead", "Julien"], actions: "Inclure échéancier paiement client" },
-            { mission: "Mise à jour CRM", referent: ["Cheffe d'équipe"] },
+            { mission: "Envoi proposition", referent: ["Lead", "Julien"], actions: "Inclure échéancier paiement client dans le budget client" },
             { mission: "Présentation client", referent: ["Lead", "Simon", "Cheffe d'équipe", "Julien"], actions: "Si nécessaire, créer présentation pour l'oral" },
-            { mission: "Réception retours", referent: ["Lead"] },
-            { mission: "Concertation interne", referent: ["Cheffe d'équipe", "Simon", "Lead"] },
+            { mission: "Réception retours", referent: ["Lead"], actions: "Concertation interne" },
             { mission: "Modifications", referent: ["Équipe"] },
             { mission: "Renvoi", referent: ["Lead"] },
-            { mission: "Refus ? Ajustements ? GO ?", referent: ["Client"], ifNot: "⛔ REX interne<br/>↩️ Concertation interne<br/>↪️ Colonne suivante", actions: "⛔ Notification du refus aux prestataires" }
+            { mission: "Refus ? Ajustements ? GO ?", referent: ["Client"], ifNot: "⛔ REX interne<br/>↩️ Modifications<br/>↪️ Phase suivante", actions: "⛔ Notification du refus aux prestataires" }
           ]},
           { phase: "PHASE 8 : FACTURATION & ADMINISTRATIF", color: "bg-rose-600", light: "bg-rose-50", border: "border-rose-600", items: [
             { mission: "Édition devis & CGV", referent: ["Marie", "Lead"], actions: "⚠️ Pas de production sans devis signé" },
             { mission: "Facture client & prestas", referent: ["Marie", "Lead"], actions: "Acomptes, Solde... En fonction de l'échéancier" },
-            { mission: "Vérification finale", referent: ["Cheffe d'équipe"] },
-            { mission: "Négociation post-signature client pour optimisation marge", referent: ["Simon", "Cheffe d'équipe", "Lead"], actions: "Chercher économies" },
-            { mission: "Confirmation prestataires retenus", referent: ["Lead", "Équipe"], actions: "Formaliser par écrit" },
-            { mission: "Notification prestataires non retenus", referent: ["Lead", "Équipe"] }
+            { mission: "Négociation post-signature client pour optimisation marge", referent: ["Équipe", "Cheffe d'équipe", "Simon"], actions: "Chercher économies" },
+            { mission: "Informer les prestataires retenus", referent: ["Lead", "Équipe"], actions: "Formaliser par écrit" },
+            { mission: "Notifier les prestataires non retenus", referent: ["Lead", "Équipe"] }
           ]},
           { phase: "PHASE 9 : PRODUCTION", color: "bg-teal-600", light: "bg-teal-50", border: "border-teal-600", items: [
             { mission: "Pilotage global", referent: ["Lead"] },
@@ -189,25 +183,24 @@
             { mission: "Suivi qualité de production", referent: ["Simon"] },
             { mission: "Repérage du lieu avec le client si vendu", referent: ["Lead"] },
             { mission: "Interface client", referent: ["Lead"] },
-            { mission: "Coordination & logistique", referent: ["Équipe"], actions: "Suivi engagements RSE sur le terrain. Boîte event, reconfirmations partenaires avec envoi déroulé" },
-            { mission: "Organisation des VHR équipe", referent: ["Lead", "Cheffe d'équipe"], actions: "Valider horaires, budgets, récup..." },
-            { mission: "Carnet de bord", referent: ["Équipe", "Cheffe d'équipe"], actions: "À valider avec la cheffe d'équipe avant envoi. Intégrer points RSE opérationnels" }
+            { mission: "Coordination & logistique", referent: ["Équipe"], actions: "Suivi engagements RSE sur le terrain<br/>Boîte event, reconfirmations partenaires avec envoi déroulé" },
+            { mission: "Organisation des VHR équipe", referent: ["Lead", "Cheffe d'équipe", "Marie"], actions: "Valider horaires, budgets, récup..." },
+            { mission: "Carnet de bord", referent: ["Lead", "Cheffe d'équipe"], actions: "À valider avec la cheffe d'équipe avant envoi<br/>Intégrer points RSE opérationnels" }
           ]},
           { phase: "PHASE 10 : JOUR J", color: "bg-amber-600", light: "bg-amber-50", border: "border-amber-600", items: [
-            { mission: "Exploitation & coordination", referent: ["Équipe"] },
+            { mission: "Exploitation & coordination terrain", referent: ["Équipe"] },
             { mission: "Relation client", referent: ["Lead", "Julien"], actions: "Identifier opportunités futures" },
             { mission: "Supervision si gros projet", referent: ["Cheffe d'équipe", "Simon", "Julien"] }
           ]},
           { phase: "PHASE 11 : CLÔTURE & FIDÉLISATION", color: "bg-slate-600", light: "bg-slate-50", border: "border-slate-600", items: [
             { mission: "Budget final & reporting", referent: ["Équipe"], actions: "Comparatif prévisionnel / réel" },
             { mission: "Clôture financière", referent: ["Marie"] },
-            { mission: "REX interne", referent: ["Cheffe d'équipe"], actions: "Identifier axes d’amélioration (y compris RSE)" },
-            { mission: "REX client", referent: ["Lead", "Cheffe d'équipe", "Julien", "Simon"], actions: "Mesurer perception expérience" },
+            { mission: "REX interne", referent: ["Cheffe d'équipe", "Équipe", "Simon"], actions: "Identifier axes d’amélioration (y compris RSE)" },
+            { mission: "REX client", referent: ["Lead", "Julien", "Simon"], actions: "Mesurer perception expérience" },
             { mission: "REX prestataire", referent: ["Équipe"] },
             { mission: "MAJ boites évent et inventaire", referent: ["Lead"] },
             { mission: "Demande avis Google", referent: ["Lead"] },
-            { mission: "Relance commerciale & fidélisation", referent: ["Julien"] },
-            { mission: "Opportunité future ?", referent: ["Julien"], ifNot: "⛔ Fin" },
+            { mission: "Relance commerciale & fidélisation. Opportunité future ?", referent: ["Julien"], ifNot: "⛔ Fin" },
             { mission: "Nouvelle demande", referent: ["Julien"] }
           ]}
         ];
