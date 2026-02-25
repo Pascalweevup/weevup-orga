@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weevup - Organisation & Missions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-fade-in { animation: fadeIn 0.3s ease-out forwards; }
+    </style>
+</head>
+<body class="min-h-screen bg-slate-50 text-slate-900 font-sans pb-20">
+
+    <!-- HEADER -->
+    <header class="bg-white border-b sticky top-0 z-40 px-6 py-4 shadow-sm">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <div class="bg-blue-600 p-2 rounded-lg text-white">
+                    <i data-lucide="layers" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl font-black tracking-tight uppercase">Weevup <span class="text-blue-600">Orga</span></h1>
+                    <p class="text-xs text-slate-500 font-bold uppercase tracking-widest">Matrice Rôles & Missions</p>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-2 bg-slate-100 p-1 rounded-xl" id="view-toggle">
+                <button id="btn-process" class="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold transition-all bg-white shadow-sm text-blue-600">
+                    <i data-lucide="clock" class="w-4 h-4"></i> Processus
+                </button>
+                <button id="btn-roles" class="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold transition-all text-slate-500 hover:text-slate-700">
+                    <i data-lucide="users" class="w-4 h-4"></i> Par Membre
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-6 mt-8">
+        
+        <!-- TOOLBAR -->
+        <div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-200 mb-8 flex flex-col md:flex-row gap-4">
+            <div class="relative flex-1">
+                <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 w-4 h-4"></i>
+                <input 
+                    type="text" 
+                    id="search-input"
+                    placeholder="Rechercher une mission ou une action..."
+                    class="w-full pl-10 pr-4 py-2 bg-slate-50 border-none rounded-xl text-sm focus:ring-2 focus:ring-blue-500 outline-none"
+                >
+            </div>
+            <div class="flex gap-2 overflow-x-auto pb-2 md:pb-0 scrollbar-hide" id="referent-filters">
+                <!-- Person buttons injected here -->
+            </div>
+        </div>
+
+        <!-- CONTENT AREA -->
+        <div id="content-area">
+            <!-- Dynamic content injected here -->
+        </div>
+
+        <!-- EMPTY STATE -->
+        <div id="empty-state" class="hidden text-center py-20">
+            <div class="bg-slate-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 text-slate-400">
+                <i data-lucide="search" class="w-10 h-10"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-800">Aucun résultat</h3>
+            <p class="text-slate-500 text-sm">Ajustez votre recherche ou les filtres par membre.</p>
+        </div>
+    </main>
+
+    <!-- MOBILE FOOTER NAV -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white border-t p-4 z-40 md:hidden flex justify-around">
+         <button id="mobile-btn-process" class="flex flex-col items-center gap-1 text-blue-600">
+           <i data-lucide="layers" class="w-5 h-5"></i>
+           <span class="text-[10px] font-bold uppercase">Process</span>
+         </button>
+         <button id="mobile-btn-roles" class="flex flex-col items-center gap-1 text-slate-400">
+           <i data-lucide="users" class="w-5 h-5"></i>
+           <span class="text-[10px] font-bold uppercase">Membres</span>
+         </button>
+    </div>
+
+    <script>
+        const rawData = [
+          { phase: "PHASE 1 : ENTRÉE COMMERCIALE", items: [
+            { mission: "Demande entrante", referent: ["Julien"], actions: "Réseau, sortlist, formulaire, téléphone, prospection" },
+            { mission: "Prise de brief", referent: ["Julien"] },
+            { mission: "Qualification budget/timing & CRM", referent: ["Julien"], actions: "Confirmer faisabilité interne (charge / calendrier)" },
+            { mission: "Assignation Cheffe d'équipe", referent: ["Julien"], actions: "Vérifier charge + adéquation profil projet" }
+          ]},
+          { phase: "PHASE 2 : PRÉ-KICK OFF", items: [
+            { mission: "Création du projet dans les outils", referent: ["Cheffe d'équipe"], actions: "Drive, canva, pipedrive, plateforme" },
+            { mission: "Analyse contraintes & charge", referent: ["Cheffe d'équipe"], actions: "Identifier risques (budget, timing, lieu)" },
+            { mission: "Définition directions d'expérience", referent: ["Simon"], actions: "2-3 caps clairs + Angle RSE dès la conception" },
+            { mission: "Repérage macro lieux / expériences", referent: ["Simon"], actions: "Vérifier critères RSE (local, accessibilité, prestas)" },
+            { mission: "Premières pistes créatives", referent: ["Pascal"] },
+            { mission: "Fixation deadlines", referent: ["Cheffe d'équipe"], actions: "Créer rétroplanning, définir date de rendu" },
+            { mission: "Répartition rôles & Lead client", referent: ["Cheffe d'équipe"] }
+          ]},
+          { phase: "PHASE 3 : KICK OFF INTERNE", items: [
+            { mission: "Validation direction d'expérience", referent: ["Simon"] },
+            { mission: "Cadrage DA", referent: ["Pascal"] },
+            { mission: "1er contact client pour le lead", referent: ["Julien", "Lead"], actions: "Caler une date de rendu" },
+            { mission: "Validation marge cible", referent: ["Julien"], actions: "Définir marge minimale acceptable" },
+            { mission: "Établir le budget prévisionnel", referent: ["Lead", "Cheffe d'équipe", "Simon"] }
+          ]},
+          { phase: "PHASE 4 : SOURCING & NÉGOCIATION", items: [
+            { mission: "Recherche partenaires & Déroulé", referent: ["Équipe", "Simon"], actions: "Prioriser partenaires engagés/locaux" },
+            { mission: "Contacts prestataires", referent: ["Équipe"], actions: "Mail type + personnalisation, MAJ Sourcing" },
+            { mission: "Demandes devis & Négociation", referent: ["Équipe"], actions: "Demander infos RSE (déchets, énergie, inclusion)" },
+            { mission: "Échanges avec le client", referent: ["Lead", "Julien"] },
+            { mission: "Supervision qualité/budget", referent: ["Cheffe d'équipe"], actions: "Intégrer critère RSE dans arbitrage" },
+            { mission: "Supervision stratégique", referent: ["Simon"], actions: "Choix des 2 propositions à présenter" }
+          ]},
+          { phase: "PHASE 5 : BUDGET & ARBITRAGES", items: [
+            { mission: "Construction budget & Honoraires", referent: ["Équipe"] },
+            { mission: "Validation interne qualité/cohérence", referent: ["Cheffe d'équipe"], actions: "Double contrôle erreurs" },
+            { mission: "Validation marge", referent: ["Julien"] },
+            { mission: "Arbitrage expérience vs budget", referent: ["Simon"] }
+          ]},
+          { phase: "PHASE 6 : PRODUCTION CANVA", items: [
+            { mission: "Production slides via modèles", referent: ["Équipe"], actions: "Squelette complet avant mise en forme" },
+            { mission: "Intégration contenus complets", referent: ["Équipe"], actions: "Ajouter slide 'Notes positives' systématique" },
+            { mission: "Storytelling & messages clés", referent: ["Lead", "Simon", "Pascal"], actions: "Mettre en avant expérience vécue + impact" },
+            { mission: "Conception graphique & Identité", referent: ["Pascal"], actions: "Valoriser dimension émotionnelle et responsable" },
+            { mission: "Validation qualité & complétude", referent: ["Cheffe d'équipe"], actions: "Vérifier cohérence promesse expérience + RSE" },
+            { mission: "Validation finale", referent: ["Simon", "Pascal"], actions: "Relecture fond & validation finale" }
+          ]},
+          { phase: "PHASE 7 : PRÉSENTATION & A/R", items: [
+            { mission: "Envoi proposition", referent: ["Lead", "Julien"], actions: "Inclure échéancier paiement client" },
+            { mission: "Présentation client", referent: ["Lead", "Simon", "Cheffe d'équipe", "Julien"] },
+            { mission: "Concertation interne & Modifs", referent: ["Cheffe d'équipe", "Simon", "Lead", "Équipe"] },
+            { mission: "Notification refus prestas", referent: ["Lead"], actions: "En cas de non-go" }
+          ]},
+          { phase: "PHASE 8 : FACTURATION & ADMIN", items: [
+            { mission: "Édition devis & CGV", referent: ["Marie", "Lead"], actions: "Pas de production sans devis signé" },
+            { mission: "Facture client & prestas", referent: ["Marie", "Lead"], actions: "Acomptes, Solde selon échéancier" },
+            { mission: "Optimisation marge post-signature", referent: ["Simon", "Cheffe d'équipe", "Lead"], actions: "Chercher économies" }
+          ]},
+          { phase: "PHASE 9 : PRODUCTION", items: [
+            { mission: "Confirmation prestataires retenus", referent: ["Lead", "Équipe"] },
+            { mission: "Pilotage global & Process", referent: ["Lead", "Cheffe d'équipe"] },
+            { mission: "Interface client & Coordination", referent: ["Lead", "Équipe"], actions: "Suivi engagements RSE terrain" },
+            { mission: "VHR Équipe & Carnet de bord", referent: ["Lead", "Cheffe d'équipe", "Équipe"], actions: "Horaires, récup, points RSE opérationnels" },
+            { mission: "Repérage lieu avec client", referent: ["Lead"] }
+          ]},
+          { phase: "PHASE 10 : JOUR J", items: [
+            { mission: "Relation client & Supervision", referent: ["Lead", "Julien", "Cheffe d'équipe", "Simon"], actions: "Identifier opportunités futures" },
+            { mission: "Exploitation & Coordination", referent: ["Équipe"] }
+          ]},
+          { phase: "PHASE 11 : CLOTURE & FIDÉLISATION", items: [
+            { mission: "Budget final & Reporting", referent: ["Équipe"], actions: "Comparatif prévisionnel / réel" },
+            { mission: "Clôture financière", referent: ["Marie"] },
+            { mission: "REX Interne & Client", referent: ["Cheffe d'équipe", "Lead", "Julien", "Simon"], actions: "Mesurer perception expérience + RSE" },
+            { mission: "REX prestataire & Inventaire", referent: ["Équipe", "Lead"] },
+            { mission: "Avis Google & Relance", referent: ["Lead", "Julien"] }
+          ]}
+        ];
+
+        const allReferents = ["Julien", "Simon", "Pascal", "Marie", "Cheffe d'équipe", "Lead", "Équipe"];
+
+        // State management
+        let currentView = 'process';
+        let selectedPerson = 'Tous';
+        let searchTerm = '';
+
+        const personStats = {};
+        allReferents.forEach(p => {
+            let count = 0;
+            rawData.forEach(phase => phase.items.forEach(item => { if (item.referent.includes(p)) count++; }));
+            personStats[p] = count;
+        });
+
+        // DOM Elements
+        const contentArea = document.getElementById('content-area');
+        const emptyState = document.getElementById('empty-state');
+        const searchInput = document.getElementById('search-input');
+        const referentFilters = document.getElementById('referent-filters');
+        
+        const btnProcess = document.getElementById('btn-process');
+        const btnRoles = document.getElementById('btn-roles');
+        const mBtnProcess = document.getElementById('mobile-btn-process');
+        const mBtnRoles = document.getElementById('mobile-btn-roles');
+
+        // Functions
+        function updateViewButtons() {
+            const activeClass = "bg-white shadow-sm text-blue-600";
+            const inactiveClass = "text-slate-500 hover:text-slate-700";
+            
+            btnProcess.className = `flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold transition-all ${currentView === 'process' ? activeClass : inactiveClass}`;
+            btnRoles.className = `flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold transition-all ${currentView === 'roles' ? activeClass : inactiveClass}`;
+            
+            mBtnProcess.className = `flex flex-col items-center gap-1 ${currentView === 'process' ? 'text-blue-600' : 'text-slate-400'}`;
+            mBtnRoles.className = `flex flex-col items-center gap-1 ${currentView === 'roles' ? 'text-blue-600' : 'text-slate-400'}`;
+        }
+
+        function renderFilters() {
+            referentFilters.innerHTML = '';
+            
+            // Tous button
+            const btnTous = document.createElement('button');
+            btnTous.className = `px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap transition-colors ${selectedPerson === 'Tous' ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}`;
+            btnTous.innerText = 'TOUS';
+            btnTous.onclick = () => { selectedPerson = 'Tous'; render(); };
+            referentFilters.appendChild(btnTous);
+
+            // Individual buttons
+            allReferents.forEach(person => {
+                const btn = document.createElement('button');
+                btn.className = `px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap transition-colors flex items-center gap-2 ${selectedPerson === person ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}`;
+                btn.innerHTML = `${person} <span class="px-1.5 py-0.5 rounded-md text-[10px] ${selectedPerson === person ? 'bg-blue-500 text-white' : 'bg-slate-200 text-slate-500'}">${personStats[person]}</span>`;
+                btn.onclick = () => { selectedPerson = person; render(); };
+                referentFilters.appendChild(btn);
+            });
+        }
+
+        function render() {
+            updateViewButtons();
+            renderFilters();
+            contentArea.innerHTML = '';
+            
+            const filteredData = rawData.map(phase => ({
+                ...phase,
+                items: phase.items.filter(item => {
+                    const matchesPerson = selectedPerson === 'Tous' || item.referent.includes(selectedPerson);
+                    const matchesSearch = item.mission.toLowerCase().includes(searchTerm.toLowerCase()) || 
+                                         (item.actions && item.actions.toLowerCase().includes(searchTerm.toLowerCase()));
+                    return matchesPerson && matchesSearch;
+                })
+            })).filter(phase => phase.items.length > 0);
+
+            if (filteredData.length === 0) {
+                emptyState.classList.remove('hidden');
+            } else {
+                emptyState.classList.add('hidden');
+                
+                if (currentView === 'process') {
+                    renderProcessView(filteredData);
+                } else {
+                    renderRolesView(filteredData);
+                }
+            }
+            lucide.createIcons();
+        }
+
+        function renderProcessView(data) {
+            const container = document.createElement('div');
+            container.className = 'space-y-12 animate-fade-in';
+            
+            data.forEach((phase, idx) => {
+                const phaseEl = document.createElement('div');
+                phaseEl.className = 'relative pl-8 md:pl-0';
+                phaseEl.innerHTML = `
+                    <div class="absolute left-0 md:left-1/2 top-0 bottom-0 w-0.5 bg-slate-200 md:-translate-x-1/2 hidden md:block opacity-50"></div>
+                    <div class="flex flex-col items-start md:items-center mb-6">
+                        <div class="bg-slate-900 text-white px-4 py-1.5 rounded-full text-xs font-black tracking-tighter uppercase z-10 shadow-lg mb-2">
+                            ${phase.phase}
+                        </div>
+                    </div>
+                `;
+
+                const grid = document.createElement('div');
+                grid.className = 'grid grid-cols-1 md:grid-cols-2 gap-6 relative';
+                
+                phase.items.forEach((item, iIdx) => {
+                    const itemEl = document.createElement('div');
+                    const align = iIdx % 2 === 0 ? 'md:text-right' : 'md:text-left';
+                    const flexDir = iIdx % 2 === 0 ? 'md:flex-row-reverse' : 'md:flex-row';
+                    const justify = iIdx % 2 === 0 ? 'md:justify-end' : 'md:justify-start';
+
+                    itemEl.className = `bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all group ${align}`;
+                    itemEl.innerHTML = `
+                        <div class="flex items-center gap-3 mb-3 ${flexDir}">
+                            <div class="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 flex-shrink-0">
+                                <i data-lucide="target" class="w-5 h-5"></i>
+                            </div>
+                            <h4 class="font-bold text-slate-800">${item.mission}</h4>
+                        </div>
+                        <div class="flex flex-wrap gap-1 mb-3 ${justify}">
+                            ${item.referent.map(r => `<span class="px-2 py-1 bg-slate-100 text-slate-600 rounded-md text-[10px] font-black uppercase tracking-tight">${r}</span>`).join('')}
+                        </div>
+                        ${item.actions ? `
+                            <div class="text-xs text-slate-500 leading-relaxed bg-slate-50 p-3 rounded-xl border border-slate-100 italic ${align}">
+                                ${item.actions}
+                            </div>
+                        ` : ''}
+                    `;
+                    grid.appendChild(itemEl);
+                });
+
+                phaseEl.appendChild(grid);
+                container.appendChild(phaseEl);
+            });
+            contentArea.appendChild(container);
+        }
+
+        function renderRolesView(data) {
+            const container = document.createElement('div');
+            container.className = 'grid grid-cols-1 md:grid-cols-2 gap-8 animate-fade-in';
+            
+            const relevantPeople = allReferents.filter(p => selectedPerson === 'Tous' || p === selectedPerson);
+            
+            relevantPeople.forEach(person => {
+                const personEl = document.createElement('div');
+                personEl.className = 'bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden flex flex-col';
+                
+                const missions = [];
+                data.forEach(phase => {
+                    phase.items.filter(item => item.referent.includes(person)).forEach(item => {
+                        missions.push({ phase: phase.phase.split(':')[0], mission: item.mission, actions: item.actions });
+                    });
+                });
+
+                if (missions.length === 0 && selectedPerson !== 'Tous') return;
+
+                personEl.innerHTML = `
+                    <div class="bg-slate-900 p-6 flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center text-white font-bold text-xl">${person.charAt(0)}</div>
+                            <div>
+                                <h3 class="text-white font-black text-xl uppercase tracking-tighter">${person}</h3>
+                                <p class="text-blue-400 text-xs font-bold uppercase">${personStats[person]} Missions attribuées</p>
+                            </div>
+                        </div>
+                        <i data-lucide="user" class="text-slate-700 w-8 h-8"></i>
+                    </div>
+                    <div class="p-6 space-y-4 flex-1">
+                        ${missions.map(m => `
+                            <div class="group p-4 bg-slate-50 rounded-2xl border border-slate-100 hover:border-blue-200 transition-colors">
+                                <div class="flex items-start justify-between gap-4 mb-2">
+                                    <span class="text-[10px] font-black uppercase text-blue-500 bg-blue-50 px-2 py-0.5 rounded">${m.phase}</span>
+                                </div>
+                                <p class="font-bold text-slate-800 text-sm mb-1">${m.mission}</p>
+                                ${m.actions ? `<p class="text-xs text-slate-500 italic leading-tight">${m.actions}</p>` : ''}
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                container.appendChild(personEl);
+            });
+            contentArea.appendChild(container);
+        }
+
+        // Event Listeners
+        searchInput.oninput = (e) => { searchTerm = e.target.value; render(); };
+        btnProcess.onclick = () => { currentView = 'process'; render(); };
+        btnRoles.onclick = () => { currentView = 'roles'; render(); };
+        mBtnProcess.onclick = () => { currentView = 'process'; render(); };
+        mBtnRoles.onclick = () => { currentView = 'roles'; render(); };
+
+        // Initial Render
+        window.onload = render;
+    </script>
+</body>
+</html>
