@@ -6,6 +6,22 @@
     <title>Weevup - Organisation & Missions</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        weevup: {
+                            DEFAULT: '#005461',
+                            dark: '#00414d',
+                            light: '#006d7d',
+                            soft: '#f0f7f8',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
         .scrollbar-hide::-webkit-scrollbar { display: none; }
         .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
@@ -16,24 +32,24 @@
 <body class="min-h-screen bg-slate-50 text-slate-900 font-sans pb-20">
 
     <!-- HEADER -->
-    <header class="bg-white border-b sticky top-0 z-40 px-6 py-4 shadow-sm">
+    <header class="bg-white border-b-4 border-weevup sticky top-0 z-40 px-6 py-4 shadow-md">
         <div class="max-w-6xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div class="flex items-center gap-3">
-                <div class="bg-blue-600 p-2 rounded-lg text-white">
+                <div class="bg-weevup p-2 rounded-xl text-white shadow-inner">
                     <i data-lucide="layers" class="w-6 h-6"></i>
                 </div>
                 <div>
-                    <h1 class="text-xl font-black tracking-tight uppercase">Weevup <span class="text-blue-600">Orga</span></h1>
-                    <p class="text-xs text-slate-500 font-bold uppercase tracking-widest">Matrice Rôles & Missions</p>
+                    <h1 class="text-2xl font-black tracking-tight uppercase text-weevup">Weevup <span class="text-slate-400">Orga</span></h1>
+                    <p class="text-[10px] text-slate-500 font-black uppercase tracking-[0.3em]">Matrice Rôles & Missions</p>
                 </div>
             </div>
 
-            <div class="flex items-center gap-2 bg-slate-100 p-1 rounded-xl" id="view-toggle">
-                <button id="btn-process" class="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold transition-all bg-white shadow-sm text-blue-600">
-                    <i data-lucide="clock" class="w-4 h-4"></i> Processus
+            <div class="flex items-center gap-2 bg-slate-200 p-1.5 rounded-2xl" id="view-toggle">
+                <button id="btn-process" class="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-black transition-all bg-white shadow-md text-weevup">
+                    <i data-lucide="clock" class="w-4 h-4"></i> PROCESSUS
                 </button>
-                <button id="btn-roles" class="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold transition-all text-slate-500 hover:text-slate-700">
-                    <i data-lucide="users" class="w-4 h-4"></i> Par Membre
+                <button id="btn-roles" class="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-black transition-all text-slate-600 hover:text-weevup">
+                    <i data-lucide="users" class="w-4 h-4"></i> PAR MEMBRE
                 </button>
             </div>
         </div>
@@ -42,14 +58,14 @@
     <main class="max-w-6xl mx-auto px-6 mt-8">
         
         <!-- TOOLBAR -->
-        <div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-200 mb-8 flex flex-col md:flex-row gap-4">
+        <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-200 mb-8 flex flex-col md:flex-row gap-5">
             <div class="relative flex-1">
-                <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 w-4 h-4"></i>
+                <i data-lucide="search" class="absolute left-4 top-1/2 -translate-y-1/2 text-weevup w-5 h-5 opacity-60"></i>
                 <input 
                     type="text" 
                     id="search-input"
-                    placeholder="Rechercher une mission ou une action..."
-                    class="w-full pl-10 pr-4 py-2 bg-slate-50 border-none rounded-xl text-sm focus:ring-2 focus:ring-blue-500 outline-none"
+                    placeholder="Rechercher une mission, un outil ou une action..."
+                    class="w-full pl-12 pr-4 py-3 bg-slate-50 border-2 border-slate-100 rounded-2xl text-sm font-medium focus:ring-4 focus:ring-weevup/10 focus:border-weevup outline-none transition-all"
                 >
             </div>
             <div class="flex gap-2 overflow-x-auto pb-2 md:pb-0 scrollbar-hide" id="referent-filters">
@@ -63,105 +79,144 @@
         </div>
 
         <!-- EMPTY STATE -->
-        <div id="empty-state" class="hidden text-center py-20">
-            <div class="bg-slate-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 text-slate-400">
-                <i data-lucide="search" class="w-10 h-10"></i>
+        <div id="empty-state" class="hidden text-center py-24 bg-white rounded-3xl border-4 border-dashed border-slate-200">
+            <div class="bg-slate-100 w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-6 text-slate-300">
+                <i data-lucide="search-x" class="w-12 h-12"></i>
             </div>
-            <h3 class="text-xl font-bold text-slate-800">Aucun résultat</h3>
-            <p class="text-slate-500 text-sm">Ajustez votre recherche ou les filtres par membre.</p>
+            <h3 class="text-2xl font-black text-slate-800">Aucun résultat trouvé</h3>
+            <p class="text-slate-500 font-medium">Modifiez vos filtres ou votre recherche pour voir les missions.</p>
         </div>
     </main>
 
     <!-- MOBILE FOOTER NAV -->
-    <div class="fixed bottom-0 left-0 right-0 bg-white border-t p-4 z-40 md:hidden flex justify-around">
-         <button id="mobile-btn-process" class="flex flex-col items-center gap-1 text-blue-600">
-           <i data-lucide="layers" class="w-5 h-5"></i>
-           <span class="text-[10px] font-bold uppercase">Process</span>
+    <div class="fixed bottom-0 left-0 right-0 bg-white border-t-2 border-slate-100 p-4 z-40 md:hidden flex justify-around shadow-2xl">
+         <button id="mobile-btn-process" class="flex flex-col items-center gap-1 text-weevup scale-110">
+           <i data-lucide="layers" class="w-6 h-6"></i>
+           <span class="text-[10px] font-black uppercase">Process</span>
          </button>
          <button id="mobile-btn-roles" class="flex flex-col items-center gap-1 text-slate-400">
-           <i data-lucide="users" class="w-5 h-5"></i>
-           <span class="text-[10px] font-bold uppercase">Membres</span>
+           <i data-lucide="users" class="w-6 h-6"></i>
+           <span class="text-[10px] font-black uppercase">Membres</span>
          </button>
     </div>
 
     <script>
         const rawData = [
-          { phase: "PHASE 1 : ENTRÉE COMMERCIALE", items: [
+          { phase: "PHASE 1 : ENTRÉE COMMERCIALE", color: "bg-[#005461]", light: "bg-[#005461]/10", border: "border-[#005461]", items: [
             { mission: "Demande entrante", referent: ["Julien"], actions: "Réseau, sortlist, formulaire, téléphone, prospection" },
             { mission: "Prise de brief", referent: ["Julien"] },
-            { mission: "Qualification budget/timing & CRM", referent: ["Julien"], actions: "Confirmer faisabilité interne (charge / calendrier)" },
+            { mission: "Qualification budget/timing", referent: ["Julien"], actions: "Confirmer faisabilité interne (charge / calendrier)" },
+            { mission: "Création / mise à jour CRM", referent: ["Julien"] },
+            { mission: "Brief complet ?", referent: ["Julien"], actions: "SI NON : Retour à la Prise de brief" },
+            { mission: "Go ? No go ?", referent: ["Julien"], actions: "SI NON : Retour à la Phase commerciale" },
             { mission: "Assignation Cheffe d'équipe", referent: ["Julien"], actions: "Vérifier charge + adéquation profil projet" }
           ]},
-          { phase: "PHASE 2 : PRÉ-KICK OFF", items: [
+          { phase: "PHASE 2 : PRÉ-KICK OFF", color: "bg-sky-600", light: "bg-sky-50", border: "border-sky-600", items: [
             { mission: "Création du projet dans les outils", referent: ["Cheffe d'équipe"], actions: "Drive, canva, pipedrive, plateforme" },
             { mission: "Analyse contraintes & charge", referent: ["Cheffe d'équipe"], actions: "Identifier risques (budget, timing, lieu)" },
-            { mission: "Définition directions d'expérience", referent: ["Simon"], actions: "2-3 caps clairs + Angle RSE dès la conception" },
-            { mission: "Repérage macro lieux / expériences", referent: ["Simon"], actions: "Vérifier critères RSE (local, accessibilité, prestas)" },
+            { mission: "Définition directions d'expérience", referent: ["Simon"], actions: "2-3 caps clairs + Intégrer angle RSE dès la conception (mobilité, partenaires responsables, impact positif)" },
+            { mission: "Repérage macro lieux / expériences", referent: ["Simon"], actions: "Vérifier critères RSE (local, accessibilité, prestas responsables)" },
             { mission: "Premières pistes créatives", referent: ["Pascal"] },
+            { mission: "Pistes stratégiques pour Kick off", referent: ["Simon"] },
             { mission: "Fixation deadlines", referent: ["Cheffe d'équipe"], actions: "Créer rétroplanning, définir date de rendu" },
-            { mission: "Répartition rôles & Lead client", referent: ["Cheffe d'équipe"] }
+            { mission: "Répartition rôles & désignation Lead client", referent: ["Cheffe d'équipe"] }
           ]},
-          { phase: "PHASE 3 : KICK OFF INTERNE", items: [
+          { phase: "PHASE 3 : KICK OFF INTERNE", color: "bg-violet-600", light: "bg-violet-50", border: "border-violet-600", items: [
             { mission: "Validation direction d'expérience", referent: ["Simon"] },
             { mission: "Cadrage DA", referent: ["Pascal"] },
             { mission: "1er contact client pour le lead", referent: ["Julien", "Lead"], actions: "Caler une date de rendu" },
             { mission: "Validation marge cible", referent: ["Julien"], actions: "Définir marge minimale acceptable" },
-            { mission: "Établir le budget prévisionnel", referent: ["Lead", "Cheffe d'équipe", "Simon"] }
+            { mission: "Etablir le budget prévisionnel", referent: ["Lead", "Cheffe d'équipe", "Simon"] }
           ]},
-          { phase: "PHASE 4 : SOURCING & NÉGOCIATION", items: [
-            { mission: "Recherche partenaires & Déroulé", referent: ["Équipe", "Simon"], actions: "Prioriser partenaires engagés/locaux" },
-            { mission: "Contacts prestataires", referent: ["Équipe"], actions: "Mail type + personnalisation, MAJ Sourcing" },
-            { mission: "Demandes devis & Négociation", referent: ["Équipe"], actions: "Demander infos RSE (déchets, énergie, inclusion)" },
+          { phase: "PHASE 4 : SOURCING & NÉGOCIATION", color: "bg-pink-600", light: "bg-pink-50", border: "border-pink-600", items: [
+            { mission: "Recherche partenaires", referent: ["Équipe", "Simon"], actions: "Prioriser partenaires engagés/locaux/responsables. Veille individuelle + base interne" },
+            { mission: "Déroulé prévisionnel", referent: ["Lead", "Simon"] },
+            { mission: "Contacts prestataires", referent: ["Équipe"], actions: "Mail type + personnalisation, MAJ Sourcing continu" },
+            { mission: "Demandes devis", referent: ["Équipe"], actions: "Demander infos RSE (provenance, déchets, énergie, inclusion). Centraliser dans Drive" },
+            { mission: "Relances & négociation tarifaire", referent: ["Équipe"] },
             { mission: "Échanges avec le client", referent: ["Lead", "Julien"] },
-            { mission: "Supervision qualité/budget", referent: ["Cheffe d'équipe"], actions: "Intégrer critère RSE dans arbitrage" },
-            { mission: "Supervision stratégique", referent: ["Simon"], actions: "Choix des 2 propositions à présenter" }
+            { mission: "Supervision & arbitrage qualité/budget", referent: ["Cheffe d'équipe"], actions: "Intégrer critère RSE dans arbitrage, pas uniquement prix" },
+            { mission: "Supervision stratégique", referent: ["Simon"], actions: "Choix des 2 propositions à présenter" },
+            { mission: "Sourcing conforme & faisable ?", referent: ["Simon"], actions: "SI NON : Retour à la Recherche partenaires" }
           ]},
-          { phase: "PHASE 5 : BUDGET & ARBITRAGES", items: [
-            { mission: "Construction budget & Honoraires", referent: ["Équipe"] },
-            { mission: "Validation interne qualité/cohérence", referent: ["Cheffe d'équipe"], actions: "Double contrôle erreurs" },
+          { phase: "PHASE 5 : BUDGET & ARBITRAGES", color: "bg-orange-600", light: "bg-orange-50", border: "border-orange-600", items: [
+            { mission: "Construction budget", referent: ["Équipe"] },
+            { mission: "Intégration honoraires & options", referent: ["Équipe"] },
+            { mission: "Co-construction budget", referent: ["Lead"] },
+            { mission: "Validation interne qualité/cohérence/ budget", referent: ["Cheffe d'équipe"], actions: "Double contrôle erreurs" },
             { mission: "Validation marge", referent: ["Julien"] },
-            { mission: "Arbitrage expérience vs budget", referent: ["Simon"] }
+            { mission: "Arbitrage expérience vs budget", referent: ["Simon"] },
+            { mission: "Go interne ?", referent: ["Simon"], actions: "SI NON : Retour à l'Arbitrage expérience vs budget" }
           ]},
-          { phase: "PHASE 6 : PRODUCTION CANVA", items: [
+          { phase: "PHASE 6 : PRODUCTION CANVA", color: "bg-emerald-600", light: "bg-emerald-50", border: "border-emerald-600", items: [
             { mission: "Production slides via modèles", referent: ["Équipe"], actions: "Squelette complet avant mise en forme" },
             { mission: "Intégration contenus complets", referent: ["Équipe"], actions: "Ajouter slide 'Notes positives' systématique" },
-            { mission: "Storytelling & messages clés", referent: ["Lead", "Simon", "Pascal"], actions: "Mettre en avant expérience vécue + impact" },
-            { mission: "Conception graphique & Identité", referent: ["Pascal"], actions: "Valoriser dimension émotionnelle et responsable" },
-            { mission: "Validation qualité & complétude", referent: ["Cheffe d'équipe"], actions: "Vérifier cohérence promesse expérience + RSE" },
-            { mission: "Validation finale", referent: ["Simon", "Pascal"], actions: "Relecture fond & validation finale" }
+            { mission: "Structuration storytelling & messages clés", referent: ["Lead", "Simon", "Pascal"], actions: "Mettre en avant expérience vécue + impact" },
+            { mission: "Conception graphique & identité event", referent: ["Pascal"], actions: "Valoriser dimension émotionnelle et responsable" },
+            { mission: "Supports/teaser / projections si besoin", referent: ["Pascal"] },
+            { mission: "Validation qualité & complétude", referent: ["Cheffe d'équipe"], actions: "SI NON : Production slides via modèles. Vérifier cohérence promesse expérience + RSE" },
+            { mission: "Validation Pascal & Simon", referent: ["Simon", "Pascal"], actions: "Relecture fond & validation finale" }
           ]},
-          { phase: "PHASE 7 : PRÉSENTATION & A/R", items: [
+          { phase: "PHASE 7 : PRÉSENTATION & A/R", color: "bg-indigo-600", light: "bg-indigo-50", border: "border-indigo-600", items: [
             { mission: "Envoi proposition", referent: ["Lead", "Julien"], actions: "Inclure échéancier paiement client" },
-            { mission: "Présentation client", referent: ["Lead", "Simon", "Cheffe d'équipe", "Julien"] },
-            { mission: "Concertation interne & Modifs", referent: ["Cheffe d'équipe", "Simon", "Lead", "Équipe"] },
-            { mission: "Notification refus prestas", referent: ["Lead"], actions: "En cas de non-go" }
+            { mission: "Mise à jour CRM", referent: ["Cheffe d'équipe"] },
+            { mission: "Présentation client", referent: ["Lead", "Simon", "Cheffe d'équipe", "Julien"], actions: "Si nécessaire, créer présentation pour l'oral" },
+            { mission: "Réception retours", referent: ["Lead"] },
+            { mission: "Concertation interne", referent: ["Cheffe d'équipe", "Simon", "Lead"] },
+            { mission: "Modifications", referent: ["Équipe"] },
+            { mission: "Renvoi / Refus? Ajustements ? GO?", referent: ["Lead"], actions: "SI NON : REX interne, Concertation interne. Notification du refus aux prestataires" }
           ]},
-          { phase: "PHASE 8 : FACTURATION & ADMIN", items: [
-            { mission: "Édition devis & CGV", referent: ["Marie", "Lead"], actions: "Pas de production sans devis signé" },
-            { mission: "Facture client & prestas", referent: ["Marie", "Lead"], actions: "Acomptes, Solde selon échéancier" },
-            { mission: "Optimisation marge post-signature", referent: ["Simon", "Cheffe d'équipe", "Lead"], actions: "Chercher économies" }
+          { phase: "PHASE 8 : FACTURATION & ADMINISTRATIF", color: "bg-rose-600", light: "bg-rose-50", border: "border-rose-600", items: [
+            { mission: "Edition devis & CGV", referent: ["Marie", "Lead"], actions: "Pas de production sans devis signé" },
+            { mission: "Facture client & prestas", referent: ["Marie", "Lead"], actions: "Acomptes, Solde... En fonction de l'échéancier" },
+            { mission: "Vérification finale", referent: ["Cheffe d'équipe"] },
+            { mission: "Négociation post-signature client pour optimisation marge", referent: ["Simon", "Cheffe d'équipe", "Lead"], actions: "Chercher économies" }
           ]},
-          { phase: "PHASE 9 : PRODUCTION", items: [
-            { mission: "Confirmation prestataires retenus", referent: ["Lead", "Équipe"] },
-            { mission: "Pilotage global & Process", referent: ["Lead", "Cheffe d'équipe"] },
-            { mission: "Interface client & Coordination", referent: ["Lead", "Équipe"], actions: "Suivi engagements RSE terrain" },
-            { mission: "VHR Équipe & Carnet de bord", referent: ["Lead", "Cheffe d'équipe", "Équipe"], actions: "Horaires, récup, points RSE opérationnels" },
-            { mission: "Repérage lieu avec client", referent: ["Lead"] }
+          { phase: "PHASE 9 : PRODUCTION", color: "bg-teal-600", light: "bg-teal-50", border: "border-teal-600", items: [
+            { mission: "Confirmation prestataires retenus", referent: ["Lead", "Équipe"], actions: "Formaliser par écrit" },
+            { mission: "Notification prestataires non retenus", referent: ["Lead", "Équipe"] },
+            { mission: "Pilotage global", referent: ["Lead"] },
+            { mission: "Supervision des process", referent: ["Cheffe d'équipe"] },
+            { mission: "Suivi qualité de production", referent: ["Simon"] },
+            { mission: "Repérage du lieu avec le client si vendu", referent: ["Lead"] },
+            { mission: "Interface client", referent: ["Lead"], actions: "Suivi engagements RSE sur le terrain. Boîte event, reconfirmations partenaires avec envoi déroulé" },
+            { mission: "Coordination & logistique", referent: ["Équipe"], actions: "Valider horaires, budgets, récup..." },
+            { mission: "Organisation des VHR équipe", referent: ["Lead", "Cheffe d'équipe"], actions: "valider avec la cheffe d'équipe avant envoi" },
+            { mission: "Carnet de bord", referent: ["Équipe", "Cheffe d'équipe"], actions: "Intégrer points RSE opérationnels" },
+            { mission: "Exploitation & coordination", referent: ["Équipe"] }
           ]},
-          { phase: "PHASE 10 : JOUR J", items: [
-            { mission: "Relation client & Supervision", referent: ["Lead", "Julien", "Cheffe d'équipe", "Simon"], actions: "Identifier opportunités futures" },
-            { mission: "Exploitation & Coordination", referent: ["Équipe"] }
+          { phase: "PHASE 10 : JOUR J", color: "bg-amber-600", light: "bg-amber-50", border: "border-amber-600", items: [
+            { mission: "Relation client", referent: ["Lead", "Julien"], actions: "Identifier opportunités futures" },
+            { mission: "Supervision si gros projet", referent: ["Cheffe d'équipe", "Simon", "Julien"] }
           ]},
-          { phase: "PHASE 11 : CLOTURE & FIDÉLISATION", items: [
-            { mission: "Budget final & Reporting", referent: ["Équipe"], actions: "Comparatif prévisionnel / réel" },
+          { phase: "PHASE 11 : CLOTURE & FIDÉLISATION", color: "bg-slate-600", light: "bg-slate-50", border: "border-slate-600", items: [
+            { mission: "Budget final & reporting", referent: ["Équipe"], actions: "Comparatif prévisionnel/ réel" },
             { mission: "Clôture financière", referent: ["Marie"] },
-            { mission: "REX Interne & Client", referent: ["Cheffe d'équipe", "Lead", "Julien", "Simon"], actions: "Mesurer perception expérience + RSE" },
-            { mission: "REX prestataire & Inventaire", referent: ["Équipe", "Lead"] },
-            { mission: "Avis Google & Relance", referent: ["Lead", "Julien"] }
+            { mission: "REX interne", referent: ["Cheffe d'équipe"], actions: "Identifier axes d'amélioration (y compris RSE)" },
+            { mission: "REX client", referent: ["Lead", "Cheffe d'équipe", "Julien", "Simon"], actions: "Mesurer perception expérience" },
+            { mission: "REX prestataire", referent: ["Équipe"] },
+            { mission: "MAJ boites évent et inventaire", referent: ["Lead"], actions: "SI NON : Fin" },
+            { mission: "Demande avis Google", referent: ["Lead"] },
+            { mission: "Relance commerciale & fidélisation", referent: ["Julien"] },
+            { mission: "Opportunité future ?", referent: ["Julien"] },
+            { mission: "Nouvelle demande", referent: ["Julien"] }
           ]}
         ];
 
         const allReferents = ["Julien", "Simon", "Pascal", "Marie", "Cheffe d'équipe", "Lead", "Équipe"];
+        const projectTeamMembers = ["Cheffe d'équipe", "Lead", "Équipe"];
+
+        // Color Mapping - Distinct colors per member
+        const colorConfig = {
+            "Julien": { bg: "bg-amber-500", light: "bg-amber-100", text: "text-amber-700", border: "border-amber-400" },
+            "Simon": { bg: "bg-purple-500", light: "bg-purple-100", text: "text-purple-700", border: "border-purple-400" },
+            "Pascal": { bg: "bg-rose-500", light: "bg-rose-100", text: "text-rose-700", border: "border-rose-400" },
+            "Marie": { bg: "bg-emerald-500", light: "bg-emerald-100", text: "text-emerald-700", border: "border-emerald-400" },
+            "Cheffe d'équipe": { bg: "bg-cyan-500", light: "bg-cyan-100", text: "text-cyan-700", border: "border-cyan-400" },
+            "Lead": { bg: "bg-blue-500", light: "bg-blue-100", text: "text-blue-700", border: "border-blue-400" },
+            "Équipe": { bg: "bg-slate-500", light: "bg-slate-100", text: "text-slate-700", border: "border-slate-400" },
+            "Équipe projet": { bg: "bg-indigo-600", light: "bg-indigo-100", text: "text-indigo-700", border: "border-indigo-500" }
+        };
 
         // State management
         let currentView = 'process';
@@ -173,6 +228,13 @@
             let count = 0;
             rawData.forEach(phase => phase.items.forEach(item => { if (item.referent.includes(p)) count++; }));
             personStats[p] = count;
+        });
+
+        let projectTeamCount = 0;
+        rawData.forEach(phase => {
+            phase.items.forEach(item => {
+                if (item.referent.some(r => projectTeamMembers.includes(r))) projectTeamCount++;
+            });
         });
 
         // DOM Elements
@@ -188,31 +250,42 @@
 
         // Functions
         function updateViewButtons() {
-            const activeClass = "bg-white shadow-sm text-blue-600";
-            const inactiveClass = "text-slate-500 hover:text-slate-700";
+            const activeClass = "bg-weevup shadow-lg text-white ring-4 ring-weevup/20";
+            const inactiveClass = "text-slate-500 hover:text-weevup hover:bg-slate-100";
             
-            btnProcess.className = `flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold transition-all ${currentView === 'process' ? activeClass : inactiveClass}`;
-            btnRoles.className = `flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold transition-all ${currentView === 'roles' ? activeClass : inactiveClass}`;
+            btnProcess.className = `flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-black transition-all ${currentView === 'process' ? activeClass : inactiveClass}`;
+            btnRoles.className = `flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-black transition-all ${currentView === 'roles' ? activeClass : inactiveClass}`;
             
-            mBtnProcess.className = `flex flex-col items-center gap-1 ${currentView === 'process' ? 'text-blue-600' : 'text-slate-400'}`;
-            mBtnRoles.className = `flex flex-col items-center gap-1 ${currentView === 'roles' ? 'text-blue-600' : 'text-slate-400'}`;
+            mBtnProcess.className = `flex flex-col items-center gap-1 ${currentView === 'process' ? 'text-weevup scale-110' : 'text-slate-400'}`;
+            mBtnRoles.className = `flex flex-col items-center gap-1 ${currentView === 'roles' ? 'text-weevup scale-110' : 'text-slate-400'}`;
         }
 
         function renderFilters() {
             referentFilters.innerHTML = '';
             
-            // Tous button
+            // TOUS
             const btnTous = document.createElement('button');
-            btnTous.className = `px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap transition-colors ${selectedPerson === 'Tous' ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}`;
+            btnTous.className = `px-4 py-2 rounded-xl text-xs font-black whitespace-nowrap transition-all ${selectedPerson === 'Tous' ? 'bg-slate-900 text-white shadow-lg scale-105' : 'bg-slate-200 text-slate-600 hover:bg-slate-300'}`;
             btnTous.innerText = 'TOUS';
             btnTous.onclick = () => { selectedPerson = 'Tous'; render(); };
             referentFilters.appendChild(btnTous);
 
+            // ÉQUIPE PROJET
+            const btnProject = document.createElement('button');
+            const isSelectedProject = selectedPerson === 'Équipe projet';
+            const projectColors = colorConfig["Équipe projet"];
+            btnProject.className = `px-4 py-2 rounded-xl text-xs font-black whitespace-nowrap transition-all flex items-center gap-2 border-2 ${isSelectedProject ? projectColors.bg + ' text-white ' + projectColors.border + ' shadow-lg scale-105' : 'bg-white border-indigo-200 text-indigo-700 hover:bg-indigo-50'}`;
+            btnProject.innerHTML = `ÉQUIPE PROJET <span class="px-2 py-0.5 rounded-lg text-[10px] ${isSelectedProject ? 'bg-white/20' : 'bg-indigo-100'}">${projectTeamCount}</span>`;
+            btnProject.onclick = () => { selectedPerson = 'Équipe projet'; render(); };
+            referentFilters.appendChild(btnProject);
+
             // Individual buttons
             allReferents.forEach(person => {
                 const btn = document.createElement('button');
-                btn.className = `px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap transition-colors flex items-center gap-2 ${selectedPerson === person ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}`;
-                btn.innerHTML = `${person} <span class="px-1.5 py-0.5 rounded-md text-[10px] ${selectedPerson === person ? 'bg-blue-500 text-white' : 'bg-slate-200 text-slate-500'}">${personStats[person]}</span>`;
+                const isSelected = selectedPerson === person;
+                const colors = colorConfig[person];
+                btn.className = `px-4 py-2 rounded-xl text-xs font-black whitespace-nowrap transition-all flex items-center gap-2 border-2 ${isSelected ? colors.bg + ' text-white ' + colors.border + ' shadow-lg scale-105' : colors.light + ' ' + colors.text + ' border-transparent hover:' + colors.border}`;
+                btn.innerHTML = `${person.toUpperCase()} <span class="px-2 py-0.5 rounded-lg text-[10px] ${isSelected ? 'bg-white/20' : 'bg-white/50'}">${personStats[person]}</span>`;
                 btn.onclick = () => { selectedPerson = person; render(); };
                 referentFilters.appendChild(btn);
             });
@@ -226,7 +299,14 @@
             const filteredData = rawData.map(phase => ({
                 ...phase,
                 items: phase.items.filter(item => {
-                    const matchesPerson = selectedPerson === 'Tous' || item.referent.includes(selectedPerson);
+                    let matchesPerson = false;
+                    if (selectedPerson === 'Tous') {
+                        matchesPerson = true;
+                    } else if (selectedPerson === 'Équipe projet') {
+                        matchesPerson = item.referent.some(r => projectTeamMembers.includes(r));
+                    } else {
+                        matchesPerson = item.referent.includes(selectedPerson);
+                    }
                     const matchesSearch = item.mission.toLowerCase().includes(searchTerm.toLowerCase()) || 
                                          (item.actions && item.actions.toLowerCase().includes(searchTerm.toLowerCase()));
                     return matchesPerson && matchesSearch;
@@ -237,34 +317,30 @@
                 emptyState.classList.remove('hidden');
             } else {
                 emptyState.classList.add('hidden');
-                
-                if (currentView === 'process') {
-                    renderProcessView(filteredData);
-                } else {
-                    renderRolesView(filteredData);
-                }
+                if (currentView === 'process') renderProcessView(filteredData);
+                else renderRolesView(filteredData);
             }
             lucide.createIcons();
         }
 
         function renderProcessView(data) {
             const container = document.createElement('div');
-            container.className = 'space-y-12 animate-fade-in';
+            container.className = 'space-y-16 animate-fade-in';
             
             data.forEach((phase, idx) => {
                 const phaseEl = document.createElement('div');
                 phaseEl.className = 'relative pl-8 md:pl-0';
                 phaseEl.innerHTML = `
-                    <div class="absolute left-0 md:left-1/2 top-0 bottom-0 w-0.5 bg-slate-200 md:-translate-x-1/2 hidden md:block opacity-50"></div>
-                    <div class="flex flex-col items-start md:items-center mb-6">
-                        <div class="bg-slate-900 text-white px-4 py-1.5 rounded-full text-xs font-black tracking-tighter uppercase z-10 shadow-lg mb-2">
+                    <div class="absolute left-0 md:left-1/2 top-0 bottom-0 w-1 bg-slate-200 md:-translate-x-1/2 hidden md:block opacity-30"></div>
+                    <div class="flex flex-col items-start md:items-center mb-10">
+                        <div class="${phase.color} text-white px-8 py-3 rounded-2xl text-[11px] font-black tracking-[0.2em] uppercase z-10 shadow-xl ring-4 ring-white">
                             ${phase.phase}
                         </div>
                     </div>
                 `;
 
                 const grid = document.createElement('div');
-                grid.className = 'grid grid-cols-1 md:grid-cols-2 gap-6 relative';
+                grid.className = 'grid grid-cols-1 md:grid-cols-2 gap-8 relative';
                 
                 phase.items.forEach((item, iIdx) => {
                     const itemEl = document.createElement('div');
@@ -272,23 +348,28 @@
                     const flexDir = iIdx % 2 === 0 ? 'md:flex-row-reverse' : 'md:flex-row';
                     const justify = iIdx % 2 === 0 ? 'md:justify-end' : 'md:justify-start';
 
-                    itemEl.className = `bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all group ${align}`;
-                    itemEl.innerHTML = `
-                        <div class="flex items-center gap-3 mb-3 ${flexDir}">
-                            <div class="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 flex-shrink-0">
-                                <i data-lucide="target" class="w-5 h-5"></i>
+                    itemEl.className = `bg-white p-7 rounded-[2rem] border border-slate-200 shadow-sm hover:shadow-xl hover:border-slate-300 transition-all group relative overflow-hidden`;
+                    
+                    const content = `
+                        <div class="flex items-center gap-4 mb-4 ${flexDir}">
+                            <div class="w-12 h-12 rounded-2xl ${phase.light} flex items-center justify-center ${phase.color.replace('bg-', 'text-')} flex-shrink-0 shadow-inner">
+                                <i data-lucide="target" class="w-6 h-6"></i>
                             </div>
-                            <h4 class="font-bold text-slate-800">${item.mission}</h4>
+                            <h4 class="font-black text-lg text-slate-800 leading-tight flex-1">${item.mission}</h4>
                         </div>
-                        <div class="flex flex-wrap gap-1 mb-3 ${justify}">
-                            ${item.referent.map(r => `<span class="px-2 py-1 bg-slate-100 text-slate-600 rounded-md text-[10px] font-black uppercase tracking-tight">${r}</span>`).join('')}
+                        <div class="flex flex-wrap gap-2 mb-4 ${justify}">
+                            ${item.referent.map(r => {
+                                const colors = colorConfig[r] || colorConfig["Équipe"];
+                                return `<span class="px-3 py-1 ${colors.bg} text-white rounded-lg text-[10px] font-black uppercase tracking-wider shadow-sm">${r}</span>`
+                            }).join('')}
                         </div>
                         ${item.actions ? `
-                            <div class="text-xs text-slate-500 leading-relaxed bg-slate-50 p-3 rounded-xl border border-slate-100 italic ${align}">
+                            <div class="text-[12px] font-medium text-slate-500 leading-relaxed bg-slate-50 p-4 rounded-2xl border-l-4 ${phase.border} italic ${align}">
                                 ${item.actions}
                             </div>
                         ` : ''}
                     `;
+                    itemEl.innerHTML = content;
                     grid.appendChild(itemEl);
                 });
 
@@ -300,47 +381,67 @@
 
         function renderRolesView(data) {
             const container = document.createElement('div');
-            container.className = 'grid grid-cols-1 md:grid-cols-2 gap-8 animate-fade-in';
+            container.className = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10 animate-fade-in';
             
-            const relevantPeople = allReferents.filter(p => selectedPerson === 'Tous' || p === selectedPerson);
+            let entities = selectedPerson === 'Tous' ? [...allReferents, "Équipe projet"] : [selectedPerson];
             
-            relevantPeople.forEach(person => {
-                const personEl = document.createElement('div');
-                personEl.className = 'bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden flex flex-col';
-                
+            entities.forEach(entity => {
                 const missions = [];
                 data.forEach(phase => {
-                    phase.items.filter(item => item.referent.includes(person)).forEach(item => {
-                        missions.push({ phase: phase.phase.split(':')[0], mission: item.mission, actions: item.actions });
+                    const matches = phase.items.filter(item => {
+                        if (entity === "Équipe projet") return item.referent.some(r => projectTeamMembers.includes(r));
+                        return item.referent.includes(entity);
                     });
+                    matches.forEach(item => missions.push({ 
+                        phase: phase.phase.split(':')[0], 
+                        mission: item.mission, 
+                        actions: item.actions,
+                        color: phase.color,
+                        light: phase.light,
+                        border: phase.border
+                    }));
                 });
 
-                if (missions.length === 0 && selectedPerson !== 'Tous') return;
+                if (missions.length === 0) return;
 
-                personEl.innerHTML = `
-                    <div class="bg-slate-900 p-6 flex items-center justify-between">
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center text-white font-bold text-xl">${person.charAt(0)}</div>
+                const colors = colorConfig[entity] || colorConfig["Équipe"];
+                const cardEl = document.createElement('div');
+                cardEl.className = `bg-white rounded-[2.5rem] border-2 border-slate-200 shadow-sm overflow-hidden flex flex-col hover:shadow-2xl transition-all duration-300`;
+                
+                cardEl.innerHTML = `
+                    <div class="${colors.bg} p-8 flex items-center justify-between relative overflow-hidden">
+                        <div class="absolute right-0 top-0 opacity-10 -rotate-12 translate-x-4 -translate-y-4">
+                            <i data-lucide="${entity === "Équipe projet" ? 'rocket' : 'user'}" class="w-32 h-32 text-white"></i>
+                        </div>
+                        <div class="flex items-center gap-5 z-10">
+                            <div class="w-16 h-16 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center text-white font-black text-2xl shadow-xl">
+                                ${entity === "Équipe projet" ? '<i data-lucide="rocket" class="w-8 h-8"></i>' : entity.charAt(0)}
+                            </div>
                             <div>
-                                <h3 class="text-white font-black text-xl uppercase tracking-tighter">${person}</h3>
-                                <p class="text-blue-400 text-xs font-bold uppercase">${personStats[person]} Missions attribuées</p>
+                                <h3 class="text-white font-black text-2xl uppercase tracking-tight">${entity}</h3>
+                                <div class="bg-black/20 px-3 py-1 rounded-full inline-block mt-1">
+                                    <p class="text-white text-[10px] font-black uppercase tracking-widest">
+                                        ${entity === "Équipe projet" ? "Vision consolidée" : personStats[entity] + " Missions"}
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                        <i data-lucide="user" class="text-slate-700 w-8 h-8"></i>
                     </div>
-                    <div class="p-6 space-y-4 flex-1">
+                    <div class="p-8 space-y-6 flex-1 bg-slate-50/30">
                         ${missions.map(m => `
-                            <div class="group p-4 bg-slate-50 rounded-2xl border border-slate-100 hover:border-blue-200 transition-colors">
-                                <div class="flex items-start justify-between gap-4 mb-2">
-                                    <span class="text-[10px] font-black uppercase text-blue-500 bg-blue-50 px-2 py-0.5 rounded">${m.phase}</span>
+                            <div class="group p-6 bg-white rounded-3xl border border-slate-100 shadow-sm hover:border-slate-300 transition-all relative">
+                                <div class="flex items-center justify-between mb-3">
+                                    <span class="text-[10px] font-black uppercase text-white px-3 py-1 rounded-xl ${m.color}">
+                                        ${m.phase}
+                                    </span>
                                 </div>
-                                <p class="font-bold text-slate-800 text-sm mb-1">${m.mission}</p>
-                                ${m.actions ? `<p class="text-xs text-slate-500 italic leading-tight">${m.actions}</p>` : ''}
+                                <p class="font-black text-slate-900 text-base mb-2">${m.mission}</p>
+                                ${m.actions ? `<p class="text-[12px] text-slate-500 font-medium italic leading-snug p-4 bg-slate-50 rounded-2xl border-l-4 ${m.border}">${m.actions}</p>` : ''}
                             </div>
                         `).join('')}
                     </div>
                 `;
-                container.appendChild(personEl);
+                container.appendChild(cardEl);
             });
             contentArea.appendChild(container);
         }
@@ -352,7 +453,6 @@
         mBtnProcess.onclick = () => { currentView = 'process'; render(); };
         mBtnRoles.onclick = () => { currentView = 'roles'; render(); };
 
-        // Initial Render
         window.onload = render;
     </script>
 </body>
