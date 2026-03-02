@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="fr" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weevup - Organisation 2026</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -30,9 +32,10 @@
         .glass-card {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
         }
+
         .process-arrow::after {
             content: '\f054';
             font-family: 'Font Awesome 6 Free';
@@ -44,487 +47,706 @@
             color: #cbd5e1;
             font-size: 0.8rem;
         }
+
         .process-arrow:last-child::after {
             display: none;
         }
     </style>
 </head>
-<body class="bg-brand-bg text-slate-800 antialiased selection:bg-brand-orange selection:text-white">
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 glass-card transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16 items-center">
-                <div class="flex-shrink-0 flex items-center font-bold text-2xl tracking-tighter text-brand-teal">
-                    WEEVUP <span class="text-brand-orange ml-1">2026</span>
-                </div>
-                <div class="hidden md:flex space-x-6">
-                    <a href="#intro" class="text-slate-600 hover:text-brand-orange font-medium transition-colors">Accueil</a>
-                    <a href="#organigramme" class="text-slate-600 hover:text-brand-orange font-medium transition-colors">Organigramme</a>
-                    <a href="#roles" class="text-slate-600 hover:text-brand-orange font-medium transition-colors">Rôles & Missions</a>
-                    <a href="#organisation" class="text-slate-600 hover:text-brand-orange font-medium transition-colors">Organisation</a>
-                    <a href="#invitations" class="text-slate-600 hover:text-brand-orange font-medium transition-colors">Invitations</a>
-                    <a href="#avenir" class="text-slate-600 hover:text-brand-orange font-medium transition-colors">À venir</a>
-                </div>
-            </div>
-        </div>
+<body class="bg-brand-bg text-slate-800 antialiased selection:bg-brand-orange selection:text-white flex">
+
+    <!-- MENU LATÉRAL -->
+    <nav
+        class="sticky top-0 h-screen flex-shrink-0 flex flex-col gap-2 p-2 bg-[#005461] shadow-lg z-50 items-center justify-center">
+        <a href="index.html"
+            class="flex items-center gap-2 px-4 py-3 rounded-xl text-white/70 text-xs font-bold uppercase tracking-wide hover:bg-white/10 hover:text-white transition-all"
+            title="Missions">
+            <i class="fa-solid fa-layer-group"></i>
+            <span class="hidden md:inline">Missions</span>
+        </a>
+        <a href="agence.html"
+            class="flex items-center gap-2 px-4 py-3 rounded-xl bg-white/20 text-white text-xs font-bold uppercase tracking-wide hover:bg-white/30 transition-all"
+            title="Agence">
+            <i class="fa-solid fa-building"></i>
+            <span class="hidden md:inline">Agence</span>
+        </a>
     </nav>
 
-    <!-- Hero Section / Intro -->
-    <section id="intro" class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-brand-teal to-brand-teal_light text-white">
-        <div class="max-w-4xl mx-auto text-center">
-            <h1 class="text-5xl md:text-6xl font-extrabold mb-6 tracking-tight">C'EST LA RENTRÉE <span class="text-brand-orange">2026</span></h1>
-            <p class="text-xl md:text-2xl font-light mb-10 text-slate-100">
-                Une nouvelle dynamique. De nouveaux recrutements. Une nouvelle énergie.<br>
-                <strong class="font-semibold text-white">Et donc une responsabilité : reposer un cadre clair.</strong>
-            </p>
-            
-            <div class="bg-white/10 p-8 rounded-2xl backdrop-blur-sm border border-white/20 inline-block text-left w-full md:w-auto">
-                <h2 class="text-xl font-bold mb-4 text-brand-orange uppercase tracking-wider">Cette rentrée est l'occasion de :</h2>
-                <ul class="space-y-3 text-lg">
-                    <li class="flex items-center"><i class="fa-solid fa-check-circle text-brand-orange mr-3"></i> Clarifier les rôles</li>
-                    <li class="flex items-center"><i class="fa-solid fa-check-circle text-brand-orange mr-3"></i> Réaligner les méthodes</li>
-                    <li class="flex items-center"><i class="fa-solid fa-check-circle text-brand-orange mr-3"></i> Simplifier les process</li>
-                    <li class="flex items-center"><i class="fa-solid fa-check-circle text-brand-orange mr-3"></i> Revoir ce qui doit évoluer</li>
-                </ul>
-            </div>
-        </div>
-    </section>
+    <!-- CONTENU PRINCIPAL -->
+    <div class="flex-1 min-w-0">
 
-    <!-- Section I: Organigramme -->
-    <section id="organigramme" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div class="text-center mb-16">
-            <span class="text-brand-orange font-bold text-lg tracking-widest uppercase">I - Structure</span>
-            <h2 class="text-4xl font-bold text-brand-teal mt-2">Organigramme</h2>
-            <div class="mt-6 flex justify-center space-x-8 text-sm font-medium text-slate-500 uppercase">
-                <span>Qui décide ?</span>
-                <span>Qui arbitre ?</span>
-                <span>Qui pilote ?</span>
-                <span>Qui exécute ?</span>
-            </div>
-        </div>
-
-        <div class="flex flex-col items-center space-y-8">
-            <!-- Top Level -->
-            <div class="flex flex-col md:flex-row gap-8 justify-center w-full">
-                <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-brand-teal text-center w-full md:w-64">
-                    <div class="w-16 h-16 rounded-full bg-slate-200 mx-auto mb-3 flex items-center justify-center text-brand-teal text-2xl"><i class="fa-solid fa-user-tie"></i></div>
-                    <h3 class="font-bold text-lg">Julien Boisard</h3>
-                    <p class="text-sm text-slate-500">Directeur Développement & Business</p>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-brand-teal text-center w-full md:w-64">
-                    <div class="w-16 h-16 rounded-full bg-slate-200 mx-auto mb-3 flex items-center justify-center text-brand-teal text-2xl"><i class="fa-solid fa-user-tie"></i></div>
-                    <h3 class="font-bold text-lg">Marie Tassus</h3>
-                    <p class="text-sm text-slate-500">Directrice Ressources & Performance</p>
-                </div>
-            </div>
-            
-            <!-- Second Level -->
-            <div class="w-px h-8 bg-slate-300"></div>
-            <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-brand-orange text-center w-full md:w-72">
-                <div class="w-16 h-16 rounded-full bg-slate-200 mx-auto mb-3 flex items-center justify-center text-brand-orange text-2xl"><i class="fa-solid fa-user"></i></div>
-                <h3 class="font-bold text-lg">Simon Tassus</h3>
-                <p class="text-sm text-slate-500">Directeur Conseil & Expérience</p>
-            </div>
-
-            <div class="w-full flex justify-center relative mt-4">
-                <!-- Connectors -->
-                <div class="absolute top-0 w-3/4 md:w-2/3 h-px bg-slate-300"></div>
-            </div>
-
-            <!-- Third Level (Leads/Seniors) -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full pt-4">
-                <!-- Team 1 -->
-                <div class="flex flex-col items-center">
-                    <div class="w-px h-8 bg-slate-300 -mt-12 hidden md:block"></div>
-                    <div class="bg-blue-50 p-5 rounded-xl shadow-sm border border-blue-100 text-center w-full mb-6 relative">
-                        <span class="absolute -top-3 -right-3 bg-blue-500 text-white w-6 h-6 rounded-full text-xs flex items-center justify-center">1</span>
-                        <h3 class="font-bold">Marilou Gatino</h3>
-                        <p class="text-xs text-slate-500">Cheffe de projet senior</p>
+        <!-- Navigation -->
+        <nav class="fixed w-full z-50 glass-card transition-all duration-300">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between h-16 items-center">
+                    <div class="flex-shrink-0 flex items-center font-bold text-2xl tracking-tighter text-brand-teal">
+                        WEEVUP <span class="text-brand-orange ml-1">2026</span>
                     </div>
-                    <div class="grid grid-cols-1 gap-3 w-full">
-                        <div class="bg-white p-3 rounded-lg shadow-sm text-center text-sm border border-slate-100"><span class="font-semibold">Juliya Weldesenbet</span><br><span class="text-xs text-slate-500">Cheffe de projet junior</span></div>
-                        <div class="bg-white p-3 rounded-lg shadow-sm text-center text-sm border border-slate-100"><span class="font-semibold">Alice OTT Buchs</span><br><span class="text-xs text-slate-500">Chargée d'événements</span></div>
-                        <div class="bg-white p-3 rounded-lg shadow-sm text-center text-sm border border-slate-100"><span class="font-semibold">Léna Coumet</span><br><span class="text-xs text-slate-500">Chargée d'événements</span></div>
-                    </div>
-                </div>
-
-                <!-- DA -->
-                <div class="flex flex-col items-center mt-8 md:mt-0">
-                    <div class="w-px h-8 bg-slate-300 -mt-12 hidden md:block"></div>
-                    <div class="bg-green-50 p-5 rounded-xl shadow-sm border border-green-100 text-center w-full relative">
-                        <span class="absolute -top-3 -right-3 bg-green-500 text-white w-6 h-6 rounded-full text-xs flex items-center justify-center">2</span>
-                        <h3 class="font-bold">Pascal Anziani</h3>
-                        <p class="text-xs text-slate-500">Directeur Artistique</p>
-                    </div>
-                </div>
-
-                <!-- Team 2 -->
-                <div class="flex flex-col items-center mt-8 md:mt-0">
-                    <div class="w-px h-8 bg-slate-300 -mt-12 hidden md:block"></div>
-                    <div class="bg-purple-50 p-5 rounded-xl shadow-sm border border-purple-100 text-center w-full mb-6 relative">
-                        <span class="absolute -top-3 -right-3 bg-purple-500 text-white w-6 h-6 rounded-full text-xs flex items-center justify-center">3</span>
-                        <h3 class="font-bold">Camille Dumont Guinard</h3>
-                        <p class="text-xs text-slate-500">Cheffe de projet senior</p>
-                    </div>
-                    <div class="grid grid-cols-1 gap-3 w-full">
-                        <div class="bg-white p-3 rounded-lg shadow-sm text-center text-sm border border-slate-100"><span class="font-semibold">Justine De Bourrousse</span><br><span class="text-xs text-slate-500">Cheffe de projet junior</span></div>
-                        <div class="bg-white p-3 rounded-lg shadow-sm text-center text-sm border border-slate-100"><span class="font-semibold">Camille Menage</span><br><span class="text-xs text-slate-500">Chargée d'événements</span></div>
+                    <div class="hidden md:flex space-x-6">
+                        <a href="#intro"
+                            class="text-slate-600 hover:text-brand-orange font-medium transition-colors">Accueil</a>
+                        <a href="#organigramme"
+                            class="text-slate-600 hover:text-brand-orange font-medium transition-colors">Organigramme</a>
+                        <a href="#roles"
+                            class="text-slate-600 hover:text-brand-orange font-medium transition-colors">Rôles
+                            & Missions</a>
+                        <a href="#organisation"
+                            class="text-slate-600 hover:text-brand-orange font-medium transition-colors">Organisation</a>
+                        <a href="#invitations"
+                            class="text-slate-600 hover:text-brand-orange font-medium transition-colors">Invitations</a>
+                        <a href="#avenir" class="text-slate-600 hover:text-brand-orange font-medium transition-colors">À
+                            venir</a>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </nav>
 
-    <!-- Section II: Rôles & Missions -->
-    <section id="roles" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <span class="text-brand-orange font-bold text-lg tracking-widest uppercase">II - Organisation</span>
-                <h2 class="text-4xl font-bold text-brand-teal mt-2">Rôles & Missions</h2>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <!-- Rôles Clés -->
-                <div>
-                    <h3 class="text-2xl font-bold text-brand-teal mb-6 border-b-2 border-brand-orange pb-2 inline-block">Les Rôles Clés</h3>
-                    <div class="space-y-4">
-                        <div class="flex items-center p-4 bg-slate-50 rounded-lg">
-                            <div class="w-12 h-12 rounded-full bg-brand-teal/10 flex items-center justify-center text-brand-teal mr-4"><i class="fa-solid fa-briefcase"></i></div>
-                            <div>
-                                <p class="font-bold text-lg">Julien</p>
-                                <p class="text-slate-600">Commercial</p>
-                            </div>
-                        </div>
-                        <div class="flex items-center p-4 bg-slate-50 rounded-lg">
-                            <div class="w-12 h-12 rounded-full bg-brand-teal/10 flex items-center justify-center text-brand-teal mr-4"><i class="fa-solid fa-lightbulb"></i></div>
-                            <div>
-                                <p class="font-bold text-lg">Simon</p>
-                                <p class="text-slate-600">Expérience</p>
-                            </div>
-                        </div>
-                        <div class="flex items-center p-4 bg-slate-50 rounded-lg">
-                            <div class="w-12 h-12 rounded-full bg-brand-teal/10 flex items-center justify-center text-brand-teal mr-4"><i class="fa-solid fa-palette"></i></div>
-                            <div>
-                                <p class="font-bold text-lg">Pascal</p>
-                                <p class="text-slate-600">Création</p>
-                            </div>
-                        </div>
-                        <div class="flex items-center p-4 bg-slate-50 rounded-lg">
-                            <div class="w-12 h-12 rounded-full bg-brand-teal/10 flex items-center justify-center text-brand-teal mr-4"><i class="fa-solid fa-calculator"></i></div>
-                            <div>
-                                <p class="font-bold text-lg">Marie</p>
-                                <p class="text-slate-600">Compta</p>
-                            </div>
-                        </div>
-                        <div class="flex items-center p-4 bg-slate-50 rounded-lg">
-                            <div class="w-12 h-12 rounded-full bg-brand-orange/10 flex items-center justify-center text-brand-orange mr-4"><i class="fa-solid fa-users-gear"></i></div>
-                            <div>
-                                <p class="font-bold text-lg">Cheffes d'équipe</p>
-                                <p class="text-slate-600">Marilou & Cam</p>
-                            </div>
-                        </div>
-                        <div class="flex items-center p-4 bg-slate-50 rounded-lg">
-                            <div class="w-12 h-12 rounded-full bg-brand-teal/10 flex items-center justify-center text-brand-teal mr-4"><i class="fa-solid fa-star"></i></div>
-                            <div>
-                                <p class="font-bold text-lg">Lead</p>
-                                <p class="text-slate-600">Marilou, Cam, Juliya & Justine</p>
-                            </div>
-                        </div>
-                        <div class="flex items-center p-4 bg-slate-50 rounded-lg">
-                            <div class="w-12 h-12 rounded-full bg-brand-orange/10 flex items-center justify-center text-brand-orange mr-4"><i class="fa-solid fa-users"></i></div>
-                            <div>
-                                <p class="font-bold text-lg">Équipe</p>
-                                <p class="text-slate-600">Toute l'équipe Event</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Process -->
-                <div>
-                    <h3 class="text-2xl font-bold text-brand-teal mb-6 border-b-2 border-brand-orange pb-2 inline-block">Notre Process</h3>
-                    <div class="bg-slate-50 p-6 rounded-xl border border-slate-100">
-                        <div class="flex flex-wrap gap-3 relative">
-                            <span class="process-arrow relative bg-white px-4 py-2 rounded-md shadow-sm border border-slate-200 text-sm font-semibold text-brand-teal mb-2 mr-2">Entrée</span>
-                            <span class="process-arrow relative bg-white px-4 py-2 rounded-md shadow-sm border border-slate-200 text-sm font-semibold text-brand-teal mb-2 mr-2">Conception</span>
-                            <span class="process-arrow relative bg-white px-4 py-2 rounded-md shadow-sm border border-slate-200 text-sm font-semibold text-brand-teal mb-2 mr-2">Sourcing</span>
-                            <span class="process-arrow relative bg-white px-4 py-2 rounded-md shadow-sm border border-slate-200 text-sm font-semibold text-brand-teal mb-2 mr-2">Budget</span>
-                            <span class="process-arrow relative bg-white px-4 py-2 rounded-md shadow-sm border border-slate-200 text-sm font-semibold text-brand-teal mb-2 mr-2">Production</span>
-                            <span class="process-arrow relative bg-white px-4 py-2 rounded-md shadow-sm border border-slate-200 text-sm font-semibold text-brand-teal mb-2 mr-2">Présentation</span>
-                            <span class="process-arrow relative bg-white px-4 py-2 rounded-md shadow-sm border border-slate-200 text-sm font-semibold text-brand-teal mb-2 mr-2">Facturation</span>
-                            <span class="process-arrow relative bg-white px-4 py-2 rounded-md shadow-sm border border-slate-200 text-sm font-semibold text-brand-teal mb-2 mr-2">Production Terrain</span>
-                            <span class="relative bg-brand-teal text-white px-4 py-2 rounded-md shadow-sm font-semibold text-sm mb-2">Clôture</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section III: Organisation Semaine -->
-    <section id="organisation" class="py-20 bg-brand-bg">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <span class="text-brand-orange font-bold text-lg tracking-widest uppercase">III - Quotidien</span>
-                <h2 class="text-4xl font-bold text-brand-teal mt-2">Organisation de la Semaine</h2>
-            </div>
-
-            <div class="grid grid-cols-1 gap-6 mb-8">
-                
-                <!-- Gagnons du temps -->
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
-                    <div class="w-12 h-12 bg-yellow-100 text-yellow-600 rounded-xl flex items-center justify-center text-xl mb-4">
-                        <i class="fa-regular fa-clock"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-4">Gagnons du temps</h3>
-                    <ul class="space-y-3 text-sm text-slate-700">
-                        <li class="flex items-start"><i class="fa-solid fa-arrow-right text-brand-orange mt-1 mr-2"></i> <span><strong>Matin :</strong> Réunions (à l'heure et moins longues)</span></li>
-                        <li class="flex items-start"><i class="fa-solid fa-arrow-right text-brand-orange mt-1 mr-2"></i> <span><strong>Après-midi :</strong> Production</span></li>
-                        <li class="flex items-start"><i class="fa-solid fa-arrow-right text-brand-orange mt-1 mr-2"></i> <span><strong>Avant de partir :</strong> Envoi de demandes prestataires, relances effectuées et MAJ document Sourcing & Drive</span></li>
-                    </ul>
-                </div>
-
-                <!-- Propositions -->
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
-                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center text-xl mb-4">
-                        <i class="fa-regular fa-lightbulb"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-4">Propositions & Qualité</h3>
-                    <ul class="space-y-3 text-sm text-slate-700">
-                        <li class="flex items-start"><i class="fa-solid fa-check text-brand-teal mt-1 mr-2"></i> <span><strong>2 propositions maximum</strong> (sauf demande spécifique)</span></li>
-                        <li class="flex items-start"><i class="fa-solid fa-check text-brand-teal mt-1 mr-2"></i> <span>Moins de destinations, mais <strong>plus de profondeur</strong></span></li>
-                        <li class="flex items-start"><i class="fa-solid fa-check text-brand-teal mt-1 mr-2"></i> <span>Plus de demandes par destination</span></li>
-                        <li class="flex items-start"><i class="fa-solid fa-heart text-red-500 mt-1 mr-2"></i> <span>L'option "Coup de cœur" doit rester <strong>exceptionnelle</strong></span></li>
-                    </ul>
-                </div>
-
-                <!-- Télétravail -->
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
-                    <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center text-xl mb-4">
-                        <i class="fa-solid fa-house-laptop"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-4">Télétravail</h3>
-                    <ul class="space-y-3 text-sm text-slate-700">
-                        <li class="flex items-start"><i class="fa-solid fa-circle-dot text-brand-teal mt-1 mr-2 text-[10px]"></i> <span>1 jour / semaine (après 1 mois d'ancienneté)</span></li>
-                        <li class="flex items-start"><i class="fa-solid fa-circle-dot text-brand-teal mt-1 mr-2 text-[10px]"></i> <span>Minimum <strong>3 jours au bureau</strong></span></li>
-                        <li class="flex items-start"><i class="fa-solid fa-circle-dot text-brand-teal mt-1 mr-2 text-[10px]"></i> <span>12 jours TT joker / an</span></li>
-                        <li class="flex items-start text-red-600 font-medium"><i class="fa-solid fa-ban mt-1 mr-2"></i> <span>Pas de TT en phase critique (rendus, rush, etc...)</span></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <!-- Récupération -->
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
-                    <h3 class="text-xl font-bold mb-4 text-brand-teal border-b pb-2"><i class="fa-solid fa-calendar-plus mr-2"></i>Récupération & Staff Événement</h3>
-                    <div class="space-y-4 text-sm">
-                        <p class="bg-slate-50 p-3 rounded-lg border border-slate-200">
-                            <strong>Validation :</strong> À définir avec le chef d'équipe + validation de Marie.
-                        </p>
-                        <div class="grid grid-cols-2 gap-4">
-                            <div class="bg-brand-teal/5 p-3 rounded-lg">
-                                <span class="block text-brand-teal font-bold">Jusqu'à 00H</span>
-                                Demi-journée (Retour à 14H)
-                            </div>
-                            <div class="bg-brand-teal/5 p-3 rounded-lg">
-                                <span class="block text-brand-teal font-bold">Jusqu'à 05H</span>
-                                Journée entière
-                            </div>
-                        </div>
-                        <ul class="list-disc pl-5 space-y-2 mt-4 text-slate-700">
-                            <li>Les récupérations se posent <strong>le lendemain</strong> de l'événement.</li>
-                            <li>Week-end et jours fériés : <strong>Payés</strong> (uniquement si vendu au client).</li>
-                            <li>Staff sur événement : <strong>Junior + stagiaire ou alternant = PAS POSSIBLE</strong>.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Ce qui ne doit plus arriver -->
-                <div class="bg-red-50 p-6 rounded-2xl shadow-sm border border-red-100">
-                    <h3 class="text-xl font-bold mb-4 text-red-700 border-b border-red-200 pb-2"><i class="fa-solid fa-triangle-exclamation mr-2"></i>Ce qui ne doit plus arriver</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-3 mt-4 font-medium text-red-900">
-                        <div class="flex items-center bg-white/60 p-2 rounded"><i class="fa-solid fa-xmark text-red-500 mr-3 text-lg"></i> Budget non relu</div>
-                        <div class="flex items-center bg-white/60 p-2 rounded"><i class="fa-solid fa-xmark text-red-500 mr-3 text-lg"></i> RSE oubliée</div>
-                        <div class="flex items-center bg-white/60 p-2 rounded"><i class="fa-solid fa-xmark text-red-500 mr-3 text-lg"></i> Relances non faites</div>
-                        <div class="flex items-center bg-white/60 p-2 rounded"><i class="fa-solid fa-xmark text-red-500 mr-3 text-lg"></i> Slides incomplètes</div>
-                        <div class="flex items-center bg-white/60 p-2 rounded"><i class="fa-solid fa-xmark text-red-500 mr-3 text-lg"></i> Rétroplanning flou</div>
-                        <div class="flex items-center bg-white/60 p-2 rounded col-span-1 md:col-span-2"><i class="fa-solid fa-xmark text-red-500 mr-3 text-lg"></i> Manque d'anticipation</div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Section IV: Invitations -->
-    <section id="invitations" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <span class="text-brand-orange font-bold text-lg tracking-widest uppercase">IV - Relations</span>
-                <h2 class="text-4xl font-bold text-brand-teal mt-2">Invitations Partenaires</h2>
-            </div>
-
-            <div class="bg-slate-50 rounded-2xl p-8 border border-slate-200 mb-10">
-                <h3 class="text-2xl font-bold mb-4 text-brand-teal">Engagement lors des rencontres</h3>
-                <p class="text-slate-700 mb-6 leading-relaxed">
-                    Chez Weevup, les rencontres avec nos partenaires sont <strong>essentielles à notre croissance</strong> et à la qualité des services que nous proposons à nos clients. Ces rendez-vous, qu'ils aient lieu dans nos locaux ou directement chez les partenaires, sont des moments clés pour faire connaître notre agence, découvrir des nouveautés et renforcer des relations professionnelles stratégiques.
-                </p>
-                <p class="text-slate-700 font-medium mb-8 p-4 bg-brand-teal/10 rounded-lg text-brand-teal">
-                    Nous comptons sur chaque membre de l'équipe pour représenter Weevup avec professionnalisme et enthousiasme. Votre comportement, votre attitude et votre tenue sont le reflet de l'agence. Ces rendez-vous sont un véritable levier de succès pour Weevup.
+        <!-- Hero Section / Intro -->
+        <section id="intro"
+            class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-brand-teal to-brand-teal_light text-white">
+            <div class="max-w-4xl mx-auto text-center">
+                <h1 class="text-5xl md:text-6xl font-extrabold mb-6 tracking-tight">C'EST LA RENTRÉE <span
+                        class="text-brand-orange">2026</span></h1>
+                <p class="text-xl md:text-2xl font-light mb-10 text-slate-100">
+                    Une nouvelle dynamique. De nouveaux recrutements. Une nouvelle énergie.<br>
+                    <strong class="font-semibold text-white">Et donc une responsabilité : reposer un cadre
+                        clair.</strong>
                 </p>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <!-- Attentes -->
-                    <div>
-                        <h4 class="font-bold text-lg mb-4 text-slate-800 border-b pb-2">À chaque rendez-vous, il est attendu de vous que :</h4>
-                        <ul class="space-y-4 text-sm">
-                            <li class="flex items-start">
-                                <i class="fa-solid fa-shirt text-brand-orange mt-1 mr-3 text-lg"></i>
-                                <span>Portiez une <strong>tenue professionnelle</strong> et adaptée.</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fa-solid fa-handshake-angle text-brand-orange mt-1 mr-3 text-lg"></i>
-                                <span>Adoptiez une <strong>attitude respectueuse, courtoise et engageante</strong>.</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fa-solid fa-camera-retro text-brand-orange mt-1 mr-3 text-lg"></i>
-                                <span>Preniez une <strong>photo avec les personnes rencontrées</strong> (marquer le moment, trace visuelle) et preniez des <strong>photos/vidéos des lieux</strong> et prestations.</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fa-solid fa-pen-nib text-brand-orange mt-1 mr-3 text-lg"></i>
-                                <span>Rédigiez un <strong>court résumé de la rencontre</strong> (opportunités, impressions) pour faire un post en perso ou sur Weevup.<br><em>Note : Si post ou story en perso, mention obligatoire de Weevup.</em></span>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Règles -->
-                    <div>
-                        <h4 class="font-bold text-lg mb-4 text-slate-800 border-b pb-2">Règles d'acceptation</h4>
-                        <ul class="space-y-3 text-sm font-medium text-slate-700">
-                            <li class="flex items-center bg-white p-3 rounded border border-slate-100"><i class="fa-solid fa-check-double text-brand-teal mr-2"></i> Validation COPIL en amont requise</li>
-                            <li class="flex justify-between items-center bg-white p-3 rounded border border-slate-100"><span>Maximum par RDV</span> <span class="bg-slate-200 px-2 py-1 rounded text-xs font-bold">2 Personnes (sauf exception)</span></li>
-                            <li class="flex items-center bg-white p-3 rounded border border-slate-100"><i class="fa-solid fa-scale-balanced text-brand-teal mr-2"></i> Prendre en compte la charge de travail (Priorité aux événements !)</li>
-                            <li class="flex items-center bg-white p-3 rounded border border-slate-100"><i class="fa-solid fa-camera text-brand-teal mr-2"></i> Droit à l'image obligatoire</li>
-                            <li class="flex items-center bg-white p-3 rounded border border-slate-100 text-red-600"><i class="fa-solid fa-ban mr-2"></i> Pas de stagiaire / alternant sans CDI</li>
-                            <li class="flex items-center bg-white p-3 rounded border border-slate-100"><i class="fa-solid fa-calendar-week text-brand-teal mr-2"></i> Visite partenaire : 1 SEUL par semaine</li>
-                        </ul>
-                        <p class="mt-4 text-xs text-slate-500 italic">
-                            * Invitation en journée la semaine : Intéressant si c'est pour une journée d'étude (travailler de là-bas). Sinon, on ne s'y rend pas (perte de temps).
-                        </p>
-                    </div>
+                <div
+                    class="bg-white/10 p-8 rounded-2xl backdrop-blur-sm border border-white/20 inline-block text-left w-full md:w-auto">
+                    <h2 class="text-xl font-bold mb-4 text-brand-orange uppercase tracking-wider">Cette rentrée est
+                        l'occasion de :</h2>
+                    <ul class="space-y-3 text-lg">
+                        <li class="flex items-center"><i class="fa-solid fa-check-circle text-brand-orange mr-3"></i>
+                            Clarifier les rôles</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check-circle text-brand-orange mr-3"></i>
+                            Réaligner les méthodes</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check-circle text-brand-orange mr-3"></i>
+                            Simplifier les process</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check-circle text-brand-orange mr-3"></i>
+                            Revoir
+                            ce qui doit évoluer</li>
+                    </ul>
                 </div>
             </div>
+        </section>
 
-            <!-- Matrice des participations -->
-            <div class="overflow-x-auto">
-                <table class="min-w-full bg-white rounded-lg overflow-hidden shadow-sm border border-slate-200">
-                    <thead class="bg-brand-teal text-white">
-                        <tr>
-                            <th class="py-4 px-6 text-left font-semibold uppercase tracking-wider text-sm">Niveau</th>
-                            <th class="py-4 px-6 text-center font-semibold uppercase tracking-wider text-sm">Invitations</th>
-                            <th class="py-4 px-6 text-center font-semibold uppercase tracking-wider text-sm">Eductour</th>
-                            <th class="py-4 px-6 text-center font-semibold uppercase tracking-wider text-sm">M&J</th>
-                            <th class="py-4 px-6 text-center font-semibold uppercase tracking-wider text-sm">IBTM</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-slate-200 text-sm font-medium">
-                        <tr class="hover:bg-slate-50">
-                            <td class="py-4 px-6 text-brand-teal font-bold">Direction</td>
-                            <td class="py-4 px-6 text-center text-green-600"><i class="fa-solid fa-check text-xl"></i></td>
-                            <td class="py-4 px-6 text-center text-green-600"><i class="fa-solid fa-check text-xl"></i></td>
-                            <td class="py-4 px-6 text-center text-green-600"><i class="fa-solid fa-check text-xl"></i></td>
-                            <td class="py-4 px-6 text-center text-green-600"><i class="fa-solid fa-check text-xl"></i></td>
-                        </tr>
-                        <tr class="hover:bg-slate-50">
-                            <td class="py-4 px-6 text-brand-teal font-bold">Senior</td>
-                            <td class="py-4 px-6 text-center text-green-600"><i class="fa-solid fa-check text-xl"></i></td>
-                            <td class="py-4 px-6 text-center text-green-600"><i class="fa-solid fa-check text-xl"></i></td>
-                            <td class="py-4 px-6 text-center text-green-600"><i class="fa-solid fa-check text-xl"></i></td>
-                            <td class="py-4 px-6 text-center text-green-600"><i class="fa-solid fa-check text-xl"></i></td>
-                        </tr>
-                        <tr class="hover:bg-slate-50">
-                            <td class="py-4 px-6 text-brand-teal font-bold">Junior</td>
-                            <td class="py-4 px-6 text-center text-green-600"><i class="fa-solid fa-check text-xl"></i></td>
-                            <td class="py-4 px-6 text-center text-green-600"><i class="fa-solid fa-check text-xl"></i></td>
-                            <td class="py-4 px-6 text-center text-slate-300">-</td>
-                            <td class="py-4 px-6 text-center text-slate-300">-</td>
-                        </tr>
-                        <tr class="hover:bg-slate-50">
-                            <td class="py-4 px-6 text-brand-teal font-bold">Alternantes</td>
-                            <td class="py-4 px-6 text-center text-green-600"><i class="fa-solid fa-check text-xl"></i></td>
-                            <td class="py-4 px-6 text-center text-green-600"><i class="fa-solid fa-check text-xl"></i></td>
-                            <td class="py-4 px-6 text-center text-slate-300">-</td>
-                            <td class="py-4 px-6 text-center text-slate-300">-</td>
-                        </tr>
-                        <tr class="bg-slate-50/50">
-                            <td class="py-4 px-6 text-slate-500 font-bold">Stagiaire</td>
-                            <td class="py-4 px-6 text-center text-green-600"><i class="fa-solid fa-check text-xl"></i></td>
-                            <td class="py-4 px-6 text-center text-slate-300">-</td>
-                            <td class="py-4 px-6 text-center text-slate-300">-</td>
-                            <td class="py-4 px-6 text-center text-slate-300">-</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section V: À Venir -->
-    <section id="avenir" class="py-20 bg-brand-bg border-t border-slate-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Section I: Organigramme -->
+        <section id="organigramme" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
             <div class="text-center mb-16">
-                <span class="text-brand-orange font-bold text-lg tracking-widest uppercase">V - Agenda</span>
-                <h2 class="text-4xl font-bold text-brand-teal mt-2">À Venir 2025-2026</h2>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Card 1 -->
-                <div class="bg-white rounded-2xl p-6 border-t-4 border-blue-400 shadow-sm relative overflow-hidden group hover:-translate-y-1 transition-transform">
-                    <div class="absolute -right-4 -top-4 text-9xl font-black text-slate-50 opacity-50 group-hover:scale-110 transition-transform">1</div>
-                    <div class="relative z-10">
-                        <h3 class="text-xl font-bold text-slate-800 mb-2">La semaine prochaine</h3>
-                        <p class="text-brand-teal font-medium">Le bilan de votre entretien annuel</p>
-                    </div>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="bg-white rounded-2xl p-6 border-t-4 border-brand-orange shadow-sm relative overflow-hidden group hover:-translate-y-1 transition-transform">
-                    <div class="absolute -right-4 -top-4 text-9xl font-black text-slate-50 opacity-50 group-hover:scale-110 transition-transform">2</div>
-                    <div class="relative z-10">
-                        <h3 class="text-xl font-bold text-slate-800 mb-2">Mardi 10 mars</h3>
-                        <p class="text-brand-teal font-medium">Formation, démo & Q&A : Le budget</p>
-                    </div>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="bg-white rounded-2xl p-6 border-t-4 border-brand-teal shadow-sm relative overflow-hidden group hover:-translate-y-1 transition-transform">
-                    <div class="absolute -right-4 -top-4 text-9xl font-black text-slate-50 opacity-50 group-hover:scale-110 transition-transform">3</div>
-                    <div class="relative z-10">
-                        <h3 class="text-xl font-bold text-slate-800 mb-2">Mardi 24 mars</h3>
-                        <p class="text-brand-teal font-medium">Le bilan de Weevup et les objectifs (primes)</p>
-                    </div>
-                </div>
-
-                <!-- Card 4 -->
-                <div class="bg-white rounded-2xl p-6 border-t-4 border-blue-300 shadow-sm relative overflow-hidden group hover:-translate-y-1 transition-transform">
-                    <div class="absolute -right-4 -top-4 text-9xl font-black text-slate-50 opacity-50 group-hover:scale-110 transition-transform">4</div>
-                    <div class="relative z-10">
-                        <h3 class="text-xl font-bold text-slate-800 mb-2">Fermeture (Ponts)</h3>
-                        <p class="text-brand-teal font-medium">Vendredi 15 mai<br>et Lundi 13 août</p>
-                    </div>
+                <span class="text-brand-orange font-bold text-lg tracking-widest uppercase">I - Structure</span>
+                <h2 class="text-4xl font-bold text-brand-teal mt-2">Organigramme</h2>
+                <div class="mt-6 flex justify-center space-x-8 text-sm font-medium text-slate-500 uppercase">
+                    <span>Qui décide ?</span>
+                    <span>Qui arbitre ?</span>
+                    <span>Qui pilote ?</span>
+                    <span>Qui exécute ?</span>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Footer -->
-    <footer class="bg-slate-900 text-slate-400 py-8 text-center">
-        <div class="max-w-7xl mx-auto px-4">
-            <p class="font-bold text-xl text-white tracking-widest mb-2">WEEVUP</p>
-            <p class="text-sm">Document d'organisation interne — Rentrée 2026</p>
-        </div>
-    </footer>
+            <div class="flex flex-col items-center space-y-8">
+                <!-- Top Level -->
+                <div class="flex flex-col md:flex-row gap-8 justify-center w-full">
+                    <div class="bg-blue-50 p-5 rounded-xl shadow-sm border border-blue-100 text-center w-full md:w-64">
+                        <h3 class="font-bold">Julien Boisard</h3>
+                        <p class="text-xs text-slate-500">Directeur Développement & Business</p>
+                    </div>
+                    <div class="bg-blue-50 p-5 rounded-xl shadow-sm border border-blue-100 text-center w-full md:w-64">
+                        <h3 class="font-bold">Marie Tassus</h3>
+                        <p class="text-xs text-slate-500">Directrice Ressources & Performance</p>
+                    </div>
+                </div>
 
+                <!-- Second Level -->
+                <div class="w-px h-8 bg-slate-300"></div>
+                <div class="bg-green-50 p-5 rounded-xl shadow-sm border border-green-100 text-center w-full md:w-72">
+                    <h3 class="font-bold">Simon Tassus</h3>
+                    <p class="text-xs text-slate-500">Directeur Conseil & Expérience</p>
+                </div>
+
+                <div class="w-full flex justify-center relative mt-4">
+                    <!-- Connectors -->
+                    <div class="absolute top-0 w-3/4 md:w-2/3 h-px bg-slate-300"></div>
+                </div>
+
+                <!-- Third Level (Leads/Seniors) -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full pt-4">
+                    <!-- Team 1 -->
+                    <div class="flex flex-col items-center">
+                        <div class="w-px h-8 bg-slate-300 -mt-12 hidden md:block"></div>
+                        <div
+                            class="bg-blue-50 p-5 rounded-xl shadow-sm border border-blue-100 text-center w-full mb-6 relative">
+
+                            <h3 class="font-bold">Marilou Gatino</h3>
+                            <p class="text-xs text-slate-500">Cheffe de projet senior</p>
+                        </div>
+                        <div class="grid grid-cols-1 gap-3 w-full">
+                            <div class="bg-white p-3 rounded-lg shadow-sm text-center text-sm border border-slate-100">
+                                <span class="font-semibold">Juliya Weldesenbet</span><br><span
+                                    class="text-xs text-slate-500">Cheffe de projet junior</span>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg shadow-sm text-center text-sm border border-slate-100">
+                                <span class="font-semibold">Alice OTT Buchs</span><br><span
+                                    class="text-xs text-slate-500">Chargée d'événements</span>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg shadow-sm text-center text-sm border border-slate-100">
+                                <span class="font-semibold">Léna Coumet</span><br><span
+                                    class="text-xs text-slate-500">Chargée
+                                    d'événements</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DA -->
+                    <div class="flex flex-col items-center mt-8 md:mt-0">
+                        <div class="w-px h-8 bg-slate-300 -mt-12 hidden md:block"></div>
+                        <div
+                            class="bg-green-50 p-5 rounded-xl shadow-sm border border-green-100 text-center w-full relative">
+
+                            <h3 class="font-bold">Pascal Anziani</h3>
+                            <p class="text-xs text-slate-500">Directeur Artistique</p>
+                        </div>
+                    </div>
+
+                    <!-- Team 2 -->
+                    <div class="flex flex-col items-center mt-8 md:mt-0">
+                        <div class="w-px h-8 bg-slate-300 -mt-12 hidden md:block"></div>
+                        <div
+                            class="bg-purple-50 p-5 rounded-xl shadow-sm border border-purple-100 text-center w-full mb-6 relative">
+
+                            <h3 class="font-bold">Camille Dumont Guinard</h3>
+                            <p class="text-xs text-slate-500">Cheffe de projet senior</p>
+                        </div>
+                        <div class="grid grid-cols-1 gap-3 w-full">
+                            <div class="bg-white p-3 rounded-lg shadow-sm text-center text-sm border border-slate-100">
+                                <span class="font-semibold">Justine De Bourrousse</span><br><span
+                                    class="text-xs text-slate-500">Cheffe de projet junior</span>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg shadow-sm text-center text-sm border border-slate-100">
+                                <span class="font-semibold">Camille Menage</span><br><span
+                                    class="text-xs text-slate-500">Chargée d'événements</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section II: Rôles & Missions -->
+        <section id="roles" class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <span class="text-brand-orange font-bold text-lg tracking-widest uppercase">II - Organisation</span>
+                    <h2 class="text-4xl font-bold text-brand-teal mt-2">Rôles & Missions</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <!-- Rôles Clés -->
+                    <div>
+                        <h3
+                            class="text-2xl font-bold text-brand-teal mb-6 border-b-2 border-brand-orange pb-2 inline-block">
+                            Les Rôles Clés</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center p-4 bg-slate-50 rounded-lg">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-brand-teal/10 flex items-center justify-center text-brand-teal mr-4">
+                                    <i class="fa-solid fa-briefcase"></i>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-lg">Julien</p>
+                                    <p class="text-slate-600">Commercial</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center p-4 bg-slate-50 rounded-lg">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-brand-teal/10 flex items-center justify-center text-brand-teal mr-4">
+                                    <i class="fa-solid fa-lightbulb"></i>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-lg">Simon</p>
+                                    <p class="text-slate-600">Expérience</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center p-4 bg-slate-50 rounded-lg">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-brand-teal/10 flex items-center justify-center text-brand-teal mr-4">
+                                    <i class="fa-solid fa-palette"></i>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-lg">Pascal</p>
+                                    <p class="text-slate-600">Création</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center p-4 bg-slate-50 rounded-lg">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-brand-teal/10 flex items-center justify-center text-brand-teal mr-4">
+                                    <i class="fa-solid fa-calculator"></i>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-lg">Marie</p>
+                                    <p class="text-slate-600">Compta</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center p-4 bg-slate-50 rounded-lg">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-brand-orange/10 flex items-center justify-center text-brand-orange mr-4">
+                                    <i class="fa-solid fa-users-gear"></i>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-lg">Cheffes d'équipe</p>
+                                    <p class="text-slate-600">Marilou & Cam</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center p-4 bg-slate-50 rounded-lg">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-brand-teal/10 flex items-center justify-center text-brand-teal mr-4">
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-lg">Lead</p>
+                                    <p class="text-slate-600">Marilou, Cam, Juliya & Justine</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center p-4 bg-slate-50 rounded-lg">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-brand-orange/10 flex items-center justify-center text-brand-orange mr-4">
+                                    <i class="fa-solid fa-users"></i>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-lg">Équipe</p>
+                                    <p class="text-slate-600">Toute l'équipe Event</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Process -->
+                    <div>
+                        <h3
+                            class="text-2xl font-bold text-brand-teal mb-6 border-b-2 border-brand-orange pb-2 inline-block">
+                            Notre Process</h3>
+                        <div class="bg-slate-50 p-6 rounded-xl border border-slate-100">
+                            <div class="flex flex-wrap gap-3 relative">
+                                <span
+                                    class="process-arrow relative bg-white px-4 py-2 rounded-md shadow-sm border border-slate-200 text-sm font-semibold text-brand-teal mb-2 mr-2">Entrée</span>
+                                <span
+                                    class="process-arrow relative bg-white px-4 py-2 rounded-md shadow-sm border border-slate-200 text-sm font-semibold text-brand-teal mb-2 mr-2">Conception</span>
+                                <span
+                                    class="process-arrow relative bg-white px-4 py-2 rounded-md shadow-sm border border-slate-200 text-sm font-semibold text-brand-teal mb-2 mr-2">Sourcing</span>
+                                <span
+                                    class="process-arrow relative bg-white px-4 py-2 rounded-md shadow-sm border border-slate-200 text-sm font-semibold text-brand-teal mb-2 mr-2">Budget</span>
+                                <span
+                                    class="process-arrow relative bg-white px-4 py-2 rounded-md shadow-sm border border-slate-200 text-sm font-semibold text-brand-teal mb-2 mr-2">Production</span>
+                                <span
+                                    class="process-arrow relative bg-white px-4 py-2 rounded-md shadow-sm border border-slate-200 text-sm font-semibold text-brand-teal mb-2 mr-2">Présentation</span>
+                                <span
+                                    class="process-arrow relative bg-white px-4 py-2 rounded-md shadow-sm border border-slate-200 text-sm font-semibold text-brand-teal mb-2 mr-2">Facturation</span>
+                                <span
+                                    class="process-arrow relative bg-white px-4 py-2 rounded-md shadow-sm border border-slate-200 text-sm font-semibold text-brand-teal mb-2 mr-2">Production
+                                    Terrain</span>
+                                <span
+                                    class="relative bg-brand-teal text-white px-4 py-2 rounded-md shadow-sm font-semibold text-sm mb-2">Clôture</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section III: Organisation Semaine -->
+        <section id="organisation" class="py-20 bg-brand-bg">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <span class="text-brand-orange font-bold text-lg tracking-widest uppercase">III - Quotidien</span>
+                    <h2 class="text-4xl font-bold text-brand-teal mt-2">Organisation de la Semaine</h2>
+                </div>
+
+                <div class="grid grid-cols-1 gap-6 mb-8">
+
+                    <!-- Gagnons du temps -->
+                    <div
+                        class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+                        <div
+                            class="w-12 h-12 bg-yellow-100 text-yellow-600 rounded-xl flex items-center justify-center text-xl mb-4">
+                            <i class="fa-regular fa-clock"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Gagnons du temps</h3>
+                        <ul class="space-y-3 text-sm text-slate-700">
+                            <li class="flex items-start"><i
+                                    class="fa-solid fa-arrow-right text-brand-orange mt-1 mr-2"></i>
+                                <span><strong>Matin :</strong> Réunions (à l'heure et moins longues)</span>
+                            </li>
+                            <li class="flex items-start"><i
+                                    class="fa-solid fa-arrow-right text-brand-orange mt-1 mr-2"></i>
+                                <span><strong>Après-midi :</strong> Production</span>
+                            </li>
+                            <li class="flex items-start"><i
+                                    class="fa-solid fa-arrow-right text-brand-orange mt-1 mr-2"></i>
+                                <span><strong>Avant de partir :</strong> Envoi de demandes prestataires, relances
+                                    effectuées
+                                    et MAJ document Sourcing & Drive</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Propositions -->
+                    <div
+                        class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+                        <div
+                            class="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center text-xl mb-4">
+                            <i class="fa-regular fa-lightbulb"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Propositions & Qualité</h3>
+                        <ul class="space-y-3 text-sm text-slate-700">
+                            <li class="flex items-start"><i class="fa-solid fa-check text-brand-teal mt-1 mr-2"></i>
+                                <span><strong>2 propositions maximum</strong> (sauf demande spécifique)</span>
+                            </li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-brand-teal mt-1 mr-2"></i>
+                                <span>Moins de destinations, mais <strong>plus de profondeur</strong></span>
+                            </li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-brand-teal mt-1 mr-2"></i>
+                                <span>Plus de demandes par destination</span>
+                            </li>
+                            <li class="flex items-start"><i class="fa-solid fa-heart text-red-500 mt-1 mr-2"></i>
+                                <span>L'option "Coup de cœur" doit rester <strong>exceptionnelle</strong></span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Télétravail -->
+                    <div
+                        class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+                        <div
+                            class="w-12 h-12 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center text-xl mb-4">
+                            <i class="fa-solid fa-house-laptop"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Télétravail</h3>
+                        <ul class="space-y-3 text-sm text-slate-700">
+                            <li class="flex items-start"><i
+                                    class="fa-solid fa-circle-dot text-brand-teal mt-1 mr-2 text-[10px]"></i> <span>1
+                                    jour /
+                                    semaine (après 1 mois d'ancienneté)</span></li>
+                            <li class="flex items-start"><i
+                                    class="fa-solid fa-circle-dot text-brand-teal mt-1 mr-2 text-[10px]"></i>
+                                <span>Minimum
+                                    <strong>3 jours au bureau</strong></span>
+                            </li>
+                            <li class="flex items-start"><i
+                                    class="fa-solid fa-circle-dot text-brand-teal mt-1 mr-2 text-[10px]"></i> <span>12
+                                    jours
+                                    TT joker / an</span></li>
+                            <li class="flex items-start text-red-600 font-medium"><i
+                                    class="fa-solid fa-ban mt-1 mr-2"></i>
+                                <span>Pas de TT en phase critique (rendus, rush, etc...)</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <!-- Récupération -->
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+                        <h3 class="text-xl font-bold mb-4 text-brand-teal border-b pb-2"><i
+                                class="fa-solid fa-calendar-plus mr-2"></i>Récupération & Staff Événement</h3>
+                        <div class="space-y-4 text-sm">
+                            <p class="bg-slate-50 p-3 rounded-lg border border-slate-200">
+                                <strong>Validation :</strong> À définir avec le chef d'équipe + validation de Marie.
+                            </p>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="bg-brand-teal/5 p-3 rounded-lg">
+                                    <span class="block text-brand-teal font-bold">Jusqu'à 00H</span>
+                                    Demi-journée (Retour à 14H)
+                                </div>
+                                <div class="bg-brand-teal/5 p-3 rounded-lg">
+                                    <span class="block text-brand-teal font-bold">Jusqu'à 05H</span>
+                                    Journée entière
+                                </div>
+                            </div>
+                            <ul class="list-disc pl-5 space-y-2 mt-4 text-slate-700">
+                                <li>Les récupérations se posent <strong>le lendemain</strong> de l'événement.</li>
+                                <li>Week-end et jours fériés : <strong>Payés</strong> (uniquement si vendu au client).
+                                </li>
+                                <li>Staff sur événement : <strong>Junior + stagiaire ou alternant = PAS
+                                        POSSIBLE</strong>.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Ce qui ne doit plus arriver -->
+                    <div class="bg-red-50 p-6 rounded-2xl shadow-sm border border-red-100">
+                        <h3 class="text-xl font-bold mb-4 text-red-700 border-b border-red-200 pb-2"><i
+                                class="fa-solid fa-triangle-exclamation mr-2"></i>Ce qui ne doit plus arriver</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-3 mt-4 font-medium text-red-900">
+                            <div class="flex items-center bg-white/60 p-2 rounded"><i
+                                    class="fa-solid fa-xmark text-red-500 mr-3 text-lg"></i> Budget non relu</div>
+                            <div class="flex items-center bg-white/60 p-2 rounded"><i
+                                    class="fa-solid fa-xmark text-red-500 mr-3 text-lg"></i> RSE oubliée</div>
+                            <div class="flex items-center bg-white/60 p-2 rounded"><i
+                                    class="fa-solid fa-xmark text-red-500 mr-3 text-lg"></i> Relances non faites</div>
+                            <div class="flex items-center bg-white/60 p-2 rounded"><i
+                                    class="fa-solid fa-xmark text-red-500 mr-3 text-lg"></i> Slides incomplètes</div>
+                            <div class="flex items-center bg-white/60 p-2 rounded"><i
+                                    class="fa-solid fa-xmark text-red-500 mr-3 text-lg"></i> Rétroplanning flou</div>
+                            <div class="flex items-center bg-white/60 p-2 rounded col-span-1 md:col-span-2"><i
+                                    class="fa-solid fa-xmark text-red-500 mr-3 text-lg"></i> Manque d'anticipation</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Section IV: Invitations -->
+        <section id="invitations" class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <span class="text-brand-orange font-bold text-lg tracking-widest uppercase">IV - Relations</span>
+                    <h2 class="text-4xl font-bold text-brand-teal mt-2">Invitations Partenaires</h2>
+                </div>
+
+                <div class="bg-slate-50 rounded-2xl p-8 border border-slate-200 mb-10">
+                    <h3 class="text-2xl font-bold mb-4 text-brand-teal">Engagement lors des rencontres</h3>
+                    <p class="text-slate-700 mb-6 leading-relaxed">
+                        Chez Weevup, les rencontres avec nos partenaires sont <strong>essentielles à notre
+                            croissance</strong> et à la qualité des services que nous proposons à nos clients. Ces
+                        rendez-vous, qu'ils aient lieu dans nos locaux ou directement chez les partenaires, sont des
+                        moments
+                        clés pour faire connaître notre agence, découvrir des nouveautés et renforcer des relations
+                        professionnelles stratégiques.
+                    </p>
+                    <p class="text-slate-700 font-medium mb-8 p-4 bg-brand-teal/10 rounded-lg text-brand-teal">
+                        Nous comptons sur chaque membre de l'équipe pour représenter Weevup avec professionnalisme et
+                        enthousiasme. Votre comportement, votre attitude et votre tenue sont le reflet de l'agence. Ces
+                        rendez-vous sont un véritable levier de succès pour Weevup.
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <!-- Attentes -->
+                        <div>
+                            <h4 class="font-bold text-lg mb-4 text-slate-800 border-b pb-2">À chaque rendez-vous, il est
+                                attendu de vous que :</h4>
+                            <ul class="space-y-4 text-sm">
+                                <li class="flex items-start">
+                                    <i class="fa-solid fa-shirt text-brand-orange mt-1 mr-3 text-lg"></i>
+                                    <span>Portiez une <strong>tenue professionnelle</strong> et adaptée.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fa-solid fa-handshake-angle text-brand-orange mt-1 mr-3 text-lg"></i>
+                                    <span>Adoptiez une <strong>attitude respectueuse, courtoise et
+                                            engageante</strong>.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fa-solid fa-camera-retro text-brand-orange mt-1 mr-3 text-lg"></i>
+                                    <span>Preniez une <strong>photo avec les personnes rencontrées</strong> (marquer le
+                                        moment, trace visuelle) et preniez des <strong>photos/vidéos des lieux</strong>
+                                        et
+                                        prestations.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fa-solid fa-pen-nib text-brand-orange mt-1 mr-3 text-lg"></i>
+                                    <span>Rédigiez un <strong>court résumé de la rencontre</strong> (opportunités,
+                                        impressions) pour faire un post en perso ou sur Weevup.<br><em>Note : Si post ou
+                                            story en perso, mention obligatoire de Weevup.</em></span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Règles -->
+                        <div>
+                            <h4 class="font-bold text-lg mb-4 text-slate-800 border-b pb-2">Règles d'acceptation</h4>
+                            <ul class="space-y-3 text-sm font-medium text-slate-700">
+                                <li class="flex items-center bg-white p-3 rounded border border-slate-100"><i
+                                        class="fa-solid fa-check-double text-brand-teal mr-2"></i> Validation COPIL en
+                                    amont
+                                    requise</li>
+                                <li
+                                    class="flex justify-between items-center bg-white p-3 rounded border border-slate-100">
+                                    <span>Maximum par RDV</span> <span
+                                        class="bg-slate-200 px-2 py-1 rounded text-xs font-bold">2 Personnes (sauf
+                                        exception)</span>
+                                </li>
+                                <li class="flex items-center bg-white p-3 rounded border border-slate-100"><i
+                                        class="fa-solid fa-scale-balanced text-brand-teal mr-2"></i> Prendre en compte
+                                    la
+                                    charge de travail (Priorité aux événements !)</li>
+                                <li class="flex items-center bg-white p-3 rounded border border-slate-100"><i
+                                        class="fa-solid fa-camera text-brand-teal mr-2"></i> Droit à l'image obligatoire
+                                </li>
+                                <li class="flex items-center bg-white p-3 rounded border border-slate-100 text-red-600">
+                                    <i class="fa-solid fa-ban mr-2"></i> Pas de stagiaire / alternant sans CDI
+                                </li>
+                                <li class="flex items-center bg-white p-3 rounded border border-slate-100"><i
+                                        class="fa-solid fa-calendar-week text-brand-teal mr-2"></i> Visite partenaire :
+                                    1
+                                    SEUL par semaine</li>
+                            </ul>
+                            <p class="mt-4 text-xs text-slate-500 italic">
+                                * Invitation en journée la semaine : Intéressant si c'est pour une journée d'étude
+                                (travailler de là-bas). Sinon, on ne s'y rend pas (perte de temps).
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Matrice des participations -->
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-white rounded-lg overflow-hidden shadow-sm border border-slate-200">
+                        <thead class="bg-brand-teal text-white">
+                            <tr>
+                                <th class="py-4 px-6 text-left font-semibold uppercase tracking-wider text-sm">Niveau
+                                </th>
+                                <th class="py-4 px-6 text-center font-semibold uppercase tracking-wider text-sm">
+                                    Invitations
+                                </th>
+                                <th class="py-4 px-6 text-center font-semibold uppercase tracking-wider text-sm">
+                                    Eductour
+                                </th>
+                                <th class="py-4 px-6 text-center font-semibold uppercase tracking-wider text-sm">M&I
+                                </th>
+                                <th class="py-4 px-6 text-center font-semibold uppercase tracking-wider text-sm">IBTM
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200 text-sm font-medium">
+                            <tr class="hover:bg-slate-50">
+                                <td class="py-4 px-6 text-brand-teal font-bold">Direction</td>
+                                <td class="py-4 px-6 text-center text-green-600"><i
+                                        class="fa-solid fa-check text-xl"></i>
+                                </td>
+                                <td class="py-4 px-6 text-center text-green-600"><i
+                                        class="fa-solid fa-check text-xl"></i>
+                                </td>
+                                <td class="py-4 px-6 text-center text-green-600"><i
+                                        class="fa-solid fa-check text-xl"></i>
+                                </td>
+                                <td class="py-4 px-6 text-center text-green-600"><i
+                                        class="fa-solid fa-check text-xl"></i>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="py-4 px-6 text-brand-teal font-bold">Senior</td>
+                                <td class="py-4 px-6 text-center text-green-600"><i
+                                        class="fa-solid fa-check text-xl"></i>
+                                </td>
+                                <td class="py-4 px-6 text-center text-green-600"><i
+                                        class="fa-solid fa-check text-xl"></i>
+                                </td>
+                                <td class="py-4 px-6 text-center text-green-600"><i
+                                        class="fa-solid fa-check text-xl"></i>
+                                </td>
+                                <td class="py-4 px-6 text-center text-green-600"><i
+                                        class="fa-solid fa-check text-xl"></i>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="py-4 px-6 text-brand-teal font-bold">Junior</td>
+                                <td class="py-4 px-6 text-center text-green-600"><i
+                                        class="fa-solid fa-check text-xl"></i>
+                                </td>
+                                <td class="py-4 px-6 text-center text-green-600"><i
+                                        class="fa-solid fa-check text-xl"></i>
+                                </td>
+                                <td class="py-4 px-6 text-center text-slate-300">-</td>
+                                <td class="py-4 px-6 text-center text-slate-300">-</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="py-4 px-6 text-brand-teal font-bold">Alternantes</td>
+                                <td class="py-4 px-6 text-center text-green-600"><i
+                                        class="fa-solid fa-check text-xl"></i>
+                                </td>
+                                <td class="py-4 px-6 text-center text-green-600"><i
+                                        class="fa-solid fa-check text-xl"></i>
+                                </td>
+                                <td class="py-4 px-6 text-center text-slate-300">-</td>
+                                <td class="py-4 px-6 text-center text-slate-300">-</td>
+                            </tr>
+                            <tr class="bg-slate-50/50">
+                                <td class="py-4 px-6 text-slate-500 font-bold">Stagiaire</td>
+                                <td class="py-4 px-6 text-center text-green-600"><i
+                                        class="fa-solid fa-check text-xl"></i>
+                                </td>
+                                <td class="py-4 px-6 text-center text-slate-300">-</td>
+                                <td class="py-4 px-6 text-center text-slate-300">-</td>
+                                <td class="py-4 px-6 text-center text-slate-300">-</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section V: À Venir -->
+        <section id="avenir" class="py-20 bg-brand-bg border-t border-slate-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <span class="text-brand-orange font-bold text-lg tracking-widest uppercase">V - Agenda</span>
+                    <h2 class="text-4xl font-bold text-brand-teal mt-2">À Venir 2025-2026</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Card 1 -->
+                    <div
+                        class="bg-white rounded-2xl p-6 border-t-4 border-blue-400 shadow-sm relative overflow-hidden group hover:-translate-y-1 transition-transform">
+                        <div
+                            class="absolute -right-4 -top-4 text-9xl font-black text-slate-50 opacity-50 group-hover:scale-110 transition-transform">
+                            1</div>
+                        <div class="relative z-10">
+                            <h3 class="text-xl font-bold text-slate-800 mb-2">La semaine prochaine</h3>
+                            <p class="text-brand-teal font-medium">Le bilan de votre entretien annuel</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div
+                        class="bg-white rounded-2xl p-6 border-t-4 border-brand-orange shadow-sm relative overflow-hidden group hover:-translate-y-1 transition-transform">
+                        <div
+                            class="absolute -right-4 -top-4 text-9xl font-black text-slate-50 opacity-50 group-hover:scale-110 transition-transform">
+                            2</div>
+                        <div class="relative z-10">
+                            <h3 class="text-xl font-bold text-slate-800 mb-2">Mardi 10 mars</h3>
+                            <p class="text-brand-teal font-medium">Formation, démo & Q&A : Le budget</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div
+                        class="bg-white rounded-2xl p-6 border-t-4 border-brand-teal shadow-sm relative overflow-hidden group hover:-translate-y-1 transition-transform">
+                        <div
+                            class="absolute -right-4 -top-4 text-9xl font-black text-slate-50 opacity-50 group-hover:scale-110 transition-transform">
+                            3</div>
+                        <div class="relative z-10">
+                            <h3 class="text-xl font-bold text-slate-800 mb-2">Mardi 24 mars</h3>
+                            <p class="text-brand-teal font-medium">Le bilan de Weevup et les objectifs (primes)</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div
+                        class="bg-white rounded-2xl p-6 border-t-4 border-blue-300 shadow-sm relative overflow-hidden group hover:-translate-y-1 transition-transform">
+                        <div
+                            class="absolute -right-4 -top-4 text-9xl font-black text-slate-50 opacity-50 group-hover:scale-110 transition-transform">
+                            4</div>
+                        <div class="relative z-10">
+                            <h3 class="text-xl font-bold text-slate-800 mb-2">Fermeture (Ponts)</h3>
+                            <p class="text-brand-teal font-medium">Vendredi 15 mai<br>et Lundi 13 août</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-slate-900 text-slate-400 py-8 text-center">
+            <div class="max-w-7xl mx-auto px-4">
+                <p class="font-bold text-xl text-white tracking-widest mb-2">WEEVUP</p>
+                <p class="text-sm">Document d'organisation interne — Rentrée 2026</p>
+            </div>
+        </footer>
+
+    </div><!-- fin contenu principal -->
 </body>
+
 </html>
