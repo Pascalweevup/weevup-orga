@@ -3,30 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Playbook Opérationnel & Vie d'Agence</title>
-    <!-- Tailwind CSS -->
+    <title>Weevup - Organisation 2026</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
+                        sans: ['Poppins', 'sans-serif'],
                     },
                     colors: {
                         brand: {
-                            main: '#005461',     // Nouvelle couleur principale
-                            orange: '#F8991D',   // Orange "Julien"
-                            teal: '#00A9CB',     // Cyan "Cheffe d'équipe"
-                            purple: '#E9D5FF',   // Violet clair "Simon"
-                            purpleText: '#6B21A8',
-                            light: '#F8FAFC',
-                            cardBorder: '#E2E8F0',
+                            teal: '#0d5c58', // Teal dark
+                            teal_light: '#14807a',
+                            orange: '#f05a28', // Orange vif
+                            bg: '#f8fafc'
                         }
                     }
                 }
@@ -34,528 +27,493 @@
         }
     </script>
     <style>
-        /* Custom scrollbar */
-        ::-webkit-scrollbar { width: 6px; height: 6px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
-        
-        body {
-            background-color: #F8FAFC; /* Fond très clair type app */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
         }
-
-        /* Style des cartes inspiré de la capture */
-        .app-card {
-            background: #FFFFFF;
-            border: 1px solid #E2E8F0;
-            border-radius: 1.5rem; /* rounded-2xl */
-            padding: 1.5rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
-            transition: all 0.2s ease;
+        .process-arrow::after {
+            content: '\f054';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            right: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #cbd5e1;
+            font-size: 0.8rem;
         }
-        .app-card:hover {
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
-            border-color: #cbd5e1;
+        .process-arrow:last-child::after {
+            display: none;
         }
-
-        .tag-julien { background-color: #F8991D; color: white; }
-        .tag-cdp { background-color: #00A9CB; color: white; }
-        .tag-simon { background-color: #E9D5FF; color: #6B21A8; }
-        .tag-senior { background-color: #005461; color: white; }
     </style>
 </head>
-<body class="text-slate-800 font-sans antialiased flex flex-col md:flex-row min-h-screen">
+<body class="bg-brand-bg text-slate-800 antialiased selection:bg-brand-orange selection:text-white">
 
-    <!-- Navigation (Mobile: Top scrollable, Desktop: Left Sidebar) -->
-    <nav class="bg-brand-main text-white flex-shrink-0 md:w-64 md:h-screen sticky top-0 z-30 shadow-xl flex flex-col">
-        <div class="p-4 md:p-6 flex items-center justify-between md:flex-col md:items-start md:gap-8">
-            <div class="flex items-center gap-3">
-                <i data-lucide="layout-template" class="text-brand-orange w-6 h-6 md:w-8 md:h-8"></i>
-                <h2 class="text-lg md:text-xl font-black tracking-tight leading-tight">WEEVUP<br><span class="text-xs font-semibold tracking-widest text-brand-teal uppercase">Playbook</span></h2>
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-card transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex-shrink-0 flex items-center font-bold text-2xl tracking-tighter text-brand-teal">
+                    WEEVUP <span class="text-brand-orange ml-1">2026</span>
+                </div>
+                <div class="hidden md:flex space-x-6">
+                    <a href="#intro" class="text-slate-600 hover:text-brand-orange font-medium transition-colors">Accueil</a>
+                    <a href="#organigramme" class="text-slate-600 hover:text-brand-orange font-medium transition-colors">Organigramme</a>
+                    <a href="#roles" class="text-slate-600 hover:text-brand-orange font-medium transition-colors">Rôles & Missions</a>
+                    <a href="#organisation" class="text-slate-600 hover:text-brand-orange font-medium transition-colors">Organisation</a>
+                    <a href="#invitations" class="text-slate-600 hover:text-brand-orange font-medium transition-colors">Invitations</a>
+                    <a href="#avenir" class="text-slate-600 hover:text-brand-orange font-medium transition-colors">À venir</a>
+                </div>
             </div>
-        </div>
-        
-        <!-- Menu Items -->
-        <div class="overflow-x-auto md:overflow-y-auto px-2 md:px-4 pb-2 md:pb-6 flex md:flex-col gap-1 no-scrollbar">
-            <a href="#vision" class="flex items-center gap-2 md:gap-3 py-2 px-3 md:py-3 md:px-4 rounded-xl hover:bg-white/10 transition-colors whitespace-nowrap text-sm font-semibold text-slate-200 hover:text-white">
-                <i data-lucide="target" class="w-4 h-4 text-brand-teal"></i> Vision & Cadre
-            </a>
-            <a href="#gouvernance" class="flex items-center gap-2 md:gap-3 py-2 px-3 md:py-3 md:px-4 rounded-xl hover:bg-white/10 transition-colors whitespace-nowrap text-sm font-semibold text-slate-200 hover:text-white">
-                <i data-lucide="users" class="w-4 h-4 text-brand-teal"></i> Gouvernance
-            </a>
-            <a href="#projet" class="flex items-center gap-2 md:gap-3 py-2 px-3 md:py-3 md:px-4 rounded-xl hover:bg-white/10 transition-colors whitespace-nowrap text-sm font-semibold text-slate-200 hover:text-white">
-                <i data-lucide="rocket" class="w-4 h-4 text-brand-teal"></i> Méthode Projet
-            </a>
-            <a href="#staffing" class="flex items-center gap-2 md:gap-3 py-2 px-3 md:py-3 md:px-4 rounded-xl hover:bg-white/10 transition-colors whitespace-nowrap text-sm font-semibold text-slate-200 hover:text-white">
-                <i data-lucide="briefcase" class="w-4 h-4 text-brand-teal"></i> Staffing
-            </a>
-            <a href="#quotidien" class="flex items-center gap-2 md:gap-3 py-2 px-3 md:py-3 md:px-4 rounded-xl hover:bg-white/10 transition-colors whitespace-nowrap text-sm font-semibold text-slate-200 hover:text-white">
-                <i data-lucide="calendar-check" class="w-4 h-4 text-brand-teal"></i> Quotidien & TT
-            </a>
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <main class="flex-1 overflow-x-hidden pb-20">
-        
-        <!-- Header Section -->
-        <header class="bg-white border-b border-slate-200 px-6 py-10 md:py-16 mb-10 text-center relative overflow-hidden">
-            <div class="absolute top-0 right-0 w-64 h-64 bg-brand-teal opacity-5 rounded-full blur-3xl -mr-20 -mt-20 pointer-events-none"></div>
-            <div class="absolute bottom-0 left-0 w-64 h-64 bg-brand-orange opacity-5 rounded-full blur-3xl -ml-20 -mb-20 pointer-events-none"></div>
+    <!-- Hero Section / Intro -->
+    <section id="intro" class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-brand-teal to-brand-teal_light text-white">
+        <div class="max-w-4xl mx-auto text-center">
+            <h1 class="text-5xl md:text-6xl font-extrabold mb-6 tracking-tight">C'EST LA RENTRÉE <span class="text-brand-orange">2026</span></h1>
+            <p class="text-xl md:text-2xl font-light mb-10 text-slate-100">
+                Une nouvelle dynamique. De nouveaux recrutements. Une nouvelle énergie.<br>
+                <strong class="font-semibold text-white">Et donc une responsabilité : reposer un cadre clair.</strong>
+            </p>
             
-            <div class="relative z-10 max-w-3xl mx-auto">
-                <span class="inline-block py-1.5 px-4 rounded-full bg-slate-100 text-slate-500 text-xs font-bold tracking-widest mb-6 border border-slate-200 uppercase">Usage Interne</span>
-                <h1 class="text-3xl md:text-5xl font-black text-brand-main mb-6 leading-tight">Playbook Opérationnel <br>& Vie d'Agence</h1>
-                <p class="text-base md:text-lg text-slate-500 font-medium">Alignement sur les processus, les rôles et les standards d'excellence pour garantir notre efficacité collective.</p>
+            <div class="bg-white/10 p-8 rounded-2xl backdrop-blur-sm border border-white/20 inline-block text-left w-full md:w-auto">
+                <h2 class="text-xl font-bold mb-4 text-brand-orange uppercase tracking-wider">Cette rentrée est l'occasion de :</h2>
+                <ul class="space-y-3 text-lg">
+                    <li class="flex items-center"><i class="fa-solid fa-check-circle text-brand-orange mr-3"></i> Clarifier les rôles</li>
+                    <li class="flex items-center"><i class="fa-solid fa-check-circle text-brand-orange mr-3"></i> Réaligner les méthodes</li>
+                    <li class="flex items-center"><i class="fa-solid fa-check-circle text-brand-orange mr-3"></i> Simplifier les process</li>
+                    <li class="flex items-center"><i class="fa-solid fa-check-circle text-brand-orange mr-3"></i> Revoir ce qui doit évoluer</li>
+                </ul>
             </div>
-        </header>
+        </div>
+    </section>
 
-        <div class="max-w-5xl mx-auto px-4 md:px-8 space-y-16">
+    <!-- Section I: Organigramme -->
+    <section id="organigramme" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <span class="text-brand-orange font-bold text-lg tracking-widest uppercase">I - Structure</span>
+            <h2 class="text-4xl font-bold text-brand-teal mt-2">Organigramme</h2>
+            <div class="mt-6 flex justify-center space-x-8 text-sm font-medium text-slate-500 uppercase">
+                <span>Qui décide ?</span>
+                <span>Qui arbitre ?</span>
+                <span>Qui pilote ?</span>
+                <span>Qui exécute ?</span>
+            </div>
+        </div>
 
-            <!-- Section 1: Vision -->
-            <section id="vision" class="scroll-mt-24">
-                <div class="text-center mb-8">
-                    <div class="inline-block bg-brand-main text-white text-xs font-bold px-6 py-2.5 rounded-full uppercase tracking-widest shadow-md">
-                        Le Fondement
+        <div class="flex flex-col items-center space-y-8">
+            <!-- Top Level -->
+            <div class="flex flex-col md:flex-row gap-8 justify-center w-full">
+                <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-brand-teal text-center w-full md:w-64">
+                    <div class="w-16 h-16 rounded-full bg-slate-200 mx-auto mb-3 flex items-center justify-center text-brand-teal text-2xl"><i class="fa-solid fa-user-tie"></i></div>
+                    <h3 class="font-bold text-lg">Julien Boisard</h3>
+                    <p class="text-sm text-slate-500">Directeur Développement & Business</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-brand-teal text-center w-full md:w-64">
+                    <div class="w-16 h-16 rounded-full bg-slate-200 mx-auto mb-3 flex items-center justify-center text-brand-teal text-2xl"><i class="fa-solid fa-user-tie"></i></div>
+                    <h3 class="font-bold text-lg">Marie Tassus</h3>
+                    <p class="text-sm text-slate-500">Directrice Ressources & Performance</p>
+                </div>
+            </div>
+            
+            <!-- Second Level -->
+            <div class="w-px h-8 bg-slate-300"></div>
+            <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-brand-orange text-center w-full md:w-72">
+                <div class="w-16 h-16 rounded-full bg-slate-200 mx-auto mb-3 flex items-center justify-center text-brand-orange text-2xl"><i class="fa-solid fa-user"></i></div>
+                <h3 class="font-bold text-lg">Simon Tassus</h3>
+                <p class="text-sm text-slate-500">Directeur Conseil & Expérience</p>
+            </div>
+
+            <div class="w-full flex justify-center relative mt-4">
+                <!-- Connectors -->
+                <div class="absolute top-0 w-3/4 md:w-2/3 h-px bg-slate-300"></div>
+            </div>
+
+            <!-- Third Level (Leads/Seniors) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full pt-4">
+                <!-- Team 1 -->
+                <div class="flex flex-col items-center">
+                    <div class="w-px h-8 bg-slate-300 -mt-12 hidden md:block"></div>
+                    <div class="bg-blue-50 p-5 rounded-xl shadow-sm border border-blue-100 text-center w-full mb-6 relative">
+                        <span class="absolute -top-3 -right-3 bg-blue-500 text-white w-6 h-6 rounded-full text-xs flex items-center justify-center">1</span>
+                        <h3 class="font-bold">Marilou Gallina</h3>
+                        <p class="text-xs text-slate-500">Cheffe de projet senior</p>
+                    </div>
+                    <div class="grid grid-cols-1 gap-3 w-full">
+                        <div class="bg-white p-3 rounded-lg shadow-sm text-center text-sm border border-slate-100"><span class="font-semibold">Juliya Waldesenbet</span><br><span class="text-xs text-slate-500">Cheffe de projet junior</span></div>
+                        <div class="bg-white p-3 rounded-lg shadow-sm text-center text-sm border border-slate-100"><span class="font-semibold">Alice Off Buchs</span><br><span class="text-xs text-slate-500">Chargée d'événements</span></div>
+                        <div class="bg-white p-3 rounded-lg shadow-sm text-center text-sm border border-slate-100"><span class="font-semibold">Léna Cosmet</span><br><span class="text-xs text-slate-500">Chargée d'événements</span></div>
                     </div>
                 </div>
 
-                <div class="app-card relative overflow-hidden group">
-                    <div class="absolute top-0 left-0 w-2 h-full bg-brand-orange"></div>
-                    <div class="flex flex-col md:flex-row items-center gap-8 md:p-4">
-                        <div class="flex-1">
-                            <h2 class="text-2xl font-black text-brand-main mb-4 flex items-center gap-3">
-                                <i data-lucide="scale" class="text-brand-orange w-7 h-7"></i>
-                                Cadre Clair = Liberté d'Action
-                            </h2>
-                            <p class="text-slate-600 mb-6 font-medium leading-relaxed">Plus d'autonomie demande plus de précision. Ce document clarifie les zones grises entre le "Doc Orga" théorique et la réalité du terrain.</p>
-                            
-                            <div class="grid md:grid-cols-2 gap-4">
-                                <div class="bg-slate-50 rounded-xl p-4 border border-slate-100 flex items-start gap-3">
-                                    <div class="bg-white p-2 rounded-lg shadow-sm text-brand-main"><i data-lucide="target" class="w-5 h-5"></i></div>
-                                    <p class="text-sm text-slate-600"><strong class="text-brand-main">Objectif Efficacité :</strong> réduire les allers-retours inutiles et garantir la qualité.</p>
-                                </div>
-                                <div class="bg-slate-50 rounded-xl p-4 border border-slate-100 flex items-start gap-3">
-                                    <div class="bg-white p-2 rounded-lg shadow-sm text-brand-main"><i data-lucide="unlock" class="w-5 h-5"></i></div>
-                                    <p class="text-sm text-slate-600"><strong class="text-brand-main">Leviers d'action :</strong> Ces règles garantissent votre autonomie sur les projets.</p>
-                                </div>
-                            </div>
-                        </div>
+                <!-- DA -->
+                <div class="flex flex-col items-center mt-8 md:mt-0">
+                    <div class="w-px h-8 bg-slate-300 -mt-12 hidden md:block"></div>
+                    <div class="bg-green-50 p-5 rounded-xl shadow-sm border border-green-100 text-center w-full relative">
+                        <span class="absolute -top-3 -right-3 bg-green-500 text-white w-6 h-6 rounded-full text-xs flex items-center justify-center">2</span>
+                        <h3 class="font-bold">Pascal Ansani</h3>
+                        <p class="text-xs text-slate-500">Directeur Artistique</p>
                     </div>
                 </div>
-            </section>
 
-            <!-- Section 2: Gouvernance -->
-            <section id="gouvernance" class="scroll-mt-24">
-                <div class="text-center mb-10">
-                    <div class="inline-block bg-brand-main text-white text-xs font-bold px-6 py-2.5 rounded-full uppercase tracking-widest shadow-md mb-4">
-                        Matrice Rôles & Missions
+                <!-- Team 2 -->
+                <div class="flex flex-col items-center mt-8 md:mt-0">
+                    <div class="w-px h-8 bg-slate-300 -mt-12 hidden md:block"></div>
+                    <div class="bg-purple-50 p-5 rounded-xl shadow-sm border border-purple-100 text-center w-full mb-6 relative">
+                        <span class="absolute -top-3 -right-3 bg-purple-500 text-white w-6 h-6 rounded-full text-xs flex items-center justify-center">3</span>
+                        <h3 class="font-bold">Camille Dumont Guinard</h3>
+                        <p class="text-xs text-slate-500">Cheffe de projet senior</p>
                     </div>
-                    <p class="text-slate-500 font-medium text-sm">Le 'Doc Orga' fait foi en cas de doute sur la hiérarchie ou le circuit de validation.</p>
+                    <div class="grid grid-cols-1 gap-3 w-full">
+                        <div class="bg-white p-3 rounded-lg shadow-sm text-center text-sm border border-slate-100"><span class="font-semibold">Justine De Bouriousse</span><br><span class="text-xs text-slate-500">Cheffe de projet junior</span></div>
+                        <div class="bg-white p-3 rounded-lg shadow-sm text-center text-sm border border-slate-100"><span class="font-semibold">Camille Ménaga</span><br><span class="text-xs text-slate-500">Chargée d'événements</span></div>
+                    </div>
                 </div>
+            </div>
+        </div>
+    </section>
 
-                <div class="grid md:grid-cols-2 gap-6">
-                    <!-- Rôle Julien -->
-                    <div class="app-card flex flex-col h-full">
-                        <div class="flex justify-between items-start mb-6">
-                            <h3 class="text-xl font-bold text-slate-800">Intervention Exécutive</h3>
-                            <div class="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 border border-slate-100">
-                                <i data-lucide="crosshair" class="w-5 h-5"></i>
-                            </div>
-                        </div>
-                        <ul class="space-y-3 mb-6 flex-1 text-sm text-slate-600">
-                            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-4 h-4 text-green-500 mt-0.5 shrink-0"></i> <span>Intervention stratégique.</span></li>
-                            <li class="flex items-start gap-3"><i data-lucide="x-circle" class="w-4 h-4 text-red-500 mt-0.5 shrink-0"></i> <span>Ne pas prévoir une mise en relation systématique dès la demande.</span></li>
-                            <li class="flex items-start gap-3"><i data-lucide="info" class="w-4 h-4 text-brand-teal mt-0.5 shrink-0"></i> <span>Conserve parfois le "Lead Client".</span></li>
-                        </ul>
-                        <div class="flex gap-2 flex-wrap bg-slate-50 -mx-6 -mb-6 p-4 rounded-b-2xl border-t border-slate-100 mt-auto">
-                            <span class="tag-julien text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wide">JULIEN</span>
-                        </div>
-                    </div>
+    <!-- Section II: Rôles & Missions -->
+    <section id="roles" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-brand-orange font-bold text-lg tracking-widest uppercase">II - Organisation</span>
+                <h2 class="text-4xl font-bold text-brand-teal mt-2">Rôles & Missions</h2>
+            </div>
 
-                    <!-- Rôle Simon -->
-                    <div class="app-card flex flex-col h-full">
-                        <div class="flex justify-between items-start mb-6">
-                            <h3 class="text-xl font-bold text-slate-800">Support & Sourcing</h3>
-                            <div class="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 border border-slate-100">
-                                <i data-lucide="search" class="w-5 h-5"></i>
-                            </div>
-                        </div>
-                        <ul class="space-y-3 mb-6 flex-1 text-sm text-slate-600">
-                            <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-4 h-4 text-green-500 mt-0.5 shrink-0"></i> <span>Rôle défini par le Doc Orga.</span></li>
-                            <li class="flex items-start gap-3"><i data-lucide="x-circle" class="w-4 h-4 text-red-500 mt-0.5 shrink-0"></i> <span>Son intervention et sa mise en copie ne sont pas automatiques.</span></li>
-                            <li class="flex items-start gap-3"><i data-lucide="info" class="w-4 h-4 text-brand-teal mt-0.5 shrink-0"></i> <span>Dépend de la phase du projet (Sourcing).</span></li>
-                        </ul>
-                        <div class="flex gap-2 flex-wrap bg-slate-50 -mx-6 -mb-6 p-4 rounded-b-2xl border-t border-slate-100 mt-auto">
-                            <span class="tag-simon text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wide">SIMON</span>
-                        </div>
-                    </div>
-
-                    <!-- Rôle CDP -->
-                    <div class="app-card flex flex-col h-full md:col-span-2 border-brand-teal/30 shadow-brand-teal/5 ring-1 ring-brand-teal/10">
-                        <div class="flex justify-between items-start mb-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- Rôles Clés -->
+                <div>
+                    <h3 class="text-2xl font-bold text-brand-teal mb-6 border-b-2 border-brand-orange pb-2 inline-block">Les Rôles Clés</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center p-4 bg-slate-50 rounded-lg">
+                            <div class="w-12 h-12 rounded-full bg-brand-teal/10 flex items-center justify-center text-brand-teal mr-4"><i class="fa-solid fa-key"></i></div>
                             <div>
-                                <h3 class="text-xl font-bold text-brand-main">Maître du Processus</h3>
-                                <p class="text-sm text-slate-500 mt-1">Le CDP est la machine du projet, propriétaire de l'opérationnel.</p>
+                                <p class="font-bold text-lg">Direction / Pilotes</p>
+                                <p class="text-slate-600">Julien, Simon, Pascal, Marie</p>
                             </div>
-                            <div class="w-10 h-10 rounded-full bg-brand-teal/10 flex items-center justify-center text-brand-teal border border-brand-teal/20">
-                                <i data-lucide="settings-2" class="w-5 h-5"></i>
+                        </div>
+                        <div class="flex items-center p-4 bg-slate-50 rounded-lg">
+                            <div class="w-12 h-12 rounded-full bg-brand-orange/10 flex items-center justify-center text-brand-orange mr-4"><i class="fa-solid fa-users-gear"></i></div>
+                            <div>
+                                <p class="font-bold text-lg">Cheffes d'équipe</p>
+                                <p class="text-slate-600">Marilou & Cam</p>
                             </div>
+                        </div>
+                        <div class="flex items-center p-4 bg-slate-50 rounded-lg">
+                            <div class="w-12 h-12 rounded-full bg-brand-teal/10 flex items-center justify-center text-brand-teal mr-4"><i class="fa-solid fa-star"></i></div>
+                            <div>
+                                <p class="font-bold text-lg">Lead</p>
+                                <p class="text-slate-600">Marilou, Cam, Juliya & Justine</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center p-4 bg-slate-50 rounded-lg">
+                            <div class="w-12 h-12 rounded-full bg-brand-orange/10 flex items-center justify-center text-brand-orange mr-4"><i class="fa-solid fa-users"></i></div>
+                            <div>
+                                <p class="font-bold text-lg">Équipe</p>
+                                <p class="text-slate-600">Toute l'équipe Event</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Process -->
+                <div>
+                    <h3 class="text-2xl font-bold text-brand-teal mb-6 border-b-2 border-brand-orange pb-2 inline-block">Notre Process</h3>
+                    <div class="bg-slate-50 p-6 rounded-xl border border-slate-100">
+                        <div class="flex flex-wrap gap-3 relative">
+                            <span class="process-arrow relative bg-white px-4 py-2 rounded-md shadow-sm border border-slate-200 text-sm font-semibold text-brand-teal mb-2 mr-2">Entrée</span>
+                            <span class="process-arrow relative bg-white px-4 py-2 rounded-md shadow-sm border border-slate-200 text-sm font-semibold text-brand-teal mb-2 mr-2">Conception</span>
+                            <span class="process-arrow relative bg-white px-4 py-2 rounded-md shadow-sm border border-slate-200 text-sm font-semibold text-brand-teal mb-2 mr-2">Sourcing</span>
+                            <span class="process-arrow relative bg-white px-4 py-2 rounded-md shadow-sm border border-slate-200 text-sm font-semibold text-brand-teal mb-2 mr-2">Budget</span>
+                            <span class="process-arrow relative bg-white px-4 py-2 rounded-md shadow-sm border border-slate-200 text-sm font-semibold text-brand-teal mb-2 mr-2">Production</span>
+                            <span class="process-arrow relative bg-white px-4 py-2 rounded-md shadow-sm border border-slate-200 text-sm font-semibold text-brand-teal mb-2 mr-2">Présentation</span>
+                            <span class="process-arrow relative bg-white px-4 py-2 rounded-md shadow-sm border border-slate-200 text-sm font-semibold text-brand-teal mb-2 mr-2">Facturation</span>
+                            <span class="process-arrow relative bg-white px-4 py-2 rounded-md shadow-sm border border-slate-200 text-sm font-semibold text-brand-teal mb-2 mr-2">Production Terrain</span>
+                            <span class="relative bg-brand-teal text-white px-4 py-2 rounded-md shadow-sm font-semibold text-sm mb-2">Clôture</span>
                         </div>
                         
-                        <div class="grid md:grid-cols-2 gap-4 mt-4 mb-6">
-                            <div class="bg-slate-50 rounded-xl p-4">
-                                <h4 class="text-xs font-bold uppercase text-slate-400 mb-2">Responsabilités</h4>
-                                <ul class="text-sm text-slate-700 space-y-1">
-                                    <li>• Création To-Do</li>
-                                    <li>• Gestion Deadlines</li>
-                                    <li>• Questions Plateforme</li>
-                                    <li>• Détails de démarrage</li>
-                                </ul>
-                            </div>
-                            <div class="bg-slate-50 rounded-xl p-4">
-                                <h4 class="text-xs font-bold uppercase text-slate-400 mb-2">Philosophie "Estelle"</h4>
-                                <p class="text-sm text-slate-700">L'autonomie est encouragée (moins de synchronisations, plus d'action), mais jamais au détriment du projet.</p>
-                                <div class="mt-2 text-xs font-semibold text-brand-main">
-                                    Rythme Synchro : Avant/Après Sourcing ➔ Vérif Propal ➔ Avant Envoi
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="flex gap-2 flex-wrap bg-slate-50 -mx-6 -mb-6 p-4 rounded-b-2xl border-t border-slate-100 mt-auto items-center">
-                            <span class="tag-cdp text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wide">CHEF.FE D'ÉQUIPE</span>
-                            <span class="text-xs text-slate-500 font-medium ml-2">Lead relation client variable (Julien / Senior)</span>
+                        <div class="mt-8 p-4 bg-blue-50 border-l-4 border-blue-500 rounded-r-lg">
+                            <p class="text-sm font-medium text-blue-900 flex items-center">
+                                <i class="fa-solid fa-link mr-2"></i> Ressources : 
+                                <span class="ml-2 bg-white px-2 py-1 rounded shadow-sm text-xs">Lien Pascal</span>
+                                <span class="ml-2 bg-white px-2 py-1 rounded shadow-sm text-xs text-green-700">Lien Excel</span>
+                            </p>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </div>
+    </section>
 
-            <!-- Section 3: Méthodologie Projet -->
-            <section id="projet" class="scroll-mt-24">
-                <div class="text-center mb-10">
-                    <div class="inline-block bg-brand-main text-white text-xs font-bold px-6 py-2.5 rounded-full uppercase tracking-widest shadow-md">
-                        Phase 1 : Lancement & Sourcing
+    <!-- Section III: Organisation Semaine -->
+    <section id="organisation" class="py-20 bg-brand-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-brand-orange font-bold text-lg tracking-widest uppercase">III - Quotidien</span>
+                <h2 class="text-4xl font-bold text-brand-teal mt-2">Organisation de la Semaine</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                
+                <!-- Gagnons du temps -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 bg-yellow-100 text-yellow-600 rounded-xl flex items-center justify-center text-xl mb-4">
+                        <i class="fa-regular fa-clock"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Gagnons du temps</h3>
+                    <ul class="space-y-3 text-sm text-slate-700">
+                        <li class="flex items-start"><i class="fa-solid fa-arrow-right text-brand-orange mt-1 mr-2"></i> <span><strong>Matin :</strong> Réunions (à l'heure et moins longues)</span></li>
+                        <li class="flex items-start"><i class="fa-solid fa-arrow-right text-brand-orange mt-1 mr-2"></i> <span><strong>Après-midi :</strong> Production</span></li>
+                        <li class="flex items-start"><i class="fa-solid fa-arrow-right text-brand-orange mt-1 mr-2"></i> <span><strong>Avant de partir :</strong> Envois de demandes prestataires et relances effectuées</span></li>
+                        <li class="flex items-start"><i class="fa-solid fa-arrow-right text-brand-orange mt-1 mr-2"></i> <span>MAJ document Sourcing & Drive</span></li>
+                    </ul>
+                </div>
+
+                <!-- Propositions -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center text-xl mb-4">
+                        <i class="fa-regular fa-lightbulb"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Propositions & Qualité</h3>
+                    <ul class="space-y-3 text-sm text-slate-700">
+                        <li class="flex items-start"><i class="fa-solid fa-check text-brand-teal mt-1 mr-2"></i> <span><strong>2 propositions maximum</strong> (sauf demande spécifique)</span></li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-brand-teal mt-1 mr-2"></i> <span>Moins de destinations, mais <strong>plus de profondeur</strong></span></li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-brand-teal mt-1 mr-2"></i> <span>Plus de demandes par destination</span></li>
+                        <li class="flex items-start"><i class="fa-solid fa-heart text-red-500 mt-1 mr-2"></i> <span>L'option "Coup de cœur" doit rester <strong>exceptionnelle</strong></span></li>
+                    </ul>
+                </div>
+
+                <!-- Télétravail -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-house-laptop"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Télétravail</h3>
+                    <ul class="space-y-3 text-sm text-slate-700">
+                        <li class="flex items-start"><i class="fa-solid fa-circle-dot text-brand-teal mt-1 mr-2 text-[10px]"></i> <span>1 jour / semaine (après 1 mois d'ancienneté)</span></li>
+                        <li class="flex items-start"><i class="fa-solid fa-circle-dot text-brand-teal mt-1 mr-2 text-[10px]"></i> <span>Minimum <strong>3 jours au bureau</strong></span></li>
+                        <li class="flex items-start"><i class="fa-solid fa-circle-dot text-brand-teal mt-1 mr-2 text-[10px]"></i> <span>12 jours TT joker / an</span></li>
+                        <li class="flex items-start text-red-600 font-medium"><i class="fa-solid fa-ban mt-1 mr-2"></i> <span>Pas de TT en phase critique (rendus, rush, etc...)</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Récupération -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+                    <h3 class="text-xl font-bold mb-4 text-brand-teal border-b pb-2"><i class="fa-solid fa-calendar-plus mr-2"></i>Récupération & Staff Événement</h3>
+                    <div class="space-y-4 text-sm">
+                        <p class="bg-slate-50 p-3 rounded-lg border border-slate-200">
+                            <strong>Validation :</strong> À définir avec le chef d'équipe + validation de Marie.
+                        </p>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-brand-teal/5 p-3 rounded-lg">
+                                <span class="block text-brand-teal font-bold">Jusqu'à 00H</span>
+                                Demi-journée (Retour à 14H)
+                            </div>
+                            <div class="bg-brand-teal/5 p-3 rounded-lg">
+                                <span class="block text-brand-teal font-bold">Jusqu'à 05H</span>
+                                Journée entière
+                            </div>
+                        </div>
+                        <ul class="list-disc pl-5 space-y-2 mt-4 text-slate-700">
+                            <li>Les récupérations se posent <strong>le lendemain</strong> de l'événement.</li>
+                            <li>Week-end et jours fériés : <strong>Payés</strong> (uniquement si vendu au client).</li>
+                            <li>Staff sur événement : <strong>Junior + stagiaire ou alternant = PAS POSSIBLE</strong>.</li>
+                        </ul>
                     </div>
                 </div>
 
-                <!-- Timeline Kickoff -->
-                <div class="app-card mb-8">
-                    <h3 class="text-lg font-bold text-brand-main mb-6 flex items-center gap-2">
-                        <i data-lucide="flag" class="text-brand-orange w-5 h-5"></i> Le Kick-off : Pas de précipitation
-                    </h3>
-                    
-                    <div class="flex flex-col md:flex-row items-center justify-between gap-6 bg-slate-50 p-6 rounded-xl border border-slate-100">
-                        <!-- J0 -->
-                        <div class="flex-1 text-center w-full">
-                            <div class="w-16 h-16 mx-auto bg-white border-2 border-slate-200 rounded-2xl flex items-center justify-center text-xl font-black text-slate-400 mb-3 shadow-sm">J0</div>
-                            <h4 class="font-bold text-sm text-slate-700">Réception Demande</h4>
-                            <div class="mt-3 inline-flex items-center gap-1 bg-red-50 text-red-600 text-xs font-bold px-3 py-1.5 rounded-full border border-red-100">
-                                <i data-lucide="ban" class="w-3 h-3"></i> Pas de kick-off
-                            </div>
-                        </div>
-
-                        <!-- Arrow -->
-                        <div class="text-slate-300 hidden md:block"><i data-lucide="arrow-right" class="w-8 h-8"></i></div>
-                        <div class="text-slate-300 md:hidden"><i data-lucide="arrow-down" class="w-6 h-6"></i></div>
-
-                        <!-- J1+ -->
-                        <div class="flex-1 text-center w-full">
-                            <div class="w-20 h-20 mx-auto bg-brand-main text-white rounded-2xl flex items-center justify-center text-2xl font-black mb-3 shadow-md transform scale-110">J1+</div>
-                            <h4 class="font-bold text-sm text-brand-main">Analyse & Préparation</h4>
-                            <p class="text-xs text-slate-500 mt-1 px-4">Temps nécessaire pour le pré-sourcing</p>
-                        </div>
-                    </div>
-
-                    <div class="mt-6 border-t border-slate-100 pt-6">
-                        <h4 class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-4">Pré-requis avant démarrage</h4>
-                        <div class="grid md:grid-cols-3 gap-3">
-                            <div class="bg-white border border-slate-200 rounded-xl p-3 flex items-center gap-3 shadow-sm">
-                                <div class="w-6 h-6 rounded-full bg-brand-teal/10 text-brand-teal flex items-center justify-center text-xs font-bold shrink-0">1</div>
-                                <span class="text-sm text-slate-700 font-medium">Questions envoyées</span>
-                            </div>
-                            <div class="bg-white border border-slate-200 rounded-xl p-3 flex items-center gap-3 shadow-sm">
-                                <div class="w-6 h-6 rounded-full bg-brand-teal/10 text-brand-teal flex items-center justify-center text-xs font-bold shrink-0">2</div>
-                                <span class="text-sm text-slate-700 font-medium">Rétroplanning défini</span>
-                            </div>
-                            <div class="bg-white border border-slate-200 rounded-xl p-3 flex items-center gap-3 shadow-sm">
-                                <div class="w-6 h-6 rounded-full bg-brand-teal/10 text-brand-teal flex items-center justify-center text-xs font-bold shrink-0">3</div>
-                                <span class="text-sm text-slate-700 font-medium">Lead & Rôles fixés</span>
-                            </div>
-                        </div>
+                <!-- Ce qui ne doit plus arriver -->
+                <div class="bg-red-50 p-6 rounded-2xl shadow-sm border border-red-100">
+                    <h3 class="text-xl font-bold mb-4 text-red-700 border-b border-red-200 pb-2"><i class="fa-solid fa-triangle-exclamation mr-2"></i>Ce qui ne doit plus arriver</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-3 mt-4 font-medium text-red-900">
+                        <div class="flex items-center bg-white/60 p-2 rounded"><i class="fa-solid fa-xmark text-red-500 mr-3 text-lg"></i> Budget non relu</div>
+                        <div class="flex items-center bg-white/60 p-2 rounded"><i class="fa-solid fa-xmark text-red-500 mr-3 text-lg"></i> Marge non vérifiée</div>
+                        <div class="flex items-center bg-white/60 p-2 rounded"><i class="fa-solid fa-xmark text-red-500 mr-3 text-lg"></i> RSE oubliée</div>
+                        <div class="flex items-center bg-white/60 p-2 rounded"><i class="fa-solid fa-xmark text-red-500 mr-3 text-lg"></i> Relances non faites</div>
+                        <div class="flex items-center bg-white/60 p-2 rounded"><i class="fa-solid fa-xmark text-red-500 mr-3 text-lg"></i> Slides incomplètes</div>
+                        <div class="flex items-center bg-white/60 p-2 rounded"><i class="fa-solid fa-xmark text-red-500 mr-3 text-lg"></i> Rétroplanning flou</div>
+                        <div class="flex items-center bg-white/60 p-2 rounded col-span-1 md:col-span-2"><i class="fa-solid fa-xmark text-red-500 mr-3 text-lg"></i> Manque d'anticipation</div>
                     </div>
                 </div>
-
-                <!-- Entonnoir -->
-                <div class="app-card bg-brand-main text-white border-none shadow-xl">
-                    <h3 class="text-lg font-bold mb-8 text-center text-white">Stratégie de Sourcing : L'Entonnoir</h3>
-                    
-                    <div class="flex flex-col md:flex-row gap-4 items-center mb-6">
-                        <div class="flex-1 w-full bg-white/10 rounded-2xl p-6 text-center border border-white/10">
-                            <div class="w-10 h-10 rounded-full bg-white/20 mx-auto mb-3 flex items-center justify-center"><i data-lucide="filter" class="w-5 h-5"></i></div>
-                            <h4 class="font-bold text-brand-orange uppercase text-xs tracking-widest mb-1">Entrée</h4>
-                            <p class="text-sm text-slate-200">Volume Élevé. <br>Multiplier les demandes</p>
-                        </div>
-                        
-                        <div class="text-brand-teal"><i data-lucide="chevron-right" class="w-6 h-6 hidden md:block"></i><i data-lucide="chevron-down" class="w-6 h-6 md:hidden"></i></div>
-                        
-                        <div class="flex-1 w-full bg-white/10 rounded-2xl p-6 text-center border border-white/10">
-                            <div class="w-10 h-10 rounded-full bg-white/20 mx-auto mb-3 flex items-center justify-center"><i data-lucide="minimize-2" class="w-5 h-5"></i></div>
-                            <h4 class="font-bold text-brand-orange uppercase text-xs tracking-widest mb-1">Filtrage</h4>
-                            <p class="text-sm text-slate-200">Moins de destinations, <br>forte intensité.</p>
-                        </div>
-
-                        <div class="text-brand-teal"><i data-lucide="chevron-right" class="w-6 h-6 hidden md:block"></i><i data-lucide="chevron-down" class="w-6 h-6 md:hidden"></i></div>
-                        
-                        <div class="flex-1 w-full bg-white rounded-2xl p-6 text-center shadow-lg relative overflow-hidden">
-                            <div class="absolute inset-0 bg-brand-teal opacity-5"></div>
-                            <div class="relative z-10">
-                                <div class="w-10 h-10 rounded-full bg-brand-teal text-white mx-auto mb-3 flex items-center justify-center"><i data-lucide="send" class="w-5 h-5 -ml-1"></i></div>
-                                <h4 class="font-bold text-brand-main uppercase text-xs tracking-widest mb-1">Sortie</h4>
-                                <p class="text-sm font-bold text-slate-800">2 propositions <br>au client</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-white/10 rounded-xl p-4 text-sm flex items-center justify-center gap-3 backdrop-blur-sm border border-white/10">
-                        <i data-lucide="lightbulb" class="text-brand-orange w-5 h-5 flex-shrink-0"></i>
-                        <p class="text-slate-100"><strong class="text-white">Pro Tip :</strong> Le coup de cœur doit rester très exceptionnel. On privilégie la rationalité et le volume.</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Section 4: Staffing -->
-            <section id="staffing" class="scroll-mt-24">
-                <div class="text-center mb-10">
-                    <div class="inline-block bg-brand-main text-white text-xs font-bold px-6 py-2.5 rounded-full uppercase tracking-widest shadow-md mb-4">
-                        Phase 2 : Staffing Événement
-                    </div>
-                </div>
-
-                <div class="grid md:grid-cols-2 gap-6">
-                    <!-- Composition -->
-                    <div class="app-card flex flex-col">
-                        <h3 class="text-lg font-bold text-brand-main mb-6 border-b border-slate-100 pb-3">Logique d'Attribution</h3>
-                        
-                        <div class="space-y-4 mb-8 text-sm font-medium text-slate-700">
-                            <div class="flex items-center justify-between bg-slate-50 p-3 rounded-lg border border-slate-100">
-                                <span>Qui a vendu le projet ?</span>
-                                <i data-lucide="check" class="text-slate-300 w-4 h-4"></i>
-                            </div>
-                            <div class="flex items-center justify-between bg-brand-teal/5 p-3 rounded-lg border border-brand-teal/20 text-brand-main font-bold">
-                                <span>Qui a travaillé sur la prod ?</span>
-                                <span class="text-[10px] bg-brand-teal text-white px-2 py-0.5 rounded uppercase tracking-wider">Prioritaire</span>
-                            </div>
-                        </div>
-
-                        <h3 class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-4">Règles de Seniorité</h3>
-                        
-                        <div class="space-y-3 flex-1">
-                            <!-- Interdit -->
-                            <div class="flex items-center justify-between bg-red-50 rounded-xl p-3 border border-red-100">
-                                <div class="flex items-center gap-2">
-                                    <span class="bg-white text-slate-600 text-[10px] font-bold px-2 py-1 rounded-md border border-slate-200">JUNIOR</span>
-                                    <i data-lucide="plus" class="text-slate-400 w-3 h-3"></i>
-                                    <span class="bg-white text-slate-600 text-[10px] font-bold px-2 py-1 rounded-md border border-slate-200">STAGIAIRE</span>
-                                </div>
-                                <div class="text-red-500 font-bold text-xs flex items-center gap-1">
-                                    <i data-lucide="x-circle" class="w-4 h-4"></i> NON
-                                </div>
-                            </div>
-
-                            <!-- Obligatoire -->
-                            <div class="flex items-center justify-between bg-green-50 rounded-xl p-3 border border-green-100">
-                                <div class="flex items-center gap-2">
-                                    <span class="tag-senior text-[10px] font-bold px-2 py-1 rounded-md">SENIOR</span>
-                                    <i data-lucide="plus" class="text-slate-400 w-3 h-3"></i>
-                                    <span class="bg-white text-slate-600 text-[10px] font-bold px-2 py-1 rounded-md border border-slate-200">JUN./STAG.</span>
-                                </div>
-                                <div class="text-green-600 font-bold text-xs flex items-center gap-1">
-                                    <i data-lucide="check-circle-2" class="w-4 h-4"></i> OUI
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Heures -->
-                    <div class="app-card flex flex-col bg-brand-main text-white border-none shadow-lg">
-                        <div class="flex justify-between items-start mb-6">
-                            <h3 class="text-lg font-bold text-white">Heures Supplémentaires</h3>
-                            <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-brand-orange">
-                                <i data-lucide="clock" class="w-5 h-5"></i>
-                            </div>
-                        </div>
-                        
-                        <div class="space-y-4 flex-1">
-                            <div class="flex items-center justify-between border-b border-white/10 pb-4">
-                                <div>
-                                    <p class="text-xs text-brand-teal uppercase tracking-widest font-bold mb-1">Fin jusqu'à</p>
-                                    <p class="text-xl font-black">00h00</p>
-                                </div>
-                                <div class="text-right">
-                                    <span class="inline-block bg-brand-orange text-white text-xs font-bold px-3 py-1 rounded-full mb-1">RÉCUP 1/2 JOUR</span>
-                                    <p class="text-xs text-slate-300">Retour 14h</p>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-center justify-between border-b border-white/10 pb-4">
-                                <div>
-                                    <p class="text-xs text-brand-teal uppercase tracking-widest font-bold mb-1">Fin jusqu'à</p>
-                                    <p class="text-xl font-black">05h00</p>
-                                </div>
-                                <div class="text-right">
-                                    <span class="inline-block bg-brand-orange text-white text-xs font-bold px-3 py-1 rounded-full">RÉCUP 1 JOUR</span>
-                                </div>
-                            </div>
-
-                            <div class="flex items-center justify-between pt-2">
-                                <div>
-                                    <p class="text-sm font-bold text-white">Week-ends & Fériés</p>
-                                </div>
-                                <div class="text-right">
-                                    <span class="inline-block bg-green-500/20 text-green-300 border border-green-500/30 text-xs font-bold px-3 py-1 rounded-full">PAYÉS*</span>
-                                </div>
-                            </div>
-                            <p class="text-[10px] text-slate-400 text-right italic">*Si vendu dans le budget</p>
-                        </div>
-
-                        <div class="mt-6 bg-white/10 rounded-xl p-3 flex items-start gap-3 backdrop-blur-sm border border-white/10">
-                            <i data-lucide="alert-triangle" class="w-4 h-4 text-brand-orange mt-0.5 shrink-0"></i>
-                            <p class="text-xs text-slate-200"><strong class="text-white">Validation impérative</strong> : Chef d'équipe + Marie.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Section 5: Quotidien -->
-            <section id="quotidien" class="scroll-mt-24">
-                <div class="text-center mb-10">
-                    <div class="inline-block bg-brand-main text-white text-xs font-bold px-6 py-2.5 rounded-full uppercase tracking-widest shadow-md">
-                        Organisation Interne
-                    </div>
-                </div>
-
-                <!-- Calendar TT -->
-                <div class="app-card mb-6">
-                    <h3 class="text-lg font-bold text-brand-main mb-6">Politique de Télétravail</h3>
-                    
-                    <div class="flex overflow-x-auto pb-4 gap-3 no-scrollbar snap-x">
-                        <div class="snap-center shrink-0 w-24 bg-slate-50 border border-slate-200 p-4 rounded-2xl flex flex-col items-center justify-center text-center">
-                            <span class="text-xs font-bold text-slate-400 mb-2">LUN</span>
-                            <i data-lucide="building" class="w-6 h-6 text-brand-main mb-2"></i>
-                            <span class="text-[10px] font-bold text-brand-main uppercase">Bureau</span>
-                        </div>
-                        <div class="snap-center shrink-0 w-24 bg-slate-50 border border-slate-200 p-4 rounded-2xl flex flex-col items-center justify-center text-center">
-                            <span class="text-xs font-bold text-slate-400 mb-2">MAR</span>
-                            <i data-lucide="building" class="w-6 h-6 text-brand-main mb-2"></i>
-                            <span class="text-[10px] font-bold text-brand-main uppercase">Bureau</span>
-                        </div>
-                        <div class="snap-center shrink-0 w-24 bg-slate-50 border border-slate-200 p-4 rounded-2xl flex flex-col items-center justify-center text-center">
-                            <span class="text-xs font-bold text-slate-400 mb-2">MER</span>
-                            <i data-lucide="building" class="w-6 h-6 text-brand-main mb-2"></i>
-                            <span class="text-[10px] font-bold text-brand-main uppercase">Bureau</span>
-                        </div>
-                        <div class="snap-center shrink-0 w-28 bg-brand-teal/10 border-2 border-brand-teal p-4 rounded-2xl flex flex-col items-center justify-center text-center shadow-sm relative transform scale-105 z-10">
-                            <span class="text-xs font-bold text-brand-teal mb-2">JEU</span>
-                            <i data-lucide="home" class="w-6 h-6 text-brand-teal mb-2"></i>
-                            <span class="text-[11px] font-black text-brand-teal uppercase">Télétravail</span>
-                        </div>
-                        <div class="snap-center shrink-0 w-24 bg-white border-2 border-dashed border-slate-300 p-4 rounded-2xl flex flex-col items-center justify-center text-center">
-                            <span class="text-xs font-bold text-slate-400 mb-2">VEN</span>
-                            <i data-lucide="shuffle" class="w-5 h-5 text-slate-400 mb-2"></i>
-                            <span class="text-[10px] font-bold text-slate-500 uppercase">Flex</span>
-                        </div>
-                    </div>
-
-                    <div class="mt-4 grid md:grid-cols-2 gap-4">
-                        <div class="bg-slate-50 rounded-xl p-4 text-sm text-slate-600">
-                            <p><strong>Règle :</strong> 1 jour de TT / semaine <span class="text-xs text-slate-400">(après 1 mois)</span> <br><strong class="text-brand-orange mt-1 block">+ 12 jours "Jokers" / an</strong></p>
-                        </div>
-                        <div class="bg-orange-50 rounded-xl p-4 text-sm text-slate-700 border border-orange-100">
-                            <ul class="space-y-1">
-                                <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-brand-orange"></div> Pas de TT lors des rendus.</li>
-                                <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-brand-orange"></div> Ne doit pas pénaliser l'équipe.</li>
-                                <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-brand-orange"></div> Visio toute la journée = Exception.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="grid md:grid-cols-2 gap-6">
-                    <!-- Rythme -->
-                    <div class="app-card">
-                        <h3 class="text-lg font-bold text-brand-main mb-6">Efficacité & Rythme</h3>
-                        <div class="space-y-4">
-                            <div class="flex gap-4">
-                                <div class="w-1 bg-brand-orange rounded-full"></div>
-                                <div>
-                                    <h4 class="text-xs font-bold text-brand-orange uppercase tracking-widest mb-1">Matin</h4>
-                                    <p class="text-sm font-bold text-slate-800">Production & Deep Work</p>
-                                </div>
-                            </div>
-                            <div class="flex gap-4">
-                                <div class="w-1 bg-brand-main rounded-full"></div>
-                                <div>
-                                    <h4 class="text-xs font-bold text-brand-main uppercase tracking-widest mb-1">Après-midi</h4>
-                                    <p class="text-sm font-bold text-slate-800">Réunions & Synchronisations</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mt-6 pt-4 border-t border-slate-100 text-xs text-slate-500 flex items-start gap-2">
-                            <i data-lucide="info" class="w-4 h-4 shrink-0 mt-0.5"></i>
-                            <p>Travail en équipe ≠ Réunion. La ponctualité est une marque de respect obligatoire.</p>
-                        </div>
-                    </div>
-
-                    <!-- Fin de journée -->
-                    <div class="app-card">
-                        <h3 class="text-lg font-bold text-brand-main mb-6">Hygiène Fin de Journée</h3>
-                        <div class="space-y-3">
-                            <div class="flex items-center justify-between bg-slate-50 p-3 rounded-xl border border-slate-100">
-                                <span class="text-sm font-bold text-slate-700">Fichier sourcing à jour</span>
-                                <div class="w-6 h-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center"><i data-lucide="check" class="w-3 h-3"></i></div>
-                            </div>
-                            <div class="flex items-center justify-between bg-slate-50 p-3 rounded-xl border border-slate-100">
-                                <span class="text-sm font-bold text-slate-700">Archivage Drive OK</span>
-                                <div class="w-6 h-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center"><i data-lucide="check" class="w-3 h-3"></i></div>
-                            </div>
-                            <div class="flex items-center justify-between bg-slate-50 p-3 rounded-xl border border-slate-100">
-                                <span class="text-sm font-bold text-slate-700">Mails relance envoyés</span>
-                                <div class="w-6 h-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center"><i data-lucide="check" class="w-3 h-3"></i></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            </div>
 
         </div>
-    </main>
+    </section>
 
-    <script>
-        // Initialisation des icônes
-        lucide.createIcons();
+    <!-- Section IV: Invitations -->
+    <section id="invitations" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-brand-orange font-bold text-lg tracking-widest uppercase">IV - Relations</span>
+                <h2 class="text-4xl font-bold text-brand-teal mt-2">Invitations Partenaires</h2>
+            </div>
 
-        // Gestion du menu actif au scroll
-        const sections = document.querySelectorAll("section");
-        const navLinks = document.querySelectorAll("nav a");
-        
-        window.addEventListener("scroll", () => {
-            let current = "";
-            sections.forEach((section) => {
-                const sectionTop = section.offsetTop;
-                if (pageYOffset >= sectionTop - 150) {
-                    current = section.getAttribute("id"); 
-                }
-            });
+            <div class="bg-slate-50 rounded-2xl p-8 border border-slate-200 mb-10">
+                <h3 class="text-2xl font-bold mb-4 text-brand-teal">Engagement lors des rencontres</h3>
+                <p class="text-slate-700 mb-6 leading-relaxed">
+                    Chez Weevup, les rencontres avec nos partenaires sont <strong>essentielles à notre croissance</strong> et à la qualité des services que nous proposons à nos clients. Ces rendez-vous, qu'ils aient lieu dans nos locaux ou directement chez les partenaires, sont des moments clés pour faire connaître notre agence, découvrir des nouveautés et renforcer des relations professionnelles stratégiques.
+                </p>
+                <p class="text-slate-700 font-medium mb-8 p-4 bg-brand-teal/10 rounded-lg text-brand-teal">
+                    Nous comptons sur chaque membre de l'équipe pour représenter Weevup avec professionnalisme et enthousiasme. Votre comportement, votre attitude et votre tenue sont le reflet de l'agence. Ces rendez-vous sont un véritable levier de succès pour Weevup.
+                </p>
 
-            navLinks.forEach((a) => {
-                a.classList.remove("bg-white/10", "text-white");
-                a.classList.add("text-slate-200");
-                if (a.getAttribute("href").includes(current) && current !== "") {
-                    a.classList.add("bg-white/10", "text-white");
-                    a.classList.remove("text-slate-200");
-                }
-            });
-        });
-    </script>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Attentes -->
+                    <div>
+                        <h4 class="font-bold text-lg mb-4 text-slate-800 border-b pb-2">À chaque rendez-vous, il est attendu de vous que :</h4>
+                        <ul class="space-y-4 text-sm">
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-shirt text-brand-orange mt-1 mr-3 text-lg"></i>
+                                <span>Portiez une <strong>tenue professionnelle</strong> et adaptée.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-handshake-angle text-brand-orange mt-1 mr-3 text-lg"></i>
+                                <span>Adoptiez une <strong>attitude respectueuse, courtoise et engageante</strong>.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-camera-retro text-brand-orange mt-1 mr-3 text-lg"></i>
+                                <span>Preniez une <strong>photo avec les personnes rencontrées</strong> (marquer le moment, trace visuelle) et preniez des <strong>photos/vidéos des lieux</strong> et prestations.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-pen-nib text-brand-orange mt-1 mr-3 text-lg"></i>
+                                <span>Rédigiez un <strong>court résumé de la rencontre</strong> (opportunités, impressions) pour faire un post en perso ou sur Weevup.<br><em>Note : Si post ou story en perso, mention obligatoire de Weevup.</em></span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Règles -->
+                    <div>
+                        <h4 class="font-bold text-lg mb-4 text-slate-800 border-b pb-2">Règles d'acceptation</h4>
+                        <ul class="space-y-3 text-sm font-medium text-slate-700">
+                            <li class="flex justify-between items-center bg-white p-3 rounded border border-slate-100"><span>Maximum par RDV</span> <span class="bg-slate-200 px-2 py-1 rounded text-xs font-bold">2 Personnes (sauf exception)</span></li>
+                            <li class="flex items-center bg-white p-3 rounded border border-slate-100"><i class="fa-solid fa-scale-balanced text-brand-teal mr-2"></i> Prendre en compte la charge de travail (Priorité aux événements !)</li>
+                            <li class="flex items-center bg-white p-3 rounded border border-slate-100"><i class="fa-solid fa-camera text-brand-teal mr-2"></i> Droit à l'image obligatoire</li>
+                            <li class="flex items-center bg-white p-3 rounded border border-slate-100 text-red-600"><i class="fa-solid fa-ban mr-2"></i> Pas de stagiaire / alternant sans CDI</li>
+                            <li class="flex items-center bg-white p-3 rounded border border-slate-100"><i class="fa-solid fa-check-double text-brand-teal mr-2"></i> Validation COPIL en amont requise</li>
+                            <li class="flex items-center bg-white p-3 rounded border border-slate-100"><i class="fa-solid fa-calendar-week text-brand-teal mr-2"></i> Visite partenaire : 1 SEUL par semaine</li>
+                        </ul>
+                        <p class="mt-4 text-xs text-slate-500 italic">
+                            * Invitation en journée la semaine : Intéressant si c'est pour une journée d'étude (travailler de là-bas). Sinon, on ne s'y rend pas (perte de temps).
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Matrice des participations -->
+            <div class="overflow-x-auto">
+                <table class="min-w-full bg-white rounded-lg overflow-hidden shadow-sm border border-slate-200">
+                    <thead class="bg-brand-teal text-white">
+                        <tr>
+                            <th class="py-4 px-6 text-left font-semibold uppercase tracking-wider text-sm">Niveau</th>
+                            <th class="py-4 px-6 text-center font-semibold uppercase tracking-wider text-sm">Invitations</th>
+                            <th class="py-4 px-6 text-center font-semibold uppercase tracking-wider text-sm">Eductour</th>
+                            <th class="py-4 px-6 text-center font-semibold uppercase tracking-wider text-sm">M&J</th>
+                            <th class="py-4 px-6 text-center font-semibold uppercase tracking-wider text-sm">IBTM</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-200 text-sm font-medium">
+                        <tr class="hover:bg-slate-50">
+                            <td class="py-4 px-6 text-brand-teal font-bold">Direction</td>
+                            <td class="py-4 px-6 text-center text-green-600"><i class="fa-solid fa-check text-xl"></i></td>
+                            <td class="py-4 px-6 text-center text-green-600"><i class="fa-solid fa-check text-xl"></i></td>
+                            <td class="py-4 px-6 text-center text-green-600"><i class="fa-solid fa-check text-xl"></i></td>
+                            <td class="py-4 px-6 text-center text-green-600"><i class="fa-solid fa-check text-xl"></i></td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="py-4 px-6 text-brand-teal font-bold">Senior</td>
+                            <td class="py-4 px-6 text-center text-green-600"><i class="fa-solid fa-check text-xl"></i></td>
+                            <td class="py-4 px-6 text-center text-green-600"><i class="fa-solid fa-check text-xl"></i></td>
+                            <td class="py-4 px-6 text-center text-green-600"><i class="fa-solid fa-check text-xl"></i></td>
+                            <td class="py-4 px-6 text-center text-green-600"><i class="fa-solid fa-check text-xl"></i></td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="py-4 px-6 text-brand-teal font-bold">Junior</td>
+                            <td class="py-4 px-6 text-center text-green-600"><i class="fa-solid fa-check text-xl"></i></td>
+                            <td class="py-4 px-6 text-center text-green-600"><i class="fa-solid fa-check text-xl"></i></td>
+                            <td class="py-4 px-6 text-center text-slate-300">-</td>
+                            <td class="py-4 px-6 text-center text-slate-300">-</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="py-4 px-6 text-brand-teal font-bold">Alternantes</td>
+                            <td class="py-4 px-6 text-center text-green-600"><i class="fa-solid fa-check text-xl"></i></td>
+                            <td class="py-4 px-6 text-center text-green-600"><i class="fa-solid fa-check text-xl"></i></td>
+                            <td class="py-4 px-6 text-center text-slate-300">-</td>
+                            <td class="py-4 px-6 text-center text-slate-300">-</td>
+                        </tr>
+                        <tr class="bg-slate-50/50">
+                            <td class="py-4 px-6 text-slate-500 font-bold">Stagiaire</td>
+                            <td class="py-4 px-6 text-center text-slate-300">-</td>
+                            <td class="py-4 px-6 text-center text-slate-300">-</td>
+                            <td class="py-4 px-6 text-center text-slate-300">-</td>
+                            <td class="py-4 px-6 text-center text-slate-300">-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section V: À Venir -->
+    <section id="avenir" class="py-20 bg-brand-bg border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-brand-orange font-bold text-lg tracking-widest uppercase">V - Agenda</span>
+                <h2 class="text-4xl font-bold text-brand-teal mt-2">À Venir 2025-2026</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Card 1 -->
+                <div class="bg-white rounded-2xl p-6 border-t-4 border-blue-400 shadow-sm relative overflow-hidden group hover:-translate-y-1 transition-transform">
+                    <div class="absolute -right-4 -top-4 text-9xl font-black text-slate-50 opacity-50 group-hover:scale-110 transition-transform">1</div>
+                    <div class="relative z-10">
+                        <h3 class="text-xl font-bold text-slate-800 mb-2">La semaine prochaine</h3>
+                        <p class="text-brand-teal font-medium">Le bilan de votre entretien annuel</p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white rounded-2xl p-6 border-t-4 border-brand-orange shadow-sm relative overflow-hidden group hover:-translate-y-1 transition-transform">
+                    <div class="absolute -right-4 -top-4 text-9xl font-black text-slate-50 opacity-50 group-hover:scale-110 transition-transform">2</div>
+                    <div class="relative z-10">
+                        <h3 class="text-xl font-bold text-slate-800 mb-2">Mardi 10 mars</h3>
+                        <p class="text-brand-teal font-medium">Formation, démo & Q&A : Le budget</p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white rounded-2xl p-6 border-t-4 border-brand-teal shadow-sm relative overflow-hidden group hover:-translate-y-1 transition-transform">
+                    <div class="absolute -right-4 -top-4 text-9xl font-black text-slate-50 opacity-50 group-hover:scale-110 transition-transform">3</div>
+                    <div class="relative z-10">
+                        <h3 class="text-xl font-bold text-slate-800 mb-2">Mardi 24 mars</h3>
+                        <p class="text-brand-teal font-medium">Le bilan de Weevup et les objectifs (primes)</p>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bg-white rounded-2xl p-6 border-t-4 border-blue-300 shadow-sm relative overflow-hidden group hover:-translate-y-1 transition-transform">
+                    <div class="absolute -right-4 -top-4 text-9xl font-black text-slate-50 opacity-50 group-hover:scale-110 transition-transform">4</div>
+                    <div class="relative z-10">
+                        <h3 class="text-xl font-bold text-slate-800 mb-2">Fermeture (Ponts)</h3>
+                        <p class="text-brand-teal font-medium">Vendredi 15 mai<br>et Lundi 13 août</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-8 text-center">
+        <div class="max-w-7xl mx-auto px-4">
+            <p class="font-bold text-xl text-white tracking-widest mb-2">WEEVUP</p>
+            <p class="text-sm">Document d'organisation interne — Rentrée 2026</p>
+        </div>
+    </footer>
+
 </body>
 </html>
