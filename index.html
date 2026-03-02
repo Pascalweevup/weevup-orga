@@ -7,16 +7,25 @@
     <title>Weevup - Organisation & Missions</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
                     colors: {
                         weevup: {
                             DEFAULT: '#005461',
                             dark: '#00414d',
                             light: '#006d7d',
                             soft: '#f0f7f8',
+                        },
+                        brand: {
+                            orange: '#f05a28',
+                            teal: '#0d5c58',
                         }
                     }
                 }
@@ -49,79 +58,45 @@
             animation: fadeIn 0.3s ease-out forwards;
         }
     </style>
+    <script src="menu.js" defer></script>
 </head>
 
-<body class="min-h-screen bg-slate-50 text-slate-900 font-sans pb-20 flex">
+<body
+    class="flex flex-col md:flex-row min-h-screen bg-slate-50 text-slate-800 font-sans selection:bg-brand-orange selection:text-white">
 
-    <!-- MENU LATÉRAL -->
-    <nav
-        class="sticky top-0 h-screen flex-shrink-0 flex flex-col gap-2 p-2 bg-[#005461] shadow-lg z-50 items-center justify-center">
-        <a href="agence.html"
-            class="flex items-center gap-2 px-4 py-3 rounded-xl text-white/70 text-xs font-bold uppercase tracking-wide hover:bg-white/10 hover:text-white transition-all"
-            title="Agence">
-            <i data-lucide="building-2" class="w-4 h-4"></i>
-            <span class="hidden md:inline">Agence</span>
-        </a>
-        <a href="index.html"
-            class="flex items-center gap-2 px-4 py-3 rounded-xl bg-white/20 text-white text-xs font-bold uppercase tracking-wide hover:bg-white/30 transition-all"
-            title="Missions">
-            <i data-lucide="layers" class="w-4 h-4"></i>
-            <span class="hidden md:inline">Missions</span>
-        </a>
-        <a href="Rôle et missions - ORGA.pdf" target="_blank"
-            class="flex items-center gap-2 px-4 py-3 rounded-xl text-white/70 text-xs font-bold uppercase tracking-wide hover:bg-white/10 hover:text-white transition-all"
-            title="PDF Orga">
-            <i data-lucide="file-text" class="w-4 h-4"></i>
-            <span class="hidden md:inline">PDF</span>
-        </a>
-    </nav>
-
-    <!-- CONTENU PRINCIPAL -->
-    <div class="flex-1 min-w-0">
-
-        <!-- HEADER -->
-        <header class="bg-white border-b-4 border-weevup sticky top-0 z-40 px-6 py-4 shadow-md">
-            <div class="max-w-6xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-4">
-                <div class="flex items-center gap-3">
-                    <div class="bg-weevup p-2 rounded-xl text-white shadow-inner flex items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 315.65 237.79"
-                            class="w-8 h-6 fill-current">
-                            <g>
-                                <path
-                                    d="M15.52,41.28c0,.09.05.13.09.22l100.59,191.2c1.77,3.38,5.08,5.08,8.39,5.09h.03c3.29,0,6.57-1.68,8.36-5.04l13.64-25.58c-5.77,7.92-17.98,6.84-22.27-1.97L28.31,22c-.17,0-.34,0-.5,0-9.83,0-16.47,10.27-12.29,19.29" />
-                                <path
-                                    d="M124.34,205.2c4.29,8.81,16.5,9.89,22.27,1.97l37.17-69.59-11.94-22.68-47.5,90.3Z" />
-                                <path
-                                    d="M226.62,21.69c-3.53,0-6.8,1.97-8.41,5.05l-34.98,66.51,11.99,22.9,38.64-72.46h52.06c10.7,0,18.21,11.41,13.37,20.48l15.21-28.49c.77-1.43,1.13-2.92,1.14-4.38v-.21c-.06-4.94-4.03-9.41-9.5-9.41h-79.52Z" />
-                                <path
-                                    d="M221.48,166.24c-4.21,8.59-16.01,9.62-21.65,1.92l13.46,25.63c3.58,6.75,13.24,6.75,16.82.04l69.19-129.66c5.12-9.6-3.09-20.48-13.37-20.48l-64.45,122.55Z" />
-                                <path
-                                    d="M9.53,0C4.02,0,.03,4.5,0,9.44v.09c0,1.46.36,2.95,1.12,4.37l14.4,27.37c-4.25-9.17,2.68-19.64,12.79-19.28h94.68l48.84,92.9,11.94,22.68,16.06,30.59c5.64,7.69,17.44,6.66,21.65-1.92l-26.25-50.09-11.99-22.9L137.08,5.1c-1.65-3.13-4.92-5.1-8.45-5.1H9.53Z" />
-                            </g>
-                        </svg>
+    <!-- MAIN CONTENT -->
+    <div class="flex-1 flex flex-col min-w-0 pb-20 md:pb-0">
+        <!-- HEADER IN CONTENT -->
+        <div class="px-6 py-8 md:py-10 max-w-6xl mx-auto w-full relative z-10">
+            <div
+                class="bg-white rounded-3xl p-6 md:p-8 border border-slate-200/60 shadow-sm flex flex-col lg:flex-row items-center justify-between gap-6 backdrop-blur-md">
+                <div class="flex items-center gap-4 w-full lg:w-auto">
+                    <div class="bg-weevup/10 p-4 rounded-2xl text-weevup flex-shrink-0">
+                        <i data-lucide="workflow" class="w-8 h-8"></i>
                     </div>
                     <div>
-                        <h1 class="text-2xl font-black tracking-tight uppercase text-weevup">Weevup <span
-                                class="text-slate-400">Orga</span></h1>
-                        <p class="text-[10px] text-slate-500 font-black uppercase tracking-[0.3em]">Matrice Rôles &
-                            Missions</p>
+                        <h1 class="text-2xl md:text-3xl font-black tracking-tight text-slate-800">Matrice Rôles &
+                            Missions</h1>
+                        <p class="text-sm font-semibold text-slate-500 mt-1">Gérez les processus et répartissez les
+                            tâches</p>
                     </div>
                 </div>
 
-                <div class="flex items-center gap-2 bg-slate-200 p-1.5 rounded-2xl" id="view-toggle">
+                <div class="flex bg-slate-100 p-1.5 rounded-2xl w-full lg:w-auto overflow-x-auto scrollbar-hide"
+                    id="view-toggle">
                     <button id="btn-process"
-                        class="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-black transition-all bg-white shadow-md text-weevup">
-                        <i data-lucide="clock" class="w-4 h-4"></i> PROCESSUS
+                        class="flex-1 lg:flex-none flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-sm font-bold transition-all bg-white shadow-sm text-weevup">
+                        <i data-lucide="clock" class="w-4 h-4"></i> Processus
                     </button>
                     <button id="btn-roles"
-                        class="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-black transition-all text-slate-600 hover:text-weevup">
-                        <i data-lucide="users" class="w-4 h-4"></i> PAR MEMBRE
+                        class="flex-1 lg:flex-none flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-sm font-bold transition-all text-slate-500 hover:text-slate-700">
+                        <i data-lucide="users" class="w-4 h-4"></i> Par Membre
                     </button>
                 </div>
             </div>
-        </header>
+        </div>
 
-        <main class="max-w-6xl mx-auto px-6 mt-8">
+        <main class="max-w-6xl mx-auto px-6 mt-8 w-full">
 
             <!-- TOOLBAR -->
             <div
@@ -155,18 +130,7 @@
             </div>
         </main>
 
-        <!-- MOBILE FOOTER NAV -->
-        <div
-            class="fixed bottom-0 left-0 right-0 bg-white border-t-2 border-slate-100 p-4 z-40 md:hidden flex justify-around shadow-2xl">
-            <button id="mobile-btn-process" class="flex flex-col items-center gap-1 text-weevup scale-110">
-                <i data-lucide="layers" class="w-6 h-6"></i>
-                <span class="text-[10px] font-black uppercase">Process</span>
-            </button>
-            <button id="mobile-btn-roles" class="flex flex-col items-center gap-1 text-slate-400">
-                <i data-lucide="users" class="w-6 h-6"></i>
-                <span class="text-[10px] font-black uppercase">Membres</span>
-            </button>
-        </div>
+
 
         <script>
             const rawData = [
@@ -330,19 +294,14 @@
 
             const btnProcess = document.getElementById('btn-process');
             const btnRoles = document.getElementById('btn-roles');
-            const mBtnProcess = document.getElementById('mobile-btn-process');
-            const mBtnRoles = document.getElementById('mobile-btn-roles');
 
             // Functions
             function updateViewButtons() {
                 const activeClass = "bg-weevup shadow-lg text-white ring-4 ring-weevup/20";
                 const inactiveClass = "text-slate-500 hover:text-weevup hover:bg-slate-100";
 
-                btnProcess.className = `flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-black transition-all ${currentView === 'process' ? activeClass : inactiveClass}`;
-                btnRoles.className = `flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-black transition-all ${currentView === 'roles' ? activeClass : inactiveClass}`;
-
-                mBtnProcess.className = `flex flex-col items-center gap-1 ${currentView === 'process' ? 'text-weevup scale-110' : 'text-slate-400'}`;
-                mBtnRoles.className = `flex flex-col items-center gap-1 ${currentView === 'roles' ? 'text-weevup scale-110' : 'text-slate-400'}`;
+                btnProcess.className = `flex-1 lg:flex-none flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-sm font-bold transition-all ${currentView === 'process' ? activeClass : inactiveClass}`;
+                btnRoles.className = `flex-1 lg:flex-none flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-sm font-bold transition-all ${currentView === 'roles' ? activeClass : inactiveClass}`;
             }
 
             function renderFilters() {
@@ -419,8 +378,8 @@
                     phaseEl.className = 'relative pl-8 md:pl-0';
                     phaseEl.innerHTML = `
                     <div class="absolute left-0 md:left-1/2 top-0 bottom-0 w-1 bg-slate-200 md:-translate-x-1/2 hidden md:block opacity-30"></div>
-                    <div class="flex flex-col items-start md:items-center mb-10">
-                        <div class="${phase.color} text-white px-8 py-3 rounded-2xl text-[11px] font-black tracking-[0.2em] uppercase z-10 shadow-xl ring-4 ring-white">
+                    <div class="flex flex-col items-start md:items-center mb-10 w-full overflow-hidden">
+                        <div class="${phase.color} text-white px-6 py-3 rounded-2xl text-[11px] font-black tracking-[0.2em] uppercase z-10 shadow-xl ring-4 ring-white w-full md:w-auto text-center break-words whitespace-normal">
                             ${phase.phase}
                         </div>
                     </div>
@@ -550,8 +509,6 @@
             searchInput.oninput = (e) => { searchTerm = e.target.value; render(); };
             btnProcess.onclick = () => { currentView = 'process'; render(); };
             btnRoles.onclick = () => { currentView = 'roles'; render(); };
-            mBtnProcess.onclick = () => { currentView = 'process'; render(); };
-            mBtnRoles.onclick = () => { currentView = 'roles'; render(); };
 
             window.onload = render;
         </script>
